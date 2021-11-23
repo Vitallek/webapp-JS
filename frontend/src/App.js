@@ -8,13 +8,13 @@ import 'react-pro-sidebar/dist/css/styles.css';
 
 import AddWheel from "./components/wheels/add-wheel.component";
 import Wheel from "./components/wheels/wheel.component";
-import WheelsList from "./components/wheels/wheels-list.component";
+import WheelList from "./components/wheels/wheels-list.component";
 
 class App extends Component {
   render() {
     return (
-      <div class="row mainContainer">
-        <div class="">
+      <div className="row mainContainer">
+        <div>
           <ProSidebar>
             <Menu iconShape="square">
               <MenuItem>
@@ -211,7 +211,7 @@ class App extends Component {
 
         <div className="mt-3">
           <Switch>
-            <Route exact path={["/wheels"]} component={WheelsList} />
+            <Route exact path={["/wheels"]} component={WheelList} />
             <Route exact path="/add/wheels" component={AddWheel} />
             <Route path="/wheels/:id" component={Wheel} />
           </Switch>

@@ -4,15 +4,19 @@ const app = express()
 const morgan = require('morgan')
 const bodyParser = require('body-parser')
 
-const carRoutes = require('./routes/wheels')
+const wheelRoutes = require('./routes/wheels')
 
 // nodemon app.js
 app.use(morgan('short'))
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
 app.use(express.static('./public'))
-
-app.use('/wheels', carRoutes)
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "http://localhost:8081"); // update to match the domain you will make the request from
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+app.use('/wheels', wheelRoutes)
 
 app.use((req, res, next) => {
   // This reads the accept-language header
