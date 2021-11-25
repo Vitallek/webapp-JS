@@ -1,23 +1,27 @@
 import React from 'react';
 import axios from 'axios';
 
-export default class AddWheel extends React.Component {
+export default class EditWheel extends React.Component {
+  
   state = {
+    id: '',
     wheels_name: '',
     wheels_price: ''
   }
-
+  
   hardRefresh(){
     window.location.reload();
   }
 
+  handleChangeId = event => {
+    this.setState({ id: event.target.value });
+  }
   handleChangeName = event => {
     this.setState({ wheels_name: event.target.value });
   }
   handleChangePrice = event => {
     this.setState({ wheels_price: event.target.value });
   }
-  
 
   handleSubmit = event => {
     event.preventDefault();
@@ -27,7 +31,7 @@ export default class AddWheel extends React.Component {
       wheels_price: this.state.wheels_price
     };
 
-    axios.post('http://localhost:5000/wheels/create', wheel)
+    axios.put('http://localhost:5000/wheels/update/'+this.state.id, wheel)
       .then(res => {
         console.log(res);
         console.log(res.data);
@@ -38,17 +42,21 @@ export default class AddWheel extends React.Component {
 
   render() {
     return (
-      <div className="float-right p-4 mb-4 bg-dark text-light">
+      <div className="float-right p-4 mb-4 text-light">
         <form onSubmit={this.handleSubmit} className="d-flex flex-column justify-content-center">
+          <label className="form-outline mb-4">
+            wheel id:
+            <input onChange={this.handleChangeId} className="form-control" type="id" name="id" placeholder="Enter id"/>
+          </label>
           <label className="form-outline mb-4">
             wheel name:
             <input onChange={this.handleChangeName} className="form-control" type="name" name="wheels_name" placeholder="Enter name" />
           </label>
           <label className="form-outline mb-4">
             wheel price:
-            <input onChange={this.handleChangePrice} className="form-control" type="price" name="wheels_price" placeholder="Enter price" />
+            <input onChange={this.handleChangePrice} className="form-control" type="price" name="wheels_price" placeholder="Enter price"/>
           </label>
-          <button type="submit" onClick={this.hardRefresh} className="btn btn-success">Add</button>
+          <button type="submit" className="btn btn-warning" onClick={this.hardRefresh}>Update</button>
         </form>
       </div>
     );

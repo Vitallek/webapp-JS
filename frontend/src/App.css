@@ -1,23 +1,37 @@
-.list {
-  text-align: left;
-  max-width: 750px;
-  margin: auto;
+.sidenav {
+  height: 100%; /* Full-height: remove this if you want "auto" height */
+  width: 280px; /* Set the width of the sidebar */
+  position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+  z-index: 1; /* Stay on top */
+  top: 0; /* Stay at the top */
+  left: 0;
+  background-color: #1D1D1D; /* Black */
+  overflow-x: hidden; /* Disable horizontal scroll */
 }
-
-.submit-form {
-  max-width: 300px;
-  margin: auto;
+.sidebar-wrapper {
+  height: 100%; /* Full-height: remove this if you want "auto" height */
+  width: 280px; /* Set the width of the sidebar */
+  position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+  z-index: 1; /* Stay on top */
+  top: 0; /* Stay at the top */
+  left: 280px;
+  overflow-x: hidden; /* Disable horizontal scroll */
+  background-color: #343A40; /* Black */
 }
-
+.tableHeader{
+  box-sizing: border-box;
+  border-width: 3px !important;
+}
 .edit-form {
   max-width: 300px;
   margin: auto;
 }
 .mainContainer{
-  display: flex;
-  flex-flow: row;
+  width: 100%;
 }
-.customBody{
-  display: flex;
-  align-content:flex-start;
+.tableContainer{
+  width: 100%;
+}
+.container{
+  margin-left: 560px;
 }

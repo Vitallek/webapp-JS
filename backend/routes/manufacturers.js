@@ -18,7 +18,7 @@ function getConnection() {
   router.get("/", (req,res) => {
     const connection = getConnection()
   
-    const queryString = "Select * FROM wheels"
+    const queryString = "Select * FROM manufacturer"
     connection.query(queryString, (error, rows, fields) => {
       if (error) {
         res.sendStatus(500)
@@ -27,9 +27,8 @@ function getConnection() {
   
       const wheels = rows.map((row) => {
         return {
-          Id: row.id,
-          wheels_name: row.wheels_name,
-          wheels_price: row.wheels_price,
+          id: row.id,
+          companyName: row.company_name,
         }
       })
       res.json(wheels)
