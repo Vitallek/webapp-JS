@@ -18,7 +18,7 @@ function getConnection() {
   router.get("/", (req,res) => {
     const connection = getConnection()
   
-    const queryString = "Select * FROM manufacturer"
+    const queryString = "Select * FROM manufacturers"
     connection.query(queryString, (error, rows, fields) => {
       if (error) {
         res.sendStatus(500)
@@ -38,8 +38,8 @@ function getConnection() {
   router.post("/create", (req, res) => {
     const connection = getConnection()
   
-    const queryString = "INSERT INTO wheels (wheels_name, wheels_price) VALUES (?, ?)"
-    connection.query(queryString, [req.body.wheels_name, req.body.wheels_price], (err, results, fields) => {
+    const queryString = "INSERT INTO manufacturers (company_name) VALUES (?)"
+    connection.query(queryString, [req.body.companyName], (err, results, fields) => {
       if (err) {
         res.sendStatus(500)
         return
@@ -51,7 +51,7 @@ function getConnection() {
   router.delete("/delete/:id", (req, res) =>{
     const connection = getConnection()
 
-    const queryString = "DELETE FROM wheels WHERE id = ?"
+    const queryString = "DELETE FROM manufacturers WHERE id = ?"
   
     connection.query(queryString, [req.params.id], (error, rows, fields) => {
       if (error) {
@@ -67,8 +67,8 @@ function getConnection() {
 
     console.log("updated")
 
-    const queryString = "UPDATE wheels SET wheels_name = ?, wheels_price = ? WHERE id = ?"
-    connection.query(queryString, [req.body.wheels_name, req.body.wheels_price, req.params.id], (err, results, fields) => {
+    const queryString = "UPDATE manufacturers SET company_name = ? WHERE id = ?"
+    connection.query(queryString, [req.body.companyName, req.params.id], (err, results, fields) => {
       if (err) {
         console.log(err)
         res.sendStatus(500)

@@ -11,6 +11,11 @@ import WheelList from "./components/wheels/wheels-list.component";
 import EditWheel from "./components/wheels/editWheel.component";
 import DeleteWheel from "./components/wheels/deleteWheel.component";
 
+import AddManufacturer from "./components/manufacturers/add-manufacturer.component";
+import ManufacturerList from "./components/manufacturers/manufacturers-list.component";
+import EditManufacturer from "./components/manufacturers/editManufacturer.component";
+import DeleteManufacturer from "./components/manufacturers/deleteManufacturer.component";
+
 class App extends Component {
   render() {
     return (
@@ -203,7 +208,12 @@ class App extends Component {
               <Route exact path={["/wheels"]} component={WheelList} />
               <Route exact path="/add/wheels" component={AddWheel} />
               <Route exact path="/edit/wheel" component={EditWheel} />
-              <Route exact path="/delete/wheel" component={EditWheel} />
+              <Route exact path="/delete/wheel" component={DeleteWheel} />
+
+              <Route exact path={["/manufacturers"]} component={ManufacturerList} />
+              <Route exact path="/add/manufacturers" component={AddManufacturer} />
+              <Route exact path="/edit/manufacturer" component={EditManufacturer} />
+              <Route exact path="/delete/manufacturer" component={DeleteManufacturer} />
             </Switch>
           </div>
         </div>
