@@ -16,6 +16,11 @@ import ManufacturerList from "./components/manufacturers/manufacturers-list.comp
 import EditManufacturer from "./components/manufacturers/editManufacturer.component";
 import DeleteManufacturer from "./components/manufacturers/deleteManufacturer.component";
 
+import AddEngine from "./components/engines/add-engine.component";
+import EngineList from "./components/engines/engines-list.component";
+import EditEngine from "./components/engines/editEngine.component";
+import DeleteEngine from "./components/engines/deleteEngine.component";
+
 class App extends Component {
   render() {
     return (
@@ -214,6 +219,11 @@ class App extends Component {
               <Route exact path="/add/manufacturers" component={AddManufacturer} />
               <Route exact path="/edit/manufacturer" component={EditManufacturer} />
               <Route exact path="/delete/manufacturer" component={DeleteManufacturer} />
+
+              <Route exact path={["/engines"]} component={EngineList} />
+              <Route exact path="/add/engines" component={AddEngine} />
+              <Route exact path="/edit/engine" component={EditEngine} />
+              <Route exact path="/delete/engine" component={DeleteEngine} />
             </Switch>
           </div>
         </div>

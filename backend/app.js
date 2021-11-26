@@ -6,6 +6,7 @@ const bodyParser = require('body-parser')
 
 const wheelRoutes = require('./routes/wheels')
 const manufacturerRoutes = require('./routes/manufacturers')
+const engineRoutes = require('./routes/engines')
 
 // nodemon app.js
 app.use(morgan('short'))
@@ -18,8 +19,10 @@ app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Methods", "*");
   next();
 });
+
 app.use('/wheels', wheelRoutes)
 app.use('/manufacturers', manufacturerRoutes)
+app.use('/engines', engineRoutes)
 
 app.use((req, res, next) => {
   // This reads the accept-language header
