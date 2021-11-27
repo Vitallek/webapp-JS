@@ -7,6 +7,16 @@ const bodyParser = require('body-parser')
 const wheelRoutes = require('./routes/wheels')
 const manufacturerRoutes = require('./routes/manufacturers')
 const engineRoutes = require('./routes/engines')
+const turboRoutes = require('./routes/turbos')
+const transmissionRoutes = require('./routes/transmissions')
+const vehicle_typesRoutes = require('./routes/vehicle_types')
+const payment_typesRoutes = require('./routes/payment_types')
+const order_typesRoutes = require('./routes/order_types')
+const qualificationRoutes = require('./routes/qualifications')
+const employeeRoutes = require('./routes/employees')
+const orderRoutes = require('./routes/orders')
+const userRoutes = require('./routes/userrrs')
+const vehicleModelRoutes = require('./routes/vehicle_models')
 
 // nodemon app.js
 app.use(morgan('short'))
@@ -23,6 +33,16 @@ app.use(function(req, res, next) {
 app.use('/wheels', wheelRoutes)
 app.use('/manufacturers', manufacturerRoutes)
 app.use('/engines', engineRoutes)
+app.use('/turbos', turboRoutes)
+app.use('/transmissions', transmissionRoutes)
+app.use('/vehicle_types', vehicle_typesRoutes)
+app.use('/payment_types', payment_typesRoutes)
+app.use('/order_types', order_typesRoutes)
+app.use('/qualifications', qualificationRoutes)
+app.use('/employees', employeeRoutes)
+app.use('/orders', orderRoutes)
+app.use('/userrrs', userRoutes)
+app.use('/vehicle_models', vehicleModelRoutes)
 
 app.use((req, res, next) => {
   // This reads the accept-language header

@@ -21,6 +21,11 @@ import EngineList from "./components/engines/engines-list.component";
 import EditEngine from "./components/engines/editEngine.component";
 import DeleteEngine from "./components/engines/deleteEngine.component";
 
+import AddEmployee from "./components/employees/add-empoloyee.component";
+import EmployeeList from "./components/employees/employees-list.component";
+import EditEmployee from "./components/employees/editEmpoloyee.component";
+import DeleteEmployee from "./components/employees/deleteEmpoloyee.component";
+
 class App extends Component {
   render() {
     return (
@@ -30,179 +35,88 @@ class App extends Component {
             <ProSidebar>
               <Menu iconShape="square">
                 <MenuItem>
-                  <Link to={"/tutorials"} className="navbar-brand">
+                  <Link to={"/"} className="navbar-brand ">
                     Vitallek Autoshop
                   </Link>
                 </MenuItem>
 
-                <SubMenu title="Manufacturers">
-                  <MenuItem>
-                    <Link to={"/manufacturers"} className="nav-link">
-                      Manufacturers List
-                    </Link>
-                  </MenuItem>
-                  <MenuItem>
-                    <Link to={"/add/manufacturers"} className="nav-link">
-                      Add manufacturer
-                    </Link>
-                  </MenuItem>
-                </SubMenu>
+                <MenuItem>
+                  <Link to={"/manufacturers"} className="nav-link">
+                    Manufacturers List
+                  </Link>
+                </MenuItem>
 
-                <SubMenu title="VehicleModels">
-                  <MenuItem>
-                    <Link to={"/vehicleModels"} className="nav-link">
-                      Vehicles List
-                    </Link>
-                  </MenuItem>
-                  <MenuItem>
-                    <Link to={"/add/vehicleModels"} className="nav-link">
-                      Add vehicle
-                    </Link>
-                  </MenuItem>
-                </SubMenu>
+                <MenuItem>
+                  <Link to={"/vehicleModels"} className="nav-link">
+                    Vehicles List
+                  </Link>
+                </MenuItem>
 
-                <SubMenu title="Engines">
-                  <MenuItem>
-                    <Link to={"/engines"} className="nav-link">
-                      Engines List
-                    </Link>
-                  </MenuItem>
-                  <MenuItem>
-                    <Link to={"/add/engines"} className="nav-link">
-                      Add engine
-                    </Link>
-                  </MenuItem>
-                </SubMenu>
+                <MenuItem>
+                  <Link to={"/engines"} className="nav-link">
+                    Engines List
+                  </Link>
+                </MenuItem>
 
-                <SubMenu title="Turbos">
-                  <MenuItem>
-                    <Link to={"/turbos"} className="nav-link">
-                      Turbos List
-                    </Link>
-                  </MenuItem>
-                  <MenuItem>
-                    <Link to={"/add/turbos"} className="nav-link">
-                      Add turbo
-                    </Link>
-                  </MenuItem>
-                </SubMenu>
+                <MenuItem>
+                  <Link to={"/turbos"} className="nav-link">
+                    Turbos List
+                  </Link>
+                </MenuItem>
 
-                <SubMenu title="Transmissions">
-                  <MenuItem>
-                    <Link to={"/transmissions"} className="nav-link">
-                      Transmissions List
-                    </Link>
-                  </MenuItem>
-                  <MenuItem>
-                    <Link to={"/add/transmissions"} className="nav-link">
-                      Add transmission
-                    </Link>
-                  </MenuItem>
-                </SubMenu>
+                <MenuItem>
+                  <Link to={"/transmissions"} className="nav-link">
+                    Transmissions List
+                  </Link>
+                </MenuItem>
 
-                <SubMenu title="Wheels">
-                  <MenuItem>
-                    <Link to={"/wheels"} className="nav-link">
-                      Wheels List
-                    </Link>
-                  </MenuItem>
-                  <MenuItem>
-                    <Link to={"/add/wheels"} className="nav-link">
-                      Add wheel
-                    </Link>
-                  </MenuItem>
-                </SubMenu>
+                <MenuItem>
+                  <Link to={"/wheels"} className="nav-link">
+                    Wheels List
+                  </Link>
+                </MenuItem>
 
-                <SubMenu title="VehicleTypes">
-                  <MenuItem>
-                    <Link to={"/vehicleTypes"} className="nav-link">
-                      Vehcle Types List
-                    </Link>
-                  </MenuItem>
-                  <MenuItem>
-                    <Link to={"/add/vehicleTypes"} className="nav-link">
-                      Add Vehicle Type
-                    </Link>
-                  </MenuItem>
-                </SubMenu>
+                <MenuItem>
+                  <Link to={"/vehicleTypes"} className="nav-link">
+                    Vehcle Types List
+                  </Link>
+                </MenuItem>
 
-                <SubMenu title="Customers">
-                  <MenuItem>
-                    <Link to={"/customers"} className="nav-link">
-                      Customers List
-                    </Link>
-                  </MenuItem>
-                  <MenuItem>
-                    <Link to={"/add/customers"} className="nav-link">
-                      Add Customer
-                    </Link>
-                  </MenuItem>
-                </SubMenu>
+                <MenuItem>
+                  <Link to={"/customers"} className="nav-link">
+                    Customers List
+                  </Link>
+                </MenuItem>
 
-                <SubMenu title="Employees">
-                  <MenuItem>
-                    <Link to={"/employees"} className="nav-link">
-                      Employees List
-                    </Link>
-                  </MenuItem>
-                  <MenuItem>
-                    <Link to={"/add/employees"} className="nav-link">
-                      Add Employee
-                    </Link>
-                  </MenuItem>
-                </SubMenu>
+                <MenuItem>
+                  <Link to={"/employees"} className="nav-link">
+                    Employees List
+                  </Link>
+                </MenuItem>
 
-                <SubMenu title="Qualifications">
-                  <MenuItem>
-                    <Link to={"/qualitions"} className="nav-link">
-                      Qualifications List
-                    </Link>
-                  </MenuItem>
-                  <MenuItem>
-                    <Link to={"/add/qualifications"} className="nav-link">
-                      Add Qualification
-                    </Link>
-                  </MenuItem>
-                </SubMenu>
+                <MenuItem>
+                  <Link to={"/qualitions"} className="nav-link">
+                    Qualifications List
+                  </Link>
+                </MenuItem>
 
-                <SubMenu title="Orders">
-                  <MenuItem>
-                    <Link to={"/orders"} className="nav-link">
-                      Orders List
-                    </Link>
-                  </MenuItem>
-                  <MenuItem>
-                    <Link to={"/add/orders"} className="nav-link">
-                      Add Order
-                    </Link>
-                  </MenuItem>
-                </SubMenu>
+                <MenuItem>
+                  <Link to={"/orders"} className="nav-link">
+                    Orders List
+                  </Link>
+                </MenuItem>
 
-                <SubMenu title="OrderTypes">
-                  <MenuItem>
-                    <Link to={"/orderTypes"} className="nav-link">
-                      Order type List
-                    </Link>
-                  </MenuItem>
-                  <MenuItem>
-                    <Link to={"/add/orderTypes"} className="nav-link">
-                      Add Order Type
-                    </Link>
-                  </MenuItem>
-                </SubMenu>
+                <MenuItem>
+                  <Link to={"/orderTypes"} className="nav-link">
+                    Order type List
+                  </Link>
+                </MenuItem>
 
-                <SubMenu title="PaymentTypes">
-                  <MenuItem>
-                    <Link to={"/paymentTypes"} className="nav-link">
-                      Payment type List
-                    </Link>
-                  </MenuItem>
-                  <MenuItem>
-                    <Link to={"/add/paymentTypes"} className="nav-link">
-                      Add Payment Type
-                    </Link>
-                  </MenuItem>
-                </SubMenu>
+                <MenuItem>
+                  <Link to={"/paymentTypes"} className="nav-link">
+                    Payment type List
+                  </Link>
+                </MenuItem>
 
               </Menu>
             </ProSidebar>
@@ -224,6 +138,11 @@ class App extends Component {
               <Route exact path="/add/engines" component={AddEngine} />
               <Route exact path="/edit/engine" component={EditEngine} />
               <Route exact path="/delete/engine" component={DeleteEngine} />
+
+              <Route exact path={["/employees"]} component={EmployeeList} />
+              <Route exact path="/add/employees" component={AddEmployee} />
+              <Route exact path="/edit/employees" component={EditEmployee} />
+              <Route exact path="/delete/employees" component={DeleteEmployee} />
             </Switch>
           </div>
         </div>
