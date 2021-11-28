@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 
-export default class DeleteEngine extends React.Component {
+export default class DeleteOrderType extends React.Component {
   state = {
     id: '',
   }
@@ -17,7 +17,7 @@ export default class DeleteEngine extends React.Component {
   handleSubmit = event => {
     event.preventDefault();
 
-    axios.delete('http://localhost:5000/engines/delete/'+this.state.id)
+    axios.delete(`http://localhost:5000/order_types/delete/${this.state.id}`)
       .then(res => {
         console.log(res);
         console.log(res.data);
@@ -29,7 +29,7 @@ export default class DeleteEngine extends React.Component {
       <div className="float-right p-4 mb-4 bg-dark text-light">
         <form onSubmit={this.handleSubmit} className="d-flex flex-column justify-content-center">
           <label className="form-outline mb-4">
-            Engine ID:
+            Order_type ID:
             <input onChange={this.handleChange} className="form-control" type="id" name="id" placeholder="Enter id" />
           </label>
           <button type="submit" onClick={this.hardRefresh} className="btn btn-danger">Delete</button>

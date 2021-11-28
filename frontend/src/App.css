@@ -26,11 +26,74 @@
   max-width: 300px;
   margin: auto;
 }
+.col{
+  text-align: center;
+}
 .mainContainer{
-  width: 100%;
+  width: auto;
 }
 .tableContainer{
-  width: 100%;
+  width: auto;
+}
+.carTableContainer{
+  width: 2200px;
+}
+.carCol:nth-child(1){
+  width: 50px;
+  text-align: center;
+}
+.carCol:nth-child(2){
+  width: 250px;
+  text-align: center;
+}
+.carCol:nth-child(3){
+  width: 130px;
+  text-align: center;
+}
+.carCol:nth-child(4){
+  width: 200px;
+  text-align: center;
+}
+.carCol:nth-child(5){
+  width: 100px;
+  text-align: center;
+}
+.carCol:nth-child(6){
+  width: 100px;
+  text-align: center;
+}
+.carCol:nth-child(6){
+  width: 100px;
+  text-align: center;
+}
+.carCol:nth-child(7){
+  width: 100px;
+  text-align: center;
+}
+.carCol:nth-child(8){
+  width: 100px;
+  text-align: center;
+}
+.carCol:nth-child(9){
+  width: 100px;
+  text-align: center;
+}
+.carCol:nth-child(10){
+  width: 100px;
+  text-align: center;
+}
+.carCol:nth-child(11){
+  width: 400px;
+  text-align: center;
+}
+.carCol:nth-child(12){
+  width: 100px;
+  text-align: center;
+}
+.carCol:nth-child(13){
+  width: 400px;
+  height: auto;
+  text-align: center;
 }
 .container{
   margin-left: 560px;

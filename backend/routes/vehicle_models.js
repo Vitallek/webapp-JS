@@ -36,10 +36,10 @@ function getConnection() {
           transmission_id: row.transmission_id,
           turbo_id: row.turbo_id,
           wheels_id: row.wheels_id,
-          deliver_date: row.whedeliver_dateels_id,
           vehicle_stock_price: row.vehicle_stock_price,
           car_description: row.car_description,
           is_sold: row.is_sold,
+          photo_path: row.photo_path,
         }
       })
       res.json(vehicle_models)
@@ -49,8 +49,8 @@ function getConnection() {
   router.post("/create", (req, res) => {
     const connection = getConnection()
   
-    const queryString = "INSERT INTO vehicle_models (model_name, manufacturer_id, vin, type_id ,engine_id, transmission_id, turbo_id, wheels_id, deliver_date, vehicle_stock_price, car_description, is_sold) VALUES (?, ?, ?, ? ,? ,? ,? , ?, ?, ?, ?, ?, ?)"
-    connection.query(queryString, [req.body.model_name, req.body.manufacturer_id, req.body.vin, req.body.type_id, req.body.engine_id, req.body.transmission_id, req.body.turbo_id, req.body.wheels_id, req.body.deliver_date, req.body.vehicle_stock_price, req.body.vehicle_stock_price, req.body.car_description, req.body.is_sold], (err, results, fields) => {
+    const queryString = "INSERT INTO vehicle_models (model_name, manufacturer_id, vin, type_id ,engine_id, transmission_id, turbo_id, wheels_id, vehicle_stock_price, car_description, is_sold, photo_path) VALUES (?, ?, ?, ? ,? ,? ,? , ?, ?, ?, ?, ?)"
+    connection.query(queryString, [req.body.model_name, req.body.manufacturer_id, req.body.vin, req.body.type_id, req.body.engine_id, req.body.transmission_id, req.body.turbo_id, req.body.wheels_id, req.body.vehicle_stock_price, req.body.car_description, req.body.is_sold, req.body.photo_path], (err, results, fields) => {
       if (err) {
         res.sendStatus(500)
         return
@@ -78,8 +78,8 @@ function getConnection() {
 
     console.log("updated")
 
-    const queryString = "UPDATE vehicle_models SET model_name = ?, manufacturer_id = ?, vin = ?, type_id = ?, engine_id = ?, transmission_id=?, turbo_id=?, wheels_id=? ,deliver_date=?, vehicle_stock_price=?, car_description=?, is_sold=? WHERE id = ?"
-    connection.query(queryString, [req.body.model_name, req.body.manufacturer_id, req.body.vin, req.body.type_id, req.body.engine_id, req.body.transmission_id, req.body.turbo_id, req.body.wheels_id, req.body.deliver_date, req.body.vehicle_stock_price, req.body.vehicle_stock_price, req.body.car_description, req.body.is_sold, req.params.id], (err, results, fields) => {
+    const queryString = "UPDATE vehicle_models SET model_name = ?, manufacturer_id = ?, vin = ?, type_id = ?, engine_id = ?, transmission_id=?, turbo_id=?, wheels_id=?, vehicle_stock_price=?, car_description=?, is_sold=?, photo_path=? WHERE id = ?"
+    connection.query(queryString, [req.body.model_name, req.body.manufacturer_id, req.body.vin, req.body.type_id, req.body.engine_id, req.body.transmission_id, req.body.turbo_id, req.body.wheels_id, req.body.vehicle_stock_price, req.body.vehicle_stock_price, req.body.car_description, req.body.is_sold,req.body.photo_path, req.params.id], (err, results, fields) => {
       if (err) {
         console.log(err)
         res.sendStatus(500)

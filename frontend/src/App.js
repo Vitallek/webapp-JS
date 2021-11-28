@@ -26,6 +26,16 @@ import EmployeeList from "./components/employees/employees-list.component";
 import EditEmployee from "./components/employees/editEmpoloyee.component";
 import DeleteEmployee from "./components/employees/deleteEmpoloyee.component";
 
+import AddOrderType from "./components/order_types/add-order_type.component";
+import OrderTypeList from "./components/order_types/order_types-list.component";
+import EditOrderType from "./components/order_types/editOrder_type.component";
+import DeleteOrderType from "./components/order_types/deleteOrder-type.component";
+
+import AddVehicleModel from "./components/vehicle_models/add-vehicle_model.component";
+import VehicleModelList from "./components/vehicle_models/vehicle_models-list.component";
+import EditVehicleModel from "./components/vehicle_models/editVehicle_model.component";
+import DeleteVehicleModel from "./components/vehicle_models/deleteVehicle_model.component";
+
 class App extends Component {
   render() {
     return (
@@ -47,7 +57,7 @@ class App extends Component {
                 </MenuItem>
 
                 <MenuItem>
-                  <Link to={"/vehicleModels"} className="nav-link">
+                  <Link to={"/vehicle_models"} className="nav-link">
                     Vehicles List
                   </Link>
                 </MenuItem>
@@ -107,13 +117,13 @@ class App extends Component {
                 </MenuItem>
 
                 <MenuItem>
-                  <Link to={"/orderTypes"} className="nav-link">
+                  <Link to={"/order_types"} className="nav-link">
                     Order type List
                   </Link>
                 </MenuItem>
 
                 <MenuItem>
-                  <Link to={"/paymentTypes"} className="nav-link">
+                  <Link to={"/payment_types"} className="nav-link">
                     Payment type List
                   </Link>
                 </MenuItem>
@@ -143,6 +153,16 @@ class App extends Component {
               <Route exact path="/add/employees" component={AddEmployee} />
               <Route exact path="/edit/employees" component={EditEmployee} />
               <Route exact path="/delete/employees" component={DeleteEmployee} />
+
+              <Route exact path={["/order_types"]} component={OrderTypeList} />
+              <Route exact path="/add/order_types" component={AddOrderType} />
+              <Route exact path="/edit/order_types" component={EditOrderType} />
+              <Route exact path="/delete/order_types" component={DeleteOrderType} />
+
+              <Route exact path={["/vehicle_models"]} component={VehicleModelList} />
+              <Route exact path="/add/vehicle_models" component={AddVehicleModel} />
+              <Route exact path="/edit/vehicle_models" component={EditVehicleModel} />
+              <Route exact path="/delete/vehicle_models" component={DeleteVehicleModel} />
             </Switch>
           </div>
         </div>
