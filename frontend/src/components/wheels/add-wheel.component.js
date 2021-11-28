@@ -7,10 +7,6 @@ export default class AddWheel extends React.Component {
     wheels_price: ''
   }
 
-  hardRefresh(){
-    window.location.reload();
-  }
-
   handleChangeName = event => {
     this.setState({ wheels_name: event.target.value });
   }
@@ -31,9 +27,12 @@ export default class AddWheel extends React.Component {
       .then(res => {
         console.log(res);
         console.log(res.data);
+        window.location.reload();
       }).catch(err => {
         console.log(err);
       })
+
+      
   }
 
   render() {
@@ -42,13 +41,13 @@ export default class AddWheel extends React.Component {
         <form onSubmit={this.handleSubmit} className="d-flex flex-column justify-content-center">
           <label className="form-outline mb-4">
             wheel name:
-            <input onChange={this.handleChangeName} className="form-control" type="name" name="wheels_name" placeholder="Enter name" />
+            <input onChange={this.handleChangeName} required className="form-control" type="name" name="wheels_name" placeholder="Enter name" />
           </label>
           <label className="form-outline mb-4">
             wheel price:
-            <input onChange={this.handleChangePrice} className="form-control" type="price" name="wheels_price" placeholder="Enter price" />
+            <input onChange={this.handleChangePrice} required className="form-control" type="price" name="wheels_price" placeholder="Enter price" />
           </label>
-          <button type="submit" onClick={this.hardRefresh} className="btn btn-success">Add</button>
+          <button type="submit"  className="btn btn-success">Add</button>
         </form>
       </div>
     );

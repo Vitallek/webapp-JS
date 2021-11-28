@@ -18,10 +18,6 @@ export default class AddVehicleModel extends React.Component {
     photo_path: '',
   }
 
-  hardRefresh(){
-    window.location.reload();
-  }
-
   handleChangeModelName = event => {
     this.setState({ model_name: event.target.value });
   }
@@ -80,9 +76,12 @@ export default class AddVehicleModel extends React.Component {
       .then(res => {
         console.log(res);
         console.log(res.data);
+        window.location.reload();
+
       }).catch(err => {
         console.log(err);
       })
+
   }
 
   render() {
@@ -91,49 +90,49 @@ export default class AddVehicleModel extends React.Component {
         <form onSubmit={this.handleSubmit} className="d-flex flex-column justify-content-center">
           <label className="form-outline mb-4">
             vehicle_model Name:
-            <input onChange={this.handleChangeModelName} className="form-control" type="name" name="model_name" placeholder="Enter name" />
+            <input onChange={this.handleChangeModelName} className="form-control" type="name" name="model_name" required placeholder="Enter name" />
           </label>
           <label className="form-outline mb-4">
             vehicle_model manufacturer id:
-            <input onChange={this.handleChangeManufacturerID} placeholder="Enter id"  className="form-control" type="price" name="manufacturer_id" />
+            <input onChange={this.handleChangeManufacturerID} required placeholder="Enter id"  className="form-control" type="price" name="manufacturer_id" />
           </label>
           <label className="form-outline mb-4">
             vehicle vin:
-            <input onChange={this.handleChangeVin} placeholder="Enter vin"className="form-control" type="name" name="model_name"  />
+            <input onChange={this.handleChangeVin} required placeholder="Enter vin"className="form-control" type="name" name="model_name"  />
           </label>
           <label className="form-outline mb-4">
             vehicle type:
-            <input onChange={this.handleChangeTypeID} placeholder="Enter type"className="form-control" type="name" name="model_name"  />
+            <input onChange={this.handleChangeTypeID} required placeholder="Enter type"className="form-control" type="name" name="model_name"  />
           </label>
           <label className="form-outline mb-4">
             vehicle engine id:
-            <input onChange={this.handleChangeEngineID} placeholder="Enter engine id"className="form-control" type="name" name="model_name"  />
+            <input onChange={this.handleChangeEngineID} required placeholder="Enter engine id"className="form-control" type="name" name="model_name"  />
           </label>
           <label className="form-outline mb-4">
             vehicle transmission:
-            <input onChange={this.handleChangeTransmissionID} placeholder="Enter transmission id"className="form-control" type="name" name="model_name"  />
+            <input onChange={this.handleChangeTransmissionID} required placeholder="Enter transmission id"className="form-control" type="name" name="model_name"  />
           </label>
           <label className="form-outline mb-4">
             vehicle turbo :
-            <input onChange={this.handleChangeTurboID} placeholder="Enter turbo id"className="form-control" type="name" name="model_name"  />
+            <input onChange={this.handleChangeTurboID} required placeholder="Enter turbo id"className="form-control" type="name" name="model_name"  />
           </label>
           <label className="form-outline mb-4">
             vehicle wheels:
-            <input onChange={this.handleChangeWheelsID} placeholder="Enter wheels id"className="form-control" type="name" name="model_name"  />
+            <input onChange={this.handleChangeWheelsID} required placeholder="Enter wheels id"className="form-control" type="name" name="model_name"  />
           </label>
           <label className="form-outline mb-4">
             vehicle price:
-            <input onChange={this.handleChangePrice} placeholder="Enter price"className="form-control" type="name" name="model_name"  />
+            <input onChange={this.handleChangePrice} required placeholder="Enter price"className="form-control" type="name" name="model_name"  />
           </label>
           <label className="form-outline mb-4">
             vehicle description:
-            <input onChange={this.handleChangeDescription} placeholder="Enter description"className="form-control" type="name" name="model_name"  />
+            <input onChange={this.handleChangeDescription} required placeholder="Enter description"className="form-control" type="name" name="model_name"  />
           </label>
           <label className="form-outline mb-4">
             vehicle photo path:
-            <input onChange={this.handleChangePhoto} placeholder="Enter photo path"className="form-control" type="name" name="model_name"  />
+            <input onChange={this.handleChangePhoto} required placeholder="Enter photo path"className="form-control" type="name" name="model_name"  />
           </label>
-          <button type="submit" onClick={this.hardRefresh} className="btn btn-success">Add</button>
+          <button type="submit" className="btn btn-success">Add</button>
         </form>
       </div>
     );

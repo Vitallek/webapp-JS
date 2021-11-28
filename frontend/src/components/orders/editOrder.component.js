@@ -10,13 +10,13 @@ export default class EditOrder extends React.Component {
     vehicle_id: '',
     order_date: '',
     order_price: '',
-    order_type: '',
-    payment_type: '',
+    order_type: 1,
+    payment_type: 1,
     customer_id: '',
   }
   
   hardRefresh(){
-    window.location.reload();
+    
   }
 
   handleChangeId = event => {
@@ -32,13 +32,13 @@ export default class EditOrder extends React.Component {
     this.setState({ order_date: event.target.value });
   }
   handleChangeOrderType = event => {
-    this.setState({ order_type: event.target.value });
+    this.setState({ order_type: parseInt(event.target.value, 10) });
   }
   handleChangeOrderPrice = event => {
     this.setState({ order_price: event.target.value });
   }
   handleChangePayment = event => {
-    this.setState({ payment_type: event.target.value });
+    this.setState({ payment_type: parseInt(event.target.value, 10) });
   }
   handleChangeCustomerID = event => {
     this.setState({ customer_id: event.target.value });
@@ -66,6 +66,8 @@ export default class EditOrder extends React.Component {
       }).catch(err => {
         console.log(err);
       })
+
+      window.location.reload();
   }
 
   render() {

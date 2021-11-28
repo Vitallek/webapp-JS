@@ -19,9 +19,6 @@ export default class EditVehicleModel extends React.Component {
     photo_path: '',
   }
   
-  hardRefresh(){
-    window.location.reload();
-  }
 
   handleChangeId = event => {
     this.setState({ id: event.target.value });
@@ -85,6 +82,8 @@ export default class EditVehicleModel extends React.Component {
       .then(res => {
         console.log(res);
         console.log(res.data);
+        window.location.reload();
+
       }).catch(err => {
         console.log(err);
       })
@@ -96,47 +95,47 @@ export default class EditVehicleModel extends React.Component {
         <form onSubmit={this.handleSubmit} className="d-flex flex-column justify-content-center">
           <label className="form-outline mb-4">
             vehicle_models Id:
-            <input onChange={this.handleChangeId} className="form-control" type="id" name="id" placeholder="Enter id"/>
+            <input onChange={this.handleChangeId} className="form-control" type="id" name="id" required placeholder="Enter id"/>
           </label>
           <label className="form-outline mb-4">
             vehicle_model Name:
-            <input onChange={this.handleChangeModelName} className="form-control" type="name" name="model_name" placeholder="Enter name" />
+            <input onChange={this.handleChangeModelName} className="form-control" type="name" name="model_name" required placeholder="Enter name" />
           </label>
           <label className="form-outline mb-4">
             vehicle_model manufacturer id:
-            <input onChange={this.handleChangeManufacturerID} placeholder="Enter id"  className="form-control" type="price" name="manufacturer_id" />
+            <input onChange={this.handleChangeManufacturerID} required placeholder="Enter id"  className="form-control" type="price" name="manufacturer_id" />
           </label>
           <label className="form-outline mb-4">
             vehicle vin:
-            <input onChange={this.handleChangeVin} placeholder="Enter vin"className="form-control" type="name" name="carvin"  />
+            <input onChange={this.handleChangeVin} required placeholder="Enter vin"className="form-control" type="name" name="carvin"  />
           </label>
           <label className="form-outline mb-4">
             vehicle type:
-            <input onChange={this.handleChangeTypeID} placeholder="Enter type"className="form-control" type="name" name="cartype"  />
+            <input onChange={this.handleChangeTypeID} required placeholder="Enter type"className="form-control" type="name" name="cartype"  />
           </label>
           <label className="form-outline mb-4">
             vehicle engine id:
-            <input onChange={this.handleChangeEngineID} placeholder="Enter engine id"className="form-control" type="name" name="carengine"  />
+            <input onChange={this.handleChangeEngineID} required placeholder="Enter engine id"className="form-control" type="name" name="carengine"  />
           </label>
           <label className="form-outline mb-4">
             vehicle transmission:
-            <input onChange={this.handleChangeTransmissionID} placeholder="Enter transmission id"className="form-control" type="name" name="cartransmssion"  />
+            <input onChange={this.handleChangeTransmissionID} required placeholder="Enter transmission id"className="form-control" type="name" name="cartransmssion"  />
           </label>
           <label className="form-outline mb-4">
             vehicle turbo :
-            <input onChange={this.handleChangeTurboID} placeholder="Enter turbo id"className="form-control" type="name" name="carturbo"  />
+            <input onChange={this.handleChangeTurboID} required placeholder="Enter turbo id"className="form-control" type="name" name="carturbo"  />
           </label>
           <label className="form-outline mb-4">
             vehicle wheels:
-            <input onChange={this.handleChangeWheelsID} placeholder="Enter wheels id"className="form-control" type="name" name="carwheels"  />
+            <input onChange={this.handleChangeWheelsID} required placeholder="Enter wheels id"className="form-control" type="name" name="carwheels"  />
           </label>
           <label className="form-outline mb-4">
             vehicle price:
-            <input onChange={this.handleChangePrice} placeholder="Enter price"className="form-control" type="name" name="carprice"  />
+            <input onChange={this.handleChangePrice} required placeholder="Enter price"className="form-control" type="name" name="carprice"  />
           </label>
           <label className="form-outline mb-4">
             vehicle description:
-            <input onChange={this.handleChangeDescription} placeholder="Enter description"className="form-control" type="name" name="cardescription"  />
+            <input onChange={this.handleChangeDescription} required placeholder="Enter description"className="form-control" type="name" name="cardescription"  />
           </label>
 
           <label className="form-outline mb-4">
@@ -150,9 +149,9 @@ export default class EditVehicleModel extends React.Component {
 
           <label className="form-outline mb-4">
             vehicle photo path:
-            <input onChange={this.handleChangePhoto} placeholder="Enter photo path"className="form-control" type="name" name="carphoto"  />
+            <input onChange={this.handleChangePhoto} required placeholder="Enter photo path"className="form-control" type="name" name="carphoto"  />
           </label>
-          <button type="submit" className="btn btn-warning" onClick={this.hardRefresh}>Update</button>
+          <button type="submit" className="btn btn-warning" >Update</button>
         </form>
       </div>
     );
