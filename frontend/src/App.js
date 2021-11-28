@@ -36,6 +36,11 @@ import VehicleModelList from "./components/vehicle_models/vehicle_models-list.co
 import EditVehicleModel from "./components/vehicle_models/editVehicle_model.component";
 import DeleteVehicleModel from "./components/vehicle_models/deleteVehicle_model.component";
 
+import AddOrder from "./components/orders/add-order.component";
+import OrdersList from "./components/orders/orders-list.component";
+import EditOrder from "./components/orders/editOrder.component";
+import DeleteOrder from "./components/orders/deleteOrder.component";
+
 class App extends Component {
   render() {
     return (
@@ -163,6 +168,11 @@ class App extends Component {
               <Route exact path="/add/vehicle_models" component={AddVehicleModel} />
               <Route exact path="/edit/vehicle_models" component={EditVehicleModel} />
               <Route exact path="/delete/vehicle_models" component={DeleteVehicleModel} />
+
+              <Route exact path={["/orders"]} component={OrdersList} />
+              <Route exact path="/add/orders" component={AddOrder} />
+              <Route exact path="/edit/orders" component={EditOrder} />
+              <Route exact path="/delete/orders" component={DeleteOrder} />
             </Switch>
           </div>
         </div>

@@ -29,13 +29,13 @@ function getConnection() {
         return {
           id: row.id,
           shop_name: row.shop_name,
+          emp_id: row.emp_id,
+          vehicle_id: row.vehicle_id,
           order_date: row.order_date,
           order_price: row.order_price,
-          emp_id: row.emp_id,
           order_type: row.order_type,
           payment_type: row.payment_type,
           customer_id: row.customer_id,
-          vehicle_id: row.vehicle_id
         }
       })
       res.json(orders)
@@ -45,10 +45,11 @@ function getConnection() {
   router.post("/create", (req, res) => {
     const connection = getConnection()
   
-    const queryString = "INSERT INTO orders (shop_name, order_date, order_price, emp_id ,order_type, payment_type, customer_id, vehicle_id) VALUES (?, ?, ?, ? ,? ,? ,? ,?)"
-    connection.query(queryString, [req.body.shop_name, req.body.order_date, req.body.order_price, req.body.emp_id, req.body.order_type, req.body.payment_type, req.body.customer_id, req.body.vehicle_id], (err, results, fields) => {
+    const queryString = "INSERT INTO orders (shop_name, emp_id, vehicle_id, order_date, order_price, order_type, payment_type, customer_id ) VALUES (?, ?, ?, ? ,? ,? ,? ,?)"
+    connection.query(queryString, [req.body.shop_name, req.body.emp_id, req.body.vehicle_id, req.body.order_date, req.body.order_price, req.body.order_type, req.body.payment_type, req.body.customer_id], (err, results, fields) => {
       if (err) {
         res.sendStatus(500)
+        console.log(err)
         return
       }
       res.end()
