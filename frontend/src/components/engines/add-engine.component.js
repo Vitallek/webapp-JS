@@ -4,11 +4,7 @@ import axios from 'axios';
 export default class AddEngine extends React.Component {
   state = {
     engine_name: '',
-    engine_price: ''
-  }
-
-  hardRefresh(){
-    window.location.reload();
+    engine_price: 0
   }
 
   handleChangeName = event => {
@@ -34,6 +30,8 @@ export default class AddEngine extends React.Component {
       }).catch(err => {
         console.log(err);
       })
+
+    window.location.reload();
   }
 
   render() {
@@ -42,13 +40,13 @@ export default class AddEngine extends React.Component {
         <form onSubmit={this.handleSubmit} className="d-flex flex-column justify-content-center">
           <label className="form-outline mb-4">
             Engine name:
-            <input onChange={this.handleChangeName} className="form-control" type="name" name="engine_name" placeholder="Enter name" />
+            <input onChange={this.handleChangeName} className="form-control" type="name" name="engine_name" placeholder="Enter name" maxLength="30" required/>
           </label>
           <label className="form-outline mb-4">
             Engine price:
-            <input onChange={this.handleChangePrice} className="form-control" type="price" name="engine_price" placeholder="Enter price" />
+            <input onChange={this.handleChangePrice} className="form-control" type="number" name="engine_price" placeholder="Enter price" maxLength="10" required/>
           </label>
-          <button type="submit" onClick={this.hardRefresh} className="btn btn-success">Add</button>
+          <button type="submit" className="btn btn-success">Add</button>
         </form>
       </div>
     );

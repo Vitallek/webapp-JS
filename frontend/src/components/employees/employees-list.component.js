@@ -46,7 +46,7 @@ export default class EmployeeList extends React.Component {
 
             { this.state.employees.map(Employees => 
               <div className="ml-3">
-                <div className="row" >  
+                <div className="row">  
                   <div className="col-1 border" key={Employees.id}>{Employees.id}</div>  
                   <div className="col border">{Employees.first_name}</div>      
                   <div className="col border">{Employees.last_name}</div>

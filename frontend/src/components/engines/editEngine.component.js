@@ -6,11 +6,7 @@ export default class EditEngine extends React.Component {
   state = {
     id: '',
     engine_name: '',
-    engine_price: ''
-  }
-  
-  hardRefresh(){
-    window.location.reload();
+    engine_price: 0
   }
 
   handleChangeId = event => {
@@ -38,6 +34,7 @@ export default class EditEngine extends React.Component {
       }).catch(err => {
         console.log(err);
       })
+    window.location.reload();
   }
 
   render() {
@@ -46,17 +43,17 @@ export default class EditEngine extends React.Component {
         <form onSubmit={this.handleSubmit} className="d-flex flex-column justify-content-center">
           <label className="form-outline mb-4">
             Engine id:
-            <input onChange={this.handleChangeId} className="form-control" type="id" name="id" placeholder="Enter id"/>
+            <input onChange={this.handleChangeId} className="form-control" type="number" name="id" required placeholder="Enter id"/>
           </label>
           <label className="form-outline mb-4">
             Engine name:
-            <input onChange={this.handleChangeName} className="form-control" type="name" name="engine_name" placeholder="Enter name" />
+            <input onChange={this.handleChangeName} className="form-control" type="name" name="engine_name"maxLength="30" required placeholder="Enter name" />
           </label>
           <label className="form-outline mb-4">
             Engine price:
-            <input onChange={this.handleChangePrice} className="form-control" type="price" name="engine_price" placeholder="Enter price"/>
+            <input onChange={this.handleChangePrice} className="form-control" type="number"maxLength="10" required name="engine_price" placeholder="Enter price"/>
           </label>
-          <button type="submit" className="btn btn-warning" onClick={this.hardRefresh}>Update</button>
+          <button type="submit" className="btn btn-warning" >Update</button>
         </form>
       </div>
     );

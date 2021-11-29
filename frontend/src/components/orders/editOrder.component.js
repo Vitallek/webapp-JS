@@ -98,19 +98,19 @@ export default class EditOrder extends React.Component {
           <label className="form-outline mb-4">
             order's type:
           <select onChange={this.handleChangeOrderType} className="form-control" type="name" name="ordertype">
-            <option>Стандарт</option>
-            <option>Срочный</option>
-            <option>Очень срочный</option>
-            <option>Супер срочный</option>
-            <option>Супер пупер срочный</option>
+            <option value="1">Стандарт</option>
+            <option value="2">Срочный</option>
+            <option value="3">Очень срочный</option>
+            <option value="4">Супер срочный</option>
+            <option value="5">Супер пупер срочный</option>
           </select>
           </label>
 
           <label className="form-outline mb-4">
             order' payment type:
           <select onChange={this.handleChangePayment} className="form-control" type="name" name="orderpaymenttype">
-            <option>Наличный расчёт</option>
-            <option>Безналичный расчёт</option>
+            <option value="1">Наличный расчёт</option>
+            <option value="2">Безналичный расчёт</option>
           </select>
           </label>
 
@@ -118,7 +118,7 @@ export default class EditOrder extends React.Component {
             customer_id:
             <input onChange={this.handleChangeCustomerID} className="form-control" type="name" name="ordercustomerid" placeholder="Enter employee id" />
           </label>
-          <button type="submit" className="btn btn-warning" onClick={this.hardRefresh}>Update</button>
+          <button type="submit" className="btn btn-warning">Update</button>
         </form>
       </div>
     );

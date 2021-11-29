@@ -6,10 +6,6 @@ export default class AddManufacturer extends React.Component {
     companyName: '',
   }
 
-  hardRefresh(){
-    window.location.reload();
-  }
-
   handleChangeName = event => {
     this.setState({ companyName: event.target.value });
   }  
@@ -28,6 +24,7 @@ export default class AddManufacturer extends React.Component {
       }).catch(err => {
         console.log(err);
       })
+      window.location.reload();
   }
 
   render() {
@@ -36,9 +33,9 @@ export default class AddManufacturer extends React.Component {
         <form onSubmit={this.handleSubmit} className="d-flex flex-column justify-content-center">
           <label className="form-outline mb-4">
             manufacturer name:
-            <input onChange={this.handleChangeName} className="form-control" type="name" name="companyName" placeholder="Enter name" />
+            <input onChange={this.handleChangeName} className="form-control" maxLength="30" required type="text" name="companyName" placeholder="Enter name" />
           </label>
-          <button type="submit" onClick={this.hardRefresh} className="btn btn-success">Add</button>
+          <button type="submit" className="btn btn-success">Add</button>
         </form>
       </div>
     );

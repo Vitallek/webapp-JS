@@ -7,10 +7,6 @@ export default class EditManufacturer extends React.Component {
     id: '',
     companyName: '',
   }
-  
-  hardRefresh(){
-    window.location.reload();
-  }
 
   handleChangeId = event => {
     this.setState({ id: event.target.value });
@@ -35,6 +31,7 @@ export default class EditManufacturer extends React.Component {
       }).catch(err => {
         console.log(err);
       })
+      window.location.reload();
   }
 
   render() {
@@ -43,13 +40,13 @@ export default class EditManufacturer extends React.Component {
         <form onSubmit={this.handleSubmit} className="d-flex flex-column justify-content-center">
           <label className="form-outline mb-4">
             manufacturer id:
-            <input onChange={this.handleChangeId} className="form-control" type="id" name="id" placeholder="Enter id"/>
+            <input onChange={this.handleChangeId} className="form-control" type="number" required name="id" placeholder="Enter id"/>
           </label>
           <label className="form-outline mb-4">
             manufacturer name:
-            <input onChange={this.handleChangeName} className="form-control" type="name" name="manufacturer_name" placeholder="Enter name" />
+            <input onChange={this.handleChangeName} className="form-control" type="text" required maxLength="30" name="manufacturer_name" placeholder="Enter name" />
           </label>
-          <button type="submit" className="btn btn-warning" onClick={this.hardRefresh}>Update</button>
+          <button type="submit" className="btn btn-warning" >Update</button>
         </form>
       </div>
     );

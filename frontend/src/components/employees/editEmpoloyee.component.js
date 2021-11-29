@@ -7,12 +7,9 @@ export default class EditEmployee extends React.Component {
     id: '',
     first_name: '',
     last_name: '',
-    qualification_id: '',
+    qualification_id: 1,
   }
-  
-  hardRefresh(){
-    window.location.reload();
-  }
+
 
   handleChangeId = event => {
     this.setState({ id: event.target.value });
@@ -24,8 +21,9 @@ export default class EditEmployee extends React.Component {
     this.setState({ last_name: event.target.value });
   }
   handleChangeQualificationID = event => {
-    this.setState({ qualification_id: event.target.value });
+    this.setState({ qualification_id: parseInt(event.target.value, 10)});
   }
+
 
   handleSubmit = event => {
     event.preventDefault();
@@ -43,6 +41,8 @@ export default class EditEmployee extends React.Component {
       }).catch(err => {
         console.log(err);
       })
+
+      window.location.reload();
   }
 
   render() {
@@ -51,21 +51,27 @@ export default class EditEmployee extends React.Component {
         <form onSubmit={this.handleSubmit} className="d-flex flex-column justify-content-center">
           <label className="form-outline mb-4">
             Employee Id:
-            <input onChange={this.handleChangeId} className="form-control" type="id" name="id" placeholder="Enter id"/>
+            <input onChange={this.handleChangeId} className="form-control" type="number" name="id" required placeholder="Enter id"/>
           </label>
           <label className="form-outline mb-4">
             Employee's First Name:
-            <input onChange={this.handleChangeFirstName} className="form-control" type="name" name="first_name" placeholder="Enter name" />
+            <input onChange={this.handleChangeFirstName} className="form-control" type="text" name="first_name" placeholder="Enter name" maxlength = "20" required />
           </label>
           <label className="form-outline mb-4">
             Employee's Last Name:
-            <input onChange={this.handleChangeLastName} className="form-control" type="price" name="last_name" placeholder="Enter price" />
+            <input onChange={this.handleChangeLastName} className="form-control" type="price" name="last_name" placeholder="Enter price" maxlength = "20" required />
           </label>
-          <label className="form-outline mb-4">
-            Employee's Qualification (1 - junior, 2 - middle, 3 - senior):
-            <input onChange={this.handleChangeQualificationID} className="form-control" type="name" name="first_name" placeholder="Enter qualification" />
+
+          <label for="qualifictation" className="form-outline mb-4">
+            Employee's Qualification:
+            <select onChange={this.handleChangeQualificationID} className="form-control" id="qualifictation" type="qualifictation" name="qualifictation">
+            <option value="1">Junior</option>
+            <option value="2">Middle</option>
+            <option value="3">Senior</option>
+          </select>
           </label>
-          <button type="submit" className="btn btn-warning" onClick={this.hardRefresh}>Update</button>
+          
+          <button type="submit" className="btn btn-warning">Update</button>
         </form>
       </div>
     );
