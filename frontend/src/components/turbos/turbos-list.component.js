@@ -1,0 +1,69 @@
+import React, {useState} from 'react';
+import axios from 'axios';
+import { Switch, Route, Link } from "react-router-dom";
+import AddTurbo from './add-turbo.component';
+import editTurbo from './editTurbo.component';
+import DeleteTurbo from './deleteTurbo.component';
+
+
+const apiUrl = "http://localhost:5000/turbos";
+
+export default class TurboList extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {  
+      turbos: []
+    }
+  }
+  
+
+
+  componentDidMount() {
+    axios.get(apiUrl)
+      .then(res => {
+        const turbos = res.data;
+        this.setState({ turbos });
+      }).catch(err => {
+        console.log(err);
+      })
+  }
+  
+  render() {
+    return (
+      <div className="container">
+
+        <div className="mt-3 tableContainer">
+          
+            <div className="ml-3">
+              <div className="row" >  
+                <div className="col-1 border tableHeader">Id</div>  
+                <div className="col border tableHeader">turbo Name</div>      
+                <div className="col border tableHeader">turbo Price</div>    
+              </div>
+            </div>
+
+            { this.state.turbos.map(Turbos => 
+              <div className="ml-3">
+                <div className="row" >  
+                  <div className="col-1 border" key={Turbos.id}>{Turbos.id}</div>  
+                  <div className="col border">{Turbos.engine_name}</div>      
+                  <div className="col border">{Turbos.engine_price}</div>    
+                </div>
+              </div>
+              )}
+        </div>
+          <div className="col sidebar-wrapper">
+            <div>
+              <AddTurbo/>
+            </div>
+            <div>
+              <EdiTurbo />
+            </div>
+            <div>
+              <DeleteTurbo/>
+            </div>
+          </div>
+      </div>
+    )
+  }
+}

@@ -41,6 +41,27 @@ import OrdersList from "./components/orders/orders-list.component";
 import EditOrder from "./components/orders/editOrder.component";
 import DeleteOrder from "./components/orders/deleteOrder.component";
 
+import AddPaymentType from "./components/payment_types/add-payment_type.component";
+import PaymentTypeList from "./components/payment_types/payment_types-list.component";
+import EditPaymentType from "./components/payment_types/editPayment_type.component";
+import DeletePaymentType from "./components/payment_types/deletePayment-type.component";
+
+import AddQualification from "./components/qualifications/add-qualification.component";
+import QualificationsList from "./components/qualifications/qualifications-list.component";
+import EditQuaification from "./components/qualifications/editQualification.component";
+import DeleteQuaification from "./components/qualifications/deleteQuaification.component";
+
+import AddTransmission from "./components/transmissions/add-transmission.component";
+import TransmissionsList from "./components/transmissions/transmissions-list.component";
+import EditTransmission from "./components/transmissions/editTransmission.component";
+import DeleteTransmission from "./components/transmissions/deleteTransmission.component";
+
+import TurboList from "./components/turbos/turbos-list.component";
+import AddTurbo from "./components/turbos/add-turbo.component";
+import EditTurbo from "./components/turbos/editTurbo.component";
+import DeleteTurbo from "./components/turbos/deleteTurbo.component";
+
+
 class App extends Component {
   render() {
     return (
@@ -110,7 +131,7 @@ class App extends Component {
                 </MenuItem>
 
                 <MenuItem>
-                  <Link to={"/qualitions"} className="nav-link">
+                  <Link to={"/qualifications"} className="nav-link">
                     Qualifications List
                   </Link>
                 </MenuItem>
@@ -141,18 +162,18 @@ class App extends Component {
             <Switch>
               <Route exact path={["/wheels"]} component={WheelList} />
               <Route exact path="/add/wheels" component={AddWheel} />
-              <Route exact path="/edit/wheel" component={EditWheel} />
-              <Route exact path="/delete/wheel" component={DeleteWheel} />
+              <Route exact path="/edit/wheels" component={EditWheel} />
+              <Route exact path="/delete/wheels" component={DeleteWheel} />
 
               <Route exact path={["/manufacturers"]} component={ManufacturerList} />
               <Route exact path="/add/manufacturers" component={AddManufacturer} />
-              <Route exact path="/edit/manufacturer" component={EditManufacturer} />
-              <Route exact path="/delete/manufacturer" component={DeleteManufacturer} />
+              <Route exact path="/edit/manufacturers" component={EditManufacturer} />
+              <Route exact path="/delete/manufacturers" component={DeleteManufacturer} />
 
               <Route exact path={["/engines"]} component={EngineList} />
               <Route exact path="/add/engines" component={AddEngine} />
-              <Route exact path="/edit/engine" component={EditEngine} />
-              <Route exact path="/delete/engine" component={DeleteEngine} />
+              <Route exact path="/edit/engines" component={EditEngine} />
+              <Route exact path="/delete/engines" component={DeleteEngine} />
 
               <Route exact path={["/employees"]} component={EmployeeList} />
               <Route exact path="/add/employees" component={AddEmployee} />
@@ -173,6 +194,27 @@ class App extends Component {
               <Route exact path="/add/orders" component={AddOrder} />
               <Route exact path="/edit/orders" component={EditOrder} />
               <Route exact path="/delete/orders" component={DeleteOrder} />
+
+              <Route exact path={["/payment_types"]} component={PaymentTypeList} />
+              <Route exact path="/add/payment_types" component={AddPaymentType} />
+              <Route exact path="/edit/payment_types" component={EditPaymentType} />
+              <Route exact path="/delete/payment_types" component={DeletePaymentType} />
+
+              <Route exact path={["/qualifications"]} component={QualificationsList} />
+              <Route exact path="/add/qualifications" component={AddQualification} />
+              <Route exact path="/edit/qualifications" component={EditQuaification} />
+              <Route exact path="/delete/qualifications" component={DeleteQuaification} />
+
+              <Route exact path={["/transmissions"]} component={TransmissionsList} />
+              <Route exact path="/add/transmissions" component={AddTransmission} />
+              <Route exact path="/edit/transmissions" component={EditTransmission} />
+              <Route exact path="/delete/transmissions" component={DeleteTransmission} />
+
+              <Route exact path={["/turbos"]} component={TurboList} />
+              <Route exact path="/add/turbos" component={AddTurbo} />
+              <Route exact path="/edit/turbos" component={EditTurbo} />
+              <Route exact path="/delete/turbos" component={DeleteTurbo} />
+
             </Switch>
           </div>
         </div>
