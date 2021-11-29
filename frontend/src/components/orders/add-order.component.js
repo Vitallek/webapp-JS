@@ -14,9 +14,6 @@ export default class AddOrder extends React.Component {
     customer_id: '',
   }
 
-  hardRefresh(){
-    window.location.reload();
-  }
   handleChangeEmpID = event => {
     this.setState({ emp_id: event.target.value });
   }
@@ -61,6 +58,7 @@ export default class AddOrder extends React.Component {
       }).catch(err => {
         console.log(err);
       })
+      window.location.reload();
   }
 
   render() {
@@ -69,19 +67,19 @@ export default class AddOrder extends React.Component {
         <form onSubmit={this.handleSubmit} className="d-flex flex-column justify-content-center">
           <label className="form-outline mb-4">
             order's employee id:
-            <input onChange={this.handleChangeEmpID} className="form-control" type="name" name="shop_name" placeholder="Enter employee id" />
+            <input onChange={this.handleChangeEmpID} className="form-control" required type="text" name="shop_name" placeholder="Enter employee id" />
           </label>
           <label className="form-outline mb-4">
             order's vehicle id:
-            <input onChange={this.handleChangeVehicleID} className="form-control" type="name" name="ordervehicleid" placeholder="Enter vehicle id" />
+            <input onChange={this.handleChangeVehicleID} className="form-control" required type="text" name="ordervehicleid" placeholder="Enter vehicle id" />
           </label>
           <label className="form-outline mb-4">
             order's date:
-            <input onChange={this.handleChangeOrderDate} className="form-control" type="name" name="orderdate" placeholder="dd.mm.yyyy" />
+            <input onChange={this.handleChangeOrderDate} className="form-control" required type="date" name="orderdate" placeholder="dd.mm.yyyy" />
           </label>
           <label className="form-outline mb-4">
             order's price:
-            <input onChange={this.handleChangeOrderPrice} className="form-control" type="name" name="orderprice" placeholder="Enter price" />
+            <input onChange={this.handleChangeOrderPrice} className="form-control" type="number" required maxLength="10" name="orderprice" placeholder="Enter price" />
           </label>
 
           <label className="form-outline mb-4" for="ordertype">
@@ -105,9 +103,9 @@ export default class AddOrder extends React.Component {
 
           <label className="form-outline mb-4">
             customer_id:
-            <input onChange={this.handleChangeCustomerID} className="form-control" type="name" name="ordercustomerid" placeholder="Enter employee id" />
+            <input onChange={this.handleChangeCustomerID} className="form-control" type="number" required name="ordercustomerid" placeholder="Enter employee id" />
           </label>
-          <button type="submit" onClick={this.hardRefresh} className="btn btn-success">Add</button>
+          <button type="submit" className="btn btn-success">Add</button>
         </form>
       </div>
     );

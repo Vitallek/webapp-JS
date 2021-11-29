@@ -10,10 +10,6 @@ export default class DeleteOrder extends React.Component {
     this.setState({ id: event.target.value });
   }
 
-  hardRefresh(){
-    window.location.reload();
-  }
-
   handleSubmit = event => {
     event.preventDefault();
 
@@ -22,6 +18,7 @@ export default class DeleteOrder extends React.Component {
         console.log(res);
         console.log(res.data);
       })
+      window.location.reload();
   }
 
   render() {
@@ -30,9 +27,9 @@ export default class DeleteOrder extends React.Component {
         <form onSubmit={this.handleSubmit} className="d-flex flex-column justify-content-center">
           <label className="form-outline mb-4">
             Order ID:
-            <input onChange={this.handleChange} className="form-control" type="id" name="id" placeholder="Enter id" />
+            <input onChange={this.handleChange} className="form-control" type="number" required name="id" placeholder="Enter id" />
           </label>
-          <button type="submit" onClick={this.hardRefresh} className="btn btn-danger">Delete</button>
+          <button type="submit"  className="btn btn-danger">Delete</button>
         </form>
       </div>
     )

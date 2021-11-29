@@ -14,10 +14,6 @@ export default class EditOrder extends React.Component {
     payment_type: 1,
     customer_id: '',
   }
-  
-  hardRefresh(){
-    
-  }
 
   handleChangeId = event => {
     this.setState({ id: event.target.value });
@@ -76,23 +72,23 @@ export default class EditOrder extends React.Component {
         <form onSubmit={this.handleSubmit} className="d-flex flex-column justify-content-center">
           <label className="form-outline mb-4">
             order Id:
-            <input onChange={this.handleChangeId} className="form-control" type="id" name="id" placeholder="Enter id"/>
+            <input onChange={this.handleChangeId} className="form-control" type="number" required name="id" placeholder="Enter id"/>
           </label>
           <label className="form-outline mb-4">
             order's employee id:
-            <input onChange={this.handleChangeEmpID} className="form-control" type="name" name="shop_name" placeholder="Enter employee id" />
+            <input onChange={this.handleChangeEmpID} className="form-control" type="number" required name="shop_name" placeholder="Enter employee id" />
           </label>
           <label className="form-outline mb-4">
             order's vehicle id:
-            <input onChange={this.handleChangeVehicleID} className="form-control" type="name" name="ordervehicleid" placeholder="Enter vehicle id" />
+            <input onChange={this.handleChangeVehicleID} className="form-control" type="number" required name="ordervehicleid" placeholder="Enter vehicle id" />
           </label>
           <label className="form-outline mb-4">
             order's date:
-            <input onChange={this.handleChangeOrderDate} className="form-control" type="name" name="orderdate" placeholder="dd.mm.yyyy" />
+            <input onChange={this.handleChangeOrderDate} className="form-control" type="date" required name="orderdate" placeholder="dd.mm.yyyy" />
           </label>
           <label className="form-outline mb-4">
             order's price:
-            <input onChange={this.handleChangeOrderPrice} className="form-control" type="name" name="orderprice" placeholder="Enter price" />
+            <input onChange={this.handleChangeOrderPrice} className="form-control" type="number" required maxLength="10" name="orderprice" placeholder="Enter price" />
           </label>
 
           <label className="form-outline mb-4">
@@ -116,7 +112,7 @@ export default class EditOrder extends React.Component {
 
           <label className="form-outline mb-4">
             customer_id:
-            <input onChange={this.handleChangeCustomerID} className="form-control" type="name" name="ordercustomerid" placeholder="Enter employee id" />
+            <input onChange={this.handleChangeCustomerID} className="form-control" type="number" required name="ordercustomerid" placeholder="Enter employee id" />
           </label>
           <button type="submit" className="btn btn-warning">Update</button>
         </form>
