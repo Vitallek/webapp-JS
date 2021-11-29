@@ -27,11 +27,10 @@ export default class AddEngine extends React.Component {
       .then(res => {
         console.log(res);
         console.log(res.data);
+        window.location.reload();
       }).catch(err => {
         console.log(err);
       })
-
-    window.location.reload();
   }
 
   render() {

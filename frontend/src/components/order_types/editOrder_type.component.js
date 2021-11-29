@@ -9,10 +9,6 @@ export default class EditOrderType extends React.Component {
     koef: '',
   }
   
-  hardRefresh(){
-    window.location.reload();
-  }
-
   handleChangeId = event => {
     this.setState({ id: event.target.value });
   }
@@ -35,6 +31,7 @@ export default class EditOrderType extends React.Component {
       .then(res => {
         console.log(res);
         console.log(res.data);
+        window.location.reload();
       }).catch(err => {
         console.log(err);
       })
@@ -46,17 +43,17 @@ export default class EditOrderType extends React.Component {
         <form onSubmit={this.handleSubmit} className="d-flex flex-column justify-content-center">
           <label className="form-outline mb-4">
             Order_type Id:
-            <input onChange={this.handleChangeId} className="form-control" type="id" name="id" placeholder="Enter id"/>
+            <input onChange={this.handleChangeId} className="form-control" type="number" required name="id" placeholder="Enter id"/>
           </label>
           <label className="form-outline mb-4">
             Order_type's Name:
-            <input onChange={this.handleChangeTypeName} className="form-control" type="name" name="type_name" placeholder="Enter name" />
+            <input onChange={this.handleChangeTypeName} className="form-control" type="text" required maxLength="30" name="type_name" placeholder="Enter name" />
           </label>
           <label className="form-outline mb-4">
             Order_type's Price multiplier:
-            <input onChange={this.handleChangeKoef} className="form-control" type="price" name="koef" placeholder="Enter price" />
+            <input onChange={this.handleChangeKoef} className="form-control" type="number" required  name="koef" placeholder="Enter price" />
           </label>
-          <button type="submit" className="btn btn-warning" onClick={this.hardRefresh}>Update</button>
+          <button type="submit" className="btn btn-warning">Update</button>
         </form>
       </div>
     );

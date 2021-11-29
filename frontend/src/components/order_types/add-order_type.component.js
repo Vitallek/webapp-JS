@@ -8,10 +8,6 @@ export default class AddOrderType extends React.Component {
     koef: '',
   }
 
-  hardRefresh(){
-    window.location.reload();
-  }
-
   handleChangeTypeName = event => {
     this.setState({ type_name: event.target.value });
   }
@@ -31,6 +27,7 @@ export default class AddOrderType extends React.Component {
       .then(res => {
         console.log(res);
         console.log(res.data);
+        window.location.reload();
       }).catch(err => {
         console.log(err);
       })
@@ -42,13 +39,13 @@ export default class AddOrderType extends React.Component {
         <form onSubmit={this.handleSubmit} className="d-flex flex-column justify-content-center">
           <label className="form-outline mb-4">
             Order_type's Name:
-            <input onChange={this.handleChangeTypeName} className="form-control" type="name" name="type_name" placeholder="Enter name" />
+            <input onChange={this.handleChangeTypeName} className="form-control" type="text" required maxLength="30" name="type_name" placeholder="Enter name" />
           </label>
           <label className="form-outline mb-4">
             Order_type's price multiplier:
-          <input onChange={this.handleChangeKoef} className="form-control" type="price" name="koef" placeholder="Enter price" />
+          <input onChange={this.handleChangeKoef} className="form-control" type="number" required name="koef" placeholder="Enter price" />
           </label>
-          <button type="submit" onClick={this.hardRefresh} className="btn btn-success">Add</button>
+          <button type="submit" className="btn btn-success">Add</button>
         </form>
       </div>
     );

@@ -17,8 +17,9 @@ export default class DeleteManufacturer extends React.Component {
       .then(res => {
         console.log(res);
         console.log(res.data);
+        window.location.reload();
       })
-      window.location.reload();
+      
   }
 
   render() {

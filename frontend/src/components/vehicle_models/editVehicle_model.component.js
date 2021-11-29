@@ -93,65 +93,51 @@ export default class EditVehicleModel extends React.Component {
     return (
       <div className="float-right p-4 mb-4 text-light">
         <form onSubmit={this.handleSubmit} className="d-flex flex-column justify-content-center">
-          <label className="form-outline mb-4">
-            vehicle_models Id:
-            <input onChange={this.handleChangeId} className="form-control" type="id" name="id" required placeholder="Enter id"/>
-          </label>
-          <label className="form-outline mb-4">
+        <label className="form-outline mb-4">
             vehicle_model Name:
-            <input onChange={this.handleChangeModelName} className="form-control" type="name" name="model_name" required placeholder="Enter name" />
+            <input onChange={this.handleChangeModelName} className="form-control" type="text" required maxLength="50" name="model_name" required placeholder="Enter name" />
           </label>
           <label className="form-outline mb-4">
             vehicle_model manufacturer id:
-            <input onChange={this.handleChangeManufacturerID} required placeholder="Enter id"  className="form-control" type="price" name="manufacturer_id" />
+            <input onChange={this.handleChangeManufacturerID} required placeholder="Enter id"  type="number" required className="form-control" type="price" name="manufacturer_id" />
           </label>
           <label className="form-outline mb-4">
             vehicle vin:
-            <input onChange={this.handleChangeVin} required placeholder="Enter vin"className="form-control" type="name" name="carvin"  />
+            <input onChange={this.handleChangeVin} required placeholder="Enter vin"className="form-control" type="text" required maxLength="17" name="vin"  />
           </label>
           <label className="form-outline mb-4">
             vehicle type:
-            <input onChange={this.handleChangeTypeID} required placeholder="Enter type"className="form-control" type="name" name="cartype"  />
+            <input onChange={this.handleChangeTypeID} required placeholder="Enter type"className="form-control" type="text" required maxLength="15" name="vehicle_type"  />
           </label>
           <label className="form-outline mb-4">
             vehicle engine id:
-            <input onChange={this.handleChangeEngineID} required placeholder="Enter engine id"className="form-control" type="name" name="carengine"  />
+            <input onChange={this.handleChangeEngineID} required placeholder="Enter engine id"className="form-control" type="number" required name="engineid"  />
           </label>
           <label className="form-outline mb-4">
             vehicle transmission:
-            <input onChange={this.handleChangeTransmissionID} required placeholder="Enter transmission id"className="form-control" type="name" name="cartransmssion"  />
+            <input onChange={this.handleChangeTransmissionID} required placeholder="Enter transmission id"className="form-control" type="number" required name="transmissionID"  />
           </label>
           <label className="form-outline mb-4">
             vehicle turbo :
-            <input onChange={this.handleChangeTurboID} required placeholder="Enter turbo id"className="form-control" type="name" name="carturbo"  />
+            <input onChange={this.handleChangeTurboID} required placeholder="Enter turbo id"className="form-control" type="number" required name="turboID"  />
           </label>
           <label className="form-outline mb-4">
             vehicle wheels:
-            <input onChange={this.handleChangeWheelsID} required placeholder="Enter wheels id"className="form-control" type="name" name="carwheels"  />
+            <input onChange={this.handleChangeWheelsID} required placeholder="Enter wheels id"className="form-control" type="number" required name="wheelsID"  />
           </label>
           <label className="form-outline mb-4">
             vehicle price:
-            <input onChange={this.handleChangePrice} required placeholder="Enter price"className="form-control" type="name" name="carprice"  />
+            <input onChange={this.handleChangePrice} required placeholder="Enter price"className="form-control" type="number" required maxLength="10" name="vehicleprice"  />
           </label>
           <label className="form-outline mb-4">
             vehicle description:
-            <input onChange={this.handleChangeDescription} required placeholder="Enter description"className="form-control" type="name" name="cardescription"  />
+            <input onChange={this.handleChangeDescription} required placeholder="Enter description"className="form-control" type="text" required maxLength="255" name="vehicle_description"  />
           </label>
-
-          <label className="form-outline mb-4">
-            vehicle availability:
-          <select onChange={this.handleChangeAvailable} className="form-control" type="name" name="carability">
-            <option>Available</option>
-            <option>Busy</option>
-            <option>Sold</option>
-          </select>
-          </label>
-
           <label className="form-outline mb-4">
             vehicle photo path:
-            <input onChange={this.handleChangePhoto} required placeholder="Enter photo path"className="form-control" type="name" name="carphoto"  />
+            <input onChange={this.handleChangePhoto} required placeholder="Enter photo path"className="form-control" type="text" required maxLength="100" name="model_name"  />
           </label>
-          <button type="submit" className="btn btn-warning" >Update</button>
+          <button type="submit" className="btn btn-warning">Update</button>
         </form>
       </div>
     );

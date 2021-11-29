@@ -30,7 +30,7 @@ export default class DeleteVehicleModel extends React.Component {
         <form onSubmit={this.handleSubmit} className="d-flex flex-column justify-content-center">
           <label className="form-outline mb-4">
             vehicle ID:
-            <input onChange={this.handleChange} required className="form-control" type="id" name="id" placeholder="Enter id" />
+            <input onChange={this.handleChange} required className="form-control" type="number" required name="id" placeholder="Enter id" />
           </label>
           <button type="submit"  className="btn btn-danger">Delete</button>
         </form>
