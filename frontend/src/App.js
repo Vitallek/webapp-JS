@@ -48,8 +48,8 @@ import DeletePaymentType from "./components/payment_types/deletePayment-type.com
 
 import AddQualification from "./components/qualifications/add-qualification.component";
 import QualificationsList from "./components/qualifications/qualifications-list.component";
-import EditQuaification from "./components/qualifications/editQualification.component";
-import DeleteQuaification from "./components/qualifications/deleteQuaification.component";
+import EditQualification from "./components/qualifications/editQualification.component";
+import DeleteQualification from "./components/qualifications/deleteQualification.component";
 
 import AddTransmission from "./components/transmissions/add-transmission.component";
 import TransmissionsList from "./components/transmissions/transmissions-list.component";
@@ -60,6 +60,11 @@ import TurboList from "./components/turbos/turbos-list.component";
 import AddTurbo from "./components/turbos/add-turbo.component";
 import EditTurbo from "./components/turbos/editTurbo.component";
 import DeleteTurbo from "./components/turbos/deleteTurbo.component";
+
+import VehicleTypeList from "./components/vehicle_types/vehicle_types-list.component";
+import AddVehicleType from "./components/vehicle_types/add-vehicle_type.component";
+import EditVehicleType from "./components/vehicle_types/editVehicle_type.component";
+import DeleteVehicleType from "./components/vehicle_types/deleteVehicle_type.component";
 
 
 class App extends Component {
@@ -113,8 +118,8 @@ class App extends Component {
                 </MenuItem>
 
                 <MenuItem>
-                  <Link to={"/vehicleTypes"} className="nav-link">
-                    Vehcle Types List
+                  <Link to={"/vehicle_types"} className="nav-link">
+                    Vehicle Types List
                   </Link>
                 </MenuItem>
 
@@ -202,8 +207,8 @@ class App extends Component {
 
               <Route exact path={["/qualifications"]} component={QualificationsList} />
               <Route exact path="/add/qualifications" component={AddQualification} />
-              <Route exact path="/edit/qualifications" component={EditQuaification} />
-              <Route exact path="/delete/qualifications" component={DeleteQuaification} />
+              <Route exact path="/edit/qualifications" component={EditQualification} />
+              <Route exact path="/delete/qualifications" component={DeleteQualification} />
 
               <Route exact path={["/transmissions"]} component={TransmissionsList} />
               <Route exact path="/add/transmissions" component={AddTransmission} />
@@ -214,6 +219,11 @@ class App extends Component {
               <Route exact path="/add/turbos" component={AddTurbo} />
               <Route exact path="/edit/turbos" component={EditTurbo} />
               <Route exact path="/delete/turbos" component={DeleteTurbo} />
+
+              <Route exact path={["/vehicle_types"]} component={VehicleTypeList} />
+              <Route exact path="/add/vehicle_types" component={AddVehicleType} />
+              <Route exact path="/edit/vehicle_types" component={EditVehicleType} />
+              <Route exact path="/delete/vehicle_types" component={DeleteVehicleType} />
 
             </Switch>
           </div>

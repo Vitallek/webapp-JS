@@ -37,16 +37,16 @@ export default class PaymentTypeList extends React.Component {
           
             <div className="ml-3">
               <div className="row" >  
-                <div className="col-1 bpayment tableHeader">Id</div>  
-                <div className="col bpayment tableHeader">payment_types's name</div>      
+                <div className="col-1 border tableHeader">Id</div>  
+                <div className="col border tableHeader">payment_types's name</div>      
               </div>
             </div>
 
             { this.state.payment_types.map(Payment_types => 
               <div className="ml-3">
                 <div className="row" >  
-                  <div className="col-1 bpayment" key={Payment_types.id}>{Payment_types.id}</div>  
-                  <div className="col bpayment">{Payment_types.type_name}</div>      
+                  <div className="col-1 border" key={Payment_types.id}>{Payment_types.id}</div>  
+                  <div className="col border">{Payment_types.type_name}</div>      
                 </div>
               </div>
               )}

@@ -36,21 +36,24 @@
   width: auto;
 }
 .carTableContainer{
+  width: 2500px;
+}
+.orderTableContainer{
   width: 2200px;
 }
-.carCol:nth-child(1){
+.carCol:nth-child(1),.ordercol:nth-child(1){
   width: 50px;
   text-align: center;
 }
-.carCol:nth-child(2){
+.carCol:nth-child(2),.ordercol:nth-child(2){
   width: 250px;
   text-align: center;
 }
-.carCol:nth-child(3){
+.carCol:nth-child(3),.ordercol:nth-child(3){
   width: 130px;
   text-align: center;
 }
-.carCol:nth-child(4){
+.carCol:nth-child(4),.ordercol:nth-child(4){
   width: 200px;
   text-align: center;
 }
@@ -58,39 +61,39 @@
   width: 100px;
   text-align: center;
 }
-.carCol:nth-child(6){
+.ordercol:nth-child(5){
+  width: 250px;
+  text-align: center;
+}
+.carCol:nth-child(6),.ordercol:nth-child(6){
   width: 100px;
   text-align: center;
 }
-.carCol:nth-child(6){
+.carCol:nth-child(7),.ordercol:nth-child(7){
+  width: 150px;
+  text-align: center;
+}
+.carCol:nth-child(8),.ordercol:nth-child(8){
+  width: 150px;
+  text-align: center;
+}
+.carCol:nth-child(9),.ordercol:nth-child(9){
   width: 100px;
   text-align: center;
 }
-.carCol:nth-child(7){
+.carCol:nth-child(10),.ordercol:nth-child(10){
   width: 100px;
   text-align: center;
 }
-.carCol:nth-child(8){
-  width: 100px;
-  text-align: center;
-}
-.carCol:nth-child(9){
-  width: 100px;
-  text-align: center;
-}
-.carCol:nth-child(10){
-  width: 100px;
-  text-align: center;
-}
-.carCol:nth-child(11){
+.carCol:nth-child(11),.ordercol:nth-child(11){
   width: 400px;
   text-align: center;
 }
-.carCol:nth-child(12){
+.carCol:nth-child(12),.ordercol:nth-child(12){
   width: 100px;
   text-align: center;
 }
-.carCol:nth-child(13){
+.carCol:nth-child(13),.ordercol:nth-child(13){
   width: 400px;
   height: auto;
   text-align: center;

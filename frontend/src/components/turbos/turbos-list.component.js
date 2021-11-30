@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import axios from 'axios';
 import { Switch, Route, Link } from "react-router-dom";
 import AddTurbo from './add-turbo.component';
-import editTurbo from './editTurbo.component';
+import EditTurbo from './editTurbo.component';
 import DeleteTurbo from './deleteTurbo.component';
 
 
@@ -46,8 +46,8 @@ export default class TurboList extends React.Component {
               <div className="ml-3">
                 <div className="row" >  
                   <div className="col-1 border" key={Turbos.id}>{Turbos.id}</div>  
-                  <div className="col border">{Turbos.engine_name}</div>      
-                  <div className="col border">{Turbos.engine_price}</div>    
+                  <div className="col border">{Turbos.turbo_name}</div>      
+                  <div className="col border">{Turbos.turbo_price}</div>    
                 </div>
               </div>
               )}
@@ -57,7 +57,7 @@ export default class TurboList extends React.Component {
               <AddTurbo/>
             </div>
             <div>
-              <EdiTurbo />
+              <EditTurbo />
             </div>
             <div>
               <DeleteTurbo/>

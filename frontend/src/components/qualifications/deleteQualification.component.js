@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 
-export default class DeleteQuaification extends React.Component {
+export default class DeleteQualification extends React.Component {
   state = {
     id: '',
   }
@@ -13,7 +13,7 @@ export default class DeleteQuaification extends React.Component {
   handleSubmit = event => {
     event.preventDefault();
 
-    axios.delete(`http://localhost:5000/quaifications/delete/${this.state.id}`)
+    axios.delete(`http://localhost:5000/qualifications/delete/${this.state.id}`)
       .then(res => {
         console.log(res);
         console.log(res.data);
@@ -26,7 +26,7 @@ export default class DeleteQuaification extends React.Component {
       <div className="float-right p-4 mb-4 bg-dark text-light">
         <form onSubmit={this.handleSubmit} className="d-flex flex-column justify-content-center">
           <label className="form-outline mb-4">
-            quaification ID:
+            qualification ID:
             <input onChange={this.handleChange} className="form-control" type="number" required name="id" placeholder="Enter id" />
           </label>
           <button type="submit" className="btn btn-danger">Delete</button>

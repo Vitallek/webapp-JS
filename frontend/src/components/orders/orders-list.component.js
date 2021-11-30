@@ -33,34 +33,34 @@ export default class OrdersList extends React.Component {
     return (
       <div className="container">
 
-        <div className="mt-3 tableContainer">
+        <div className="mt-3 orderTableContainer">
           
             <div className="ml-3">
               <div className="row" >  
-                <div className="col-1 border tableHeader">Id</div>  
-                <div className="col border tableHeader">Shop Name</div> 
-                <div className="col border tableHeader">Emp id</div>      
-                <div className="col border tableHeader">vehicle id</div>      
-                <div className="col border tableHeader">order_date</div>      
-                <div className="col border tableHeader">order_price</div>      
-                <div className="col border tableHeader">order_type</div>      
-                <div className="col border tableHeader">payment_type</div>      
-                <div className="col border tableHeader">customer_id</div>             
+                <div className="ordercol border tableHeader">Id</div>  
+                <div className="ordercol border tableHeader">Shop Name</div> 
+                <div className="ordercol border tableHeader">Emp id</div>      
+                <div className="ordercol border tableHeader">vehicle id</div>      
+                <div className="ordercol border tableHeader">order_date</div>      
+                <div className="ordercol border tableHeader">order_price</div>      
+                <div className="ordercol border tableHeader">order_type</div>      
+                <div className="ordercol border tableHeader">payment_type</div>      
+                <div className="ordercol border tableHeader">customer_id</div>             
               </div>
             </div>
 
             { this.state.orders.map(Orders => 
               <div className="ml-3">
                 <div className="row" >  
-                  <div className="col-1 border" key={Orders.id}>{Orders.id}</div>  
-                  <div className="col border">{Orders.shop_name}</div>
-                  <div className="col border">{Orders.emp_id}</div>         
-                  <div className="col border">{Orders.shop_name}</div>         
-                  <div className="col border">{Orders.vehicle_id}</div>         
-                  <div className="col border">{Orders.order_date}</div>         
-                  <div className="col border">{Orders.order_price}</div>         
-                  <div className="col border">{Orders.payment_type}</div>         
-                  <div className="col border">{Orders.customer_id}</div>         
+                  <div className="ordercol border" key={Orders.id}>{Orders.id}</div>  
+                  <div className="ordercol border">{Orders.shop_name}</div>
+                  <div className="ordercol border">{Orders.emp_id}</div>                  
+                  <div className="ordercol border">{Orders.vehicle_id}</div>         
+                  <div className="ordercol border">{Orders.order_date}</div>         
+                  <div className="ordercol border">{Orders.order_price}</div>    
+                  <div className="ordercol border">{Orders.order_type}</div>     
+                  <div className="ordercol border">{Orders.payment_type}</div>         
+                  <div className="ordercol border">{Orders.customer_id}</div>         
          
                 </div>
               </div>

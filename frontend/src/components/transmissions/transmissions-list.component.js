@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Switch, Route, Link } from "react-router-dom";
 import AddTransmission from './add-transmission.component';
 import EditTransmission from './editTransmission.component';
-import DeleteTransmission from './DeleteTransmission.component';
+import DeleteTransmission from './deleteTransmission.component';
 
 
 const apiUrl = "http://localhost:5000/transmissions";
@@ -46,8 +46,8 @@ export default class TransmissionsList extends React.Component {
               <div className="ml-3">
                 <div className="row" >  
                   <div className="col-1 border" key={Transmissions.id}>{Transmissions.id}</div>  
-                  <div className="col border">{Transmissions.engine_name}</div>      
-                  <div className="col border">{Transmissions.engine_price}</div>    
+                  <div className="col border">{Transmissions.transmission_name}</div>      
+                  <div className="col border">{Transmissions.transmission_price}</div>    
                 </div>
               </div>
               )}

@@ -47,6 +47,7 @@ function getConnection() {
   
     const queryString = "INSERT INTO orders (shop_name, emp_id, vehicle_id, order_date, order_price, order_type, payment_type, customer_id ) VALUES (?, ?, ?, ? ,? ,? ,? ,?)"
     connection.query(queryString, [req.body.shop_name, req.body.emp_id, req.body.vehicle_id, req.body.order_date, req.body.order_price, req.body.order_type, req.body.payment_type, req.body.customer_id], (err, results, fields) => {
+      console.log(req)
       if (err) {
         res.sendStatus(500)
         console.log(err)

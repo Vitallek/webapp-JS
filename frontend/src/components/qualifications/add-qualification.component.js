@@ -43,7 +43,7 @@ export default class AddQualification extends React.Component {
           </label>
           <label className="form-outline mb-4">
             qualification's price multiplier:
-          <input onChange={this.handleChangeKoef} className="form-control" type="number" required name="koef" placeholder="Enter price" />
+          <input onChange={this.handleChangeKoef} className="form-control" type="number" required name="koef" maxLength="2" placeholder="Enter price" />
           </label>
           <button type="submit" className="btn btn-success">Add</button>
         </form>

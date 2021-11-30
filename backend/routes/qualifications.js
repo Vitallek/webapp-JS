@@ -69,7 +69,7 @@ function getConnection() {
     console.log("updated")
 
     const queryString = "UPDATE qualifications SET qual_name = ?, koef = ? WHERE id = ?"
-    connection.query(queryString, [req.body.qual_name,req.body.koef, req.params.id], (err, results, fields) => {
+    connection.query(queryString, [req.body.qual_name, req.body.koef, req.params.id], (err, results, fields) => {
       if (err) {
         console.log(err)
         res.sendStatus(500)

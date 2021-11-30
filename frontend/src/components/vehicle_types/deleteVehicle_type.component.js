@@ -13,7 +13,7 @@ export default class DeleteVehicleType extends React.Component {
   handleSubmit = event => {
     event.preventDefault();
 
-    axios.delete(`http://localhost:5000/vehicle_type/delete/${this.state.id}`)
+    axios.delete(`http://localhost:5000/vehicle_types/delete/${this.state.id}`)
       .then(res => {
         console.log(res);
         console.log(res.data);

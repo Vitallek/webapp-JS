@@ -8,7 +8,7 @@ import DeleteVehicleType from './deleteVehicle_type.component';
 
 const apiUrl = "http://localhost:5000/vehicle_types";
 
-export default class PaymentTypeList extends React.Component {
+export default class VehicleTypeList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {  
@@ -37,16 +37,16 @@ export default class PaymentTypeList extends React.Component {
           
             <div className="ml-3">
               <div className="row" >  
-                <div className="col-1 bpayment tableHeader">Id</div>  
-                <div className="col bpayment tableHeader">vehicle_types's name</div>      
+                <div className="col-1 border tableHeader">Id</div>  
+                <div className="col border tableHeader">vehicle_types's name</div>      
               </div>
             </div>
 
             { this.state.vehicle_types.map(Vehicle_types => 
               <div className="ml-3">
                 <div className="row" >  
-                  <div className="col-1 bpayment" key={Vehicle_types.id}>{Vehicle_types.id}</div>  
-                  <div className="col bpayment">{Vehicle_types.type_name}</div>      
+                  <div className="col-1 border" key={Vehicle_types.id}>{Vehicle_types.id}</div>  
+                  <div className="col border">{Vehicle_types.type_name}</div>      
                 </div>
               </div>
               )}

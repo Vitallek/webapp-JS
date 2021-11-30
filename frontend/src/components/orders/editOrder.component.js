@@ -8,7 +8,7 @@ export default class EditOrder extends React.Component {
     shop_name: 'Vitallek`s Shop',
     emp_id: '',
     vehicle_id: '',
-    order_date: '',
+    order_date: require('moment')().format('YYYY-MM-DD HH:mm:ss'),
     order_price: '',
     order_type: 1,
     payment_type: 1,
@@ -24,9 +24,9 @@ export default class EditOrder extends React.Component {
   handleChangeVehicleID = event => {
     this.setState({ vehicle_id: event.target.value });
   }
-  handleChangeOrderDate = event => {
-    this.setState({ order_date: event.target.value });
-  }
+  // handleChangeOrderDate = event => {
+  //   this.setState({ order_date: event.target.value });
+  // }
   handleChangeOrderType = event => {
     this.setState({ order_type: parseInt(event.target.value, 10) });
   }
@@ -83,7 +83,7 @@ export default class EditOrder extends React.Component {
           </label>
           <label className="form-outline mb-4">
             order's date:
-            <input onChange={this.handleChangeOrderDate} className="form-control" type="date" required name="orderdate" placeholder="dd.mm.yyyy" />
+            <input className="form-control" disabled name="orderdate" placeholder={this.state.order_date} />
           </label>
           <label className="form-outline mb-4">
             order's price:

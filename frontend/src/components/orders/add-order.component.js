@@ -2,17 +2,19 @@ import React from 'react';
 import axios from 'axios';
 
 export default class AddOrder extends React.Component {
-  state = {
-    id: '',
+  constructor(props) {
+  super(props);
+  this.state = {
     shop_name: 'Vitallek`s Shop',
-    emp_id: '',
-    vehicle_id: '',
-    order_date: '',
+    emp_id: 0,
+    vehicle_id: 0,
+    order_date: require('moment')().format('YYYY-MM-DD HH:mm:ss'),
     order_price: '',
     order_type: 1,
     payment_type: 1,
     customer_id: '',
   }
+}
 
   handleChangeEmpID = event => {
     this.setState({ emp_id: event.target.value });
@@ -20,9 +22,9 @@ export default class AddOrder extends React.Component {
   handleChangeVehicleID = event => {
     this.setState({ vehicle_id: event.target.value });
   }
-  handleChangeOrderDate = event => {
-    this.setState({ order_date: event.target.value });
-  }
+  // handleChangeOrderDate = event => {
+  //   this.setState({ order_date: event.target.value });
+  // }
   handleChangeOrderType = event => {
     this.setState({ order_type: parseInt(event.target.value, 10) });
   }
@@ -68,15 +70,15 @@ export default class AddOrder extends React.Component {
         <form onSubmit={this.handleSubmit} className="d-flex flex-column justify-content-center">
           <label className="form-outline mb-4">
             order's employee id:
-            <input onChange={this.handleChangeEmpID} className="form-control" required type="text" name="shop_name" placeholder="Enter employee id" />
+            <input onChange={this.handleChangeEmpID} className="form-control" required type="number" name="shop_name" placeholder="Enter employee id" />
           </label>
           <label className="form-outline mb-4">
             order's vehicle id:
-            <input onChange={this.handleChangeVehicleID} className="form-control" required type="text" name="ordervehicleid" placeholder="Enter vehicle id" />
+            <input onChange={this.handleChangeVehicleID} className="form-control" required type="number" name="ordervehicleid" placeholder="Enter vehicle id" />
           </label>
           <label className="form-outline mb-4">
             order's date:
-            <input onChange={this.handleChangeOrderDate} className="form-control" required type="date" name="orderdate" placeholder="dd.mm.yyyy" />
+            <input className="form-control" disabled name="orderdate" placeholder={this.state.order_date} />
           </label>
           <label className="form-outline mb-4">
             order's price:
@@ -86,7 +88,7 @@ export default class AddOrder extends React.Component {
           <label className="form-outline mb-4" for="ordertype">
             order's type:
           </label>
-          <select onChange={this.handleChangeOrderType} className="form-control" step="1" type="number" id="ordertype" name="ordertype">
+          <select onChange={this.handleChangeOrderType} className="form-control" maxLength="1" type="number" id="ordertype" name="ordertype">
             <option value="1">Стандарт</option>
             <option value="2">Срочный</option>
             <option value="3">Очень срочный</option>
@@ -97,7 +99,7 @@ export default class AddOrder extends React.Component {
           <label className="form-outline mb-4" for="orderpaymenttype">
             order' payment type (1-наличные, 2 - карта):
           </label>
-          <select onChange={this.handleChangePayment} className="form-control" step="1"type="number" id="orderpaymenttype" name="orderpaymenttype">
+          <select onChange={this.handleChangePayment} className="form-control" maxLength="1"type="number" id="orderpaymenttype" name="orderpaymenttype">
           <option value="1">Наличные</option>
           <option value="2">Карта</option>
          </select>
