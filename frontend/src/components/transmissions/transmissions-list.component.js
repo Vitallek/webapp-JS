@@ -1,6 +1,5 @@
-import React, {useState} from 'react';
+import React from 'react';
 import axios from 'axios';
-import { Switch, Route, Link } from "react-router-dom";
 import AddTransmission from './add-transmission.component';
 import EditTransmission from './editTransmission.component';
 import DeleteTransmission from './deleteTransmission.component';

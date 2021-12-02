@@ -1,6 +1,5 @@
-import React, {useState} from 'react';
+import React from 'react';
 import axios from 'axios';
-import { Switch, Route, Link } from "react-router-dom";
 import AddVehicleModel from './add-vehicle_model.component';
 import EditVehicleModels from './editVehicle_model.component';
 import DeleteVehicleModel from './deleteVehicle_model.component';

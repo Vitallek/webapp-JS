@@ -1,6 +1,5 @@
-import React, {useState} from 'react';
+import React from 'react';
 import axios from 'axios';
-import { Switch, Route, Link } from "react-router-dom";
 import AddTurbo from './add-turbo.component';
 import EditTurbo from './editTurbo.component';
 import DeleteTurbo from './deleteTurbo.component';

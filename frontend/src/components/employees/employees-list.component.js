@@ -1,6 +1,5 @@
-import React, {useState} from 'react';
+import React from 'react';
 import axios from 'axios';
-import { Switch, Route, Link } from "react-router-dom";
 import AddEmployee from './add-empoloyee.component';
 import EditEmployee from './editEmpoloyee.component';
 import DeleteEmployee from './deleteEmpoloyee.component';

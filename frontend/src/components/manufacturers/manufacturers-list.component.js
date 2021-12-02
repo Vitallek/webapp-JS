@@ -1,6 +1,5 @@
-import React, {useState} from 'react';
+import React from 'react';
 import axios from 'axios';
-import { Switch, Route, Link } from "react-router-dom";
 import AddManufacturer from './add-manufacturer.component';
 import EditManufacturer from './editManufacturer.component';
 import DeleteManufacturer from './deleteManufacturer.component';

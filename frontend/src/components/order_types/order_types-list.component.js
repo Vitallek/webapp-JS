@@ -1,6 +1,5 @@
-import React, {useState} from 'react';
+import React from 'react';
 import axios from 'axios';
-import { Switch, Route, Link } from "react-router-dom";
 import AddOrderType from './add-order_type.component';
 import EditOrderType from './editOrder_type.component';
 import DeleteOrderType from './deleteOrder-type.component';

@@ -1,6 +1,5 @@
-import React, {useState} from 'react';
+import React from 'react';
 import axios from 'axios';
-import { Switch, Route, Link } from "react-router-dom";
 import AddWheel from './add-wheel.component';
 import EditWheel from './editWheel.component';
 import DeleteWheel from './deleteWheel.component';

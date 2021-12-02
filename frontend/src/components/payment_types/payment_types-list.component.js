@@ -1,6 +1,5 @@
-import React, {useState} from 'react';
+import React from 'react';
 import axios from 'axios';
-import { Switch, Route, Link } from "react-router-dom";
 import AddPaymentType from './add-payment_type.component';
 import EditPaymentType from './editPayment_type.component';
 import DeletePaymentType from './deletePayment-type.component';

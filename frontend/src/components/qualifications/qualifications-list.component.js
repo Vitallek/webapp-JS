@@ -1,6 +1,5 @@
-import React, {useState} from 'react';
+import React from 'react';
 import axios from 'axios';
-import { Switch, Route, Link } from "react-router-dom";
 import AddQualification from './add-qualification.component';
 import EditQualification from './editQualification.component';
 import DeleteQualification from './deleteQualification.component';

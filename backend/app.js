@@ -36,14 +36,14 @@ app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "http://localhost:8081"); // update to match the domain you will make the request from
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   res.header("Access-Control-Allow-Methods", "*");
-  res.header("Access-Control-Allow-Credentials", "*");
+  res.header("Access-Control-Allow-Credentials", "true");
   next();
 });
 
 app.use(
   session({
-    key: "userId",
-    secret: "subscribe",
+    key: "someKey",
+    secret: "super_Secret",
     resave: false,
     saveUninitialized: false,
     cookie: {
