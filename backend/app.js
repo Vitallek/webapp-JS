@@ -108,7 +108,7 @@ app.post("/register", (req, res) => {
         }
       }
     );
-
+    
     return res.status(201).send({
       msg: 'The user has been registerd with us!'
       }); 
@@ -124,12 +124,12 @@ app.get("/login", (req, res) => {
 });
 
 app.post("/login", (req, res) => {
-  const username = req.body.username;
+  const email = req.body.email;
   const password = req.body.password;
 
   db.query(
-    "SELECT * FROM users WHERE username = ?;",
-    username,
+    "SELECT * FROM userrrs WHERE email = ?;",
+    email,
     (err, result) => {
       if (err) {
         res.send({ err: err });
@@ -142,7 +142,7 @@ app.post("/login", (req, res) => {
             console.log(req.session.user);
             res.send(result);
           } else {
-            res.send({ message: "Wrong username/password combination!" });
+            res.send({ message: "Wrong email/password combination!" });
           }
         });
       } else {
