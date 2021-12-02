@@ -238,33 +238,16 @@ const AdminPanel = () => {
 
             </Switch>
           </div>
-        </div>
+      </div>
   )
 }
-const Login = () => {
-  return(
-    <div className="loginformwrapper">
-      <button className="btn btn-primary">Log in</button>
-    </div>
-  )
-}
+
 function App() {
   return (
     <div>
-      <Router>
-        <Routes/>
-      </Router>
+      <AdminPanel/>
     </div>
   );
-}
-
-const Routes = () => {
-  return(
-    <Switch>
-      <Route path="/login" component={Login}/>
-      <Route path="/adminpanel" component={AdminPanel}/>
-    </Switch>
-  )
 }
 
 export default App;
