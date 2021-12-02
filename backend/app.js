@@ -1,8 +1,17 @@
 // load our app server using express somehow ...
 const express = require('express')
+const mysql = require("mysql");
+const cors = require('cors')
+
+const bodyParser = require('body-parser')
+const cookieParser = require('cookie-parser');
+const session = require('express-session')
+
+const bcrypt = require("bcrypt");
+const saltRounds = 10;
+
 const app = express()
 const morgan = require('morgan')
-const bodyParser = require('body-parser')
 
 const wheelRoutes = require('./routes/wheels')
 const manufacturerRoutes = require('./routes/manufacturers')
@@ -18,18 +27,6 @@ const orderRoutes = require('./routes/orders')
 const userRoutes = require('./routes/userrrs')
 const vehicleModelRoutes = require('./routes/vehicle_models')
 
-// nodemon app.js
-app.use(morgan('short'))
-app.use(bodyParser.urlencoded({extended: false}))
-app.use(bodyParser.json())
-app.use(express.static('./public'))
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "http://localhost:8081"); // update to match the domain you will make the request from
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  res.header("Access-Control-Allow-Methods", "*");
-  next();
-});
-
 app.use('/wheels', wheelRoutes)
 app.use('/manufacturers', manufacturerRoutes)
 app.use('/engines', engineRoutes)
@@ -43,6 +40,99 @@ app.use('/employees', employeeRoutes)
 app.use('/orders', orderRoutes)
 app.use('/userrrs', userRoutes)
 app.use('/vehicle_models', vehicleModelRoutes)
+
+// nodemon app.js
+app.use(morgan('short'))
+app.use(express.json())
+
+app.use(bodyParser.urlencoded({extended: true}))
+app.use(bodyParser.json())
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "http://localhost:8081"); // update to match the domain you will make the request from
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  res.header("Access-Control-Allow-Methods", "*");
+  res.header("Access-Control-Allow-Credentials", "*");
+  next();
+});
+app.use(cookieParser());
+
+app.use(
+  session({
+    key: "userId",
+    secret: "strong-secret",
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      expires: 60 * 60 * 24,
+    },
+  })
+);
+const db = mysql.createConnection({
+  host: 'localhost',
+  user: 'root',
+  password: '7557475',
+  database: 'autoshop'
+})
+
+app.post("/register", (req, res) => {
+  const FnameLname = req.body.FnameLname;
+  const email = req.body.email;
+  const password = req.body.password;
+
+  bcrypt.hash(password, saltRounds, (err, hash) => {
+    if (err) {
+      console.log(err);
+      return
+    }
+
+    db.query(
+      "INSERT INTO userrrs (FnameLname, email, password, role) VALUES (?,?,?,?)",
+      [FnameLname, email, hash,'user'],
+      (err, result) => {
+        console.log(err);
+        return
+      }
+    
+    );
+  });
+});
+
+app.get("/login", (req, res) => {
+  if (req.session.user) {
+    res.send({ loggedIn: true, user: req.session.user });
+  } else {
+    res.send({ loggedIn: false });
+  }
+});
+
+app.post("/login", (req, res) => {
+  const email = req.body.email;
+  const password = req.body.password;
+
+  db.query(
+    "SELECT * FROM userrrs WHERE email = ?;",
+    email,
+    (err, result) => {
+      if (err) {
+        res.send({ err: err });
+      }
+
+      if (result.length > 0) {
+        bcrypt.compare(password, result[0].password, (error, response) => {
+          if (response) {
+            req.session.user = result;
+            console.log(req.session.user);
+            res.send(result);
+          } else {
+            res.send({ message: "Wrong email/password combination!" });
+          }
+        });
+      } else {
+        res.send({ message: "User doesn't exist" });
+      }
+    }
+  );
+});
 
 app.use((req, res, next) => {
   // This reads the accept-language header

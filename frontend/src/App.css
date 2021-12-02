@@ -101,3 +101,8 @@
 .container{
   margin-left: 560px;
 }
+.loginformwrapper{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

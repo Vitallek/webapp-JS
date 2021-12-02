@@ -28,10 +28,10 @@ function getConnection() {
       const userrrs = rows.map((row) => {
         return {
           id: row.id,
-          first_name: row.first_name,
-          last_name: row.last_name,
+          FnameLname: row.FnameLname,
           email: row.email,
-          passwordHash: row.passwordHash
+          password: row.password,
+          role: row.role,
         }
       })
       res.json(userrrs)
@@ -41,8 +41,8 @@ function getConnection() {
   router.post("/create", (req, res) => {
     const connection = getConnection()
   
-    const queryString = "INSERT INTO userrrs (first_name, last_name, email, passwordHash) VALUES (?, ?, ?, ?)"
-    connection.query(queryString, [req.body.first_name, req.body.last_name, req.body.email, req.body.passwordHash], (err, results, fields) => {
+    const queryString = "INSERT INTO userrrs (FnameLname, email, password, role) VALUES (?, ?, ?, ?)"
+    connection.query(queryString, [req.body.FnameLname, req.body.email, req.body.password, req.body.role], (err, results, fields) => {
       if (err) {
         res.sendStatus(500)
         return
@@ -70,8 +70,8 @@ function getConnection() {
 
     console.log("updated")
 
-    const queryString = "UPDATE userrrs SET first_name = ?, last_name = ?, email = ?, passwordHash = ? WHERE id = ?"
-    connection.query(queryString, [req.body.first_name, req.body.last_name, req.body.email, req.body.passwordHash, req.params.id], (err, results, fields) => {
+    const queryString = "UPDATE userrrs SET FnameLname = ?, email = ?, role=? WHERE id = ?"
+    connection.query(queryString, [req.body.FnameLname, req.body.email, req.body.role, req.params.id], (err, results, fields) => {
       if (err) {
         console.log(err)
         res.sendStatus(500)

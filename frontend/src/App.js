@@ -1,5 +1,11 @@
 import React, { Component } from "react";
-import { Switch, Route, Link } from "react-router-dom";
+import axios from 'axios';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 import { ProSidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
 
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -66,95 +72,96 @@ import AddVehicleType from "./components/vehicle_types/add-vehicle_type.componen
 import EditVehicleType from "./components/vehicle_types/editVehicle_type.component";
 import DeleteVehicleType from "./components/vehicle_types/deleteVehicle_type.component";
 
+import UsersList from "./components/userrrs/users-list.component";
+import EditUser from "./components/userrrs/editUser.component";
+import DeleteUser from "./components/userrrs/deleteUser.component";
 
-class App extends Component {
-  render() {
-    return (
-      <div>
-        <div>
+const AdminPanel = () => {
+  return(
+    <div>
           <div className="sidenav">
             <ProSidebar>
               <Menu iconShape="square">
                 <MenuItem>
-                  <Link to={"/"} className="navbar-brand ">
+                  <Link to={"/adminpanel"} className="navbar-brand ">
                     Vitallek Autoshop
                   </Link>
                 </MenuItem>
 
                 <MenuItem>
-                  <Link to={"/manufacturers"} className="nav-link">
+                  <Link to={"/adminpanel/manufacturers"} className="nav-link">
                     Manufacturers List
                   </Link>
                 </MenuItem>
 
                 <MenuItem>
-                  <Link to={"/vehicle_models"} className="nav-link">
+                  <Link to={"/adminpanel/vehicle_models"} className="nav-link">
                     Vehicles List
                   </Link>
                 </MenuItem>
 
                 <MenuItem>
-                  <Link to={"/engines"} className="nav-link">
+                  <Link to={"/adminpanel/engines"} className="nav-link">
                     Engines List
                   </Link>
                 </MenuItem>
 
                 <MenuItem>
-                  <Link to={"/turbos"} className="nav-link">
+                  <Link to={"/adminpanel/turbos"} className="nav-link">
                     Turbos List
                   </Link>
                 </MenuItem>
 
                 <MenuItem>
-                  <Link to={"/transmissions"} className="nav-link">
+                  <Link to={"/adminpanel/transmissions"} className="nav-link">
                     Transmissions List
                   </Link>
                 </MenuItem>
 
                 <MenuItem>
-                  <Link to={"/wheels"} className="nav-link">
+                  <Link to={"/adminpanel/wheels"} className="nav-link">
                     Wheels List
                   </Link>
                 </MenuItem>
 
                 <MenuItem>
-                  <Link to={"/vehicle_types"} className="nav-link">
+                  <Link to={"/adminpanel/vehicle_types"} className="nav-link">
                     Vehicle Types List
                   </Link>
                 </MenuItem>
 
                 <MenuItem>
-                  <Link to={"/customers"} className="nav-link">
-                    Customers List
+                  <Link to={"/adminpanel/users"} className="nav-link">
+                    Users List
                   </Link>
                 </MenuItem>
 
                 <MenuItem>
-                  <Link to={"/employees"} className="nav-link">
+                  <Link to={"/adminpanel/employees"} className="nav-link">
                     Employees List
                   </Link>
                 </MenuItem>
 
                 <MenuItem>
-                  <Link to={"/qualifications"} className="nav-link">
+                  <Link to={"/adminpanel/qualifications"} className="nav-link">
                     Qualifications List
                   </Link>
                 </MenuItem>
 
                 <MenuItem>
-                  <Link to={"/orders"} className="nav-link">
+                  <Link to={"/adminpanel/orders"} className="nav-link">
                     Orders List
                   </Link>
                 </MenuItem>
 
                 <MenuItem>
-                  <Link to={"/order_types"} className="nav-link">
+                  <Link to={"/adminpanel/order_types"} className="nav-link">
                     Order type List
                   </Link>
                 </MenuItem>
 
                 <MenuItem>
-                  <Link to={"/payment_types"} className="nav-link">
+                  <Link to={"/adminpanel/payment_types"} className="nav-link">
                     Payment type List
                   </Link>
                 </MenuItem>
@@ -165,72 +172,99 @@ class App extends Component {
 
           <div className="mainContainer">
             <Switch>
-              <Route exact path={["/wheels"]} component={WheelList} />
-              <Route exact path="/add/wheels" component={AddWheel} />
-              <Route exact path="/edit/wheels" component={EditWheel} />
-              <Route exact path="/delete/wheels" component={DeleteWheel} />
+              <Route exact path={["/adminpanel/wheels"]} component={WheelList} />
+              <Route path="/add/wheels" component={AddWheel} />
+              <Route path="/edit/wheels" component={EditWheel} />
+              <Route path="/delete/wheels" component={DeleteWheel} />
 
-              <Route exact path={["/manufacturers"]} component={ManufacturerList} />
-              <Route exact path="/add/manufacturers" component={AddManufacturer} />
-              <Route exact path="/edit/manufacturers" component={EditManufacturer} />
-              <Route exact path="/delete/manufacturers" component={DeleteManufacturer} />
+              <Route exact path={["/adminpanel/manufacturers"]} component={ManufacturerList} />
+              <Route path="/add/manufacturers" component={AddManufacturer} />
+              <Route path="/edit/manufacturers" component={EditManufacturer} />
+              <Route path="/delete/manufacturers" component={DeleteManufacturer} />
 
-              <Route exact path={["/engines"]} component={EngineList} />
-              <Route exact path="/add/engines" component={AddEngine} />
-              <Route exact path="/edit/engines" component={EditEngine} />
-              <Route exact path="/delete/engines" component={DeleteEngine} />
+              <Route exact path={["/adminpanel/engines"]} component={EngineList} />
+              <Route path="/add/engines" component={AddEngine} />
+              <Route path="/edit/engines" component={EditEngine} />
+              <Route path="/delete/engines" component={DeleteEngine} />
 
-              <Route exact path={["/employees"]} component={EmployeeList} />
-              <Route exact path="/add/employees" component={AddEmployee} />
-              <Route exact path="/edit/employees" component={EditEmployee} />
-              <Route exact path="/delete/employees" component={DeleteEmployee} />
+              <Route exact path={["/adminpanel/employees"]} component={EmployeeList} />
+              <Route path="/add/employees" component={AddEmployee} />
+              <Route path="/edit/employees" component={EditEmployee} />
+              <Route path="/delete/employees" component={DeleteEmployee} />
 
-              <Route exact path={["/order_types"]} component={OrderTypeList} />
-              <Route exact path="/add/order_types" component={AddOrderType} />
-              <Route exact path="/edit/order_types" component={EditOrderType} />
-              <Route exact path="/delete/order_types" component={DeleteOrderType} />
+              <Route exact path={["/adminpanel/order_types"]} component={OrderTypeList} />
+              <Route path="/add/order_types" component={AddOrderType} />
+              <Route path="/edit/order_types" component={EditOrderType} />
+              <Route path="/delete/order_types" component={DeleteOrderType} />
 
-              <Route exact path={["/vehicle_models"]} component={VehicleModelList} />
-              <Route exact path="/add/vehicle_models" component={AddVehicleModel} />
-              <Route exact path="/edit/vehicle_models" component={EditVehicleModel} />
-              <Route exact path="/delete/vehicle_models" component={DeleteVehicleModel} />
+              <Route exact path={["/adminpanel/vehicle_models"]} component={VehicleModelList} />
+              <Route path="/add/vehicle_models" component={AddVehicleModel} />
+              <Route path="/edit/vehicle_models" component={EditVehicleModel} />
+              <Route path="/delete/vehicle_models" component={DeleteVehicleModel} />
 
-              <Route exact path={["/orders"]} component={OrdersList} />
-              <Route exact path="/add/orders" component={AddOrder} />
-              <Route exact path="/edit/orders" component={EditOrder} />
-              <Route exact path="/delete/orders" component={DeleteOrder} />
+              <Route exact path={["/adminpanel/orders"]} component={OrdersList} />
+              <Route path="/add/orders" component={AddOrder} />
+              <Route path="/edit/orders" component={EditOrder} />
+              <Route path="/delete/orders" component={DeleteOrder} />
 
-              <Route exact path={["/payment_types"]} component={PaymentTypeList} />
-              <Route exact path="/add/payment_types" component={AddPaymentType} />
-              <Route exact path="/edit/payment_types" component={EditPaymentType} />
-              <Route exact path="/delete/payment_types" component={DeletePaymentType} />
+              <Route exact path={["/adminpanel/payment_types"]} component={PaymentTypeList} />
+              <Route path="/add/payment_types" component={AddPaymentType} />
+              <Route path="/edit/payment_types" component={EditPaymentType} />
+              <Route path="/delete/payment_types" component={DeletePaymentType} />
 
-              <Route exact path={["/qualifications"]} component={QualificationsList} />
-              <Route exact path="/add/qualifications" component={AddQualification} />
-              <Route exact path="/edit/qualifications" component={EditQualification} />
-              <Route exact path="/delete/qualifications" component={DeleteQualification} />
+              <Route exact path={["/adminpanel/qualifications"]} component={QualificationsList} />
+              <Route path="/add/qualifications" component={AddQualification} />
+              <Route path="/edit/qualifications" component={EditQualification} />
+              <Route path="/delete/qualifications" component={DeleteQualification} />
 
-              <Route exact path={["/transmissions"]} component={TransmissionsList} />
-              <Route exact path="/add/transmissions" component={AddTransmission} />
-              <Route exact path="/edit/transmissions" component={EditTransmission} />
-              <Route exact path="/delete/transmissions" component={DeleteTransmission} />
+              <Route exact path={["/adminpanel/transmissions"]} component={TransmissionsList} />
+              <Route path="/add/transmissions" component={AddTransmission} />
+              <Route path="/edit/transmissions" component={EditTransmission} />
+              <Route path="/delete/transmissions" component={DeleteTransmission} />
 
-              <Route exact path={["/turbos"]} component={TurboList} />
-              <Route exact path="/add/turbos" component={AddTurbo} />
-              <Route exact path="/edit/turbos" component={EditTurbo} />
-              <Route exact path="/delete/turbos" component={DeleteTurbo} />
+              <Route exact path={["/adminpanel/turbos"]} component={TurboList} />
+              <Route path="/add/turbos" component={AddTurbo} />
+              <Route path="/edit/turbos" component={EditTurbo} />
+              <Route path="/delete/turbos" component={DeleteTurbo} />
 
-              <Route exact path={["/vehicle_types"]} component={VehicleTypeList} />
-              <Route exact path="/add/vehicle_types" component={AddVehicleType} />
-              <Route exact path="/edit/vehicle_types" component={EditVehicleType} />
-              <Route exact path="/delete/vehicle_types" component={DeleteVehicleType} />
+              <Route exact path={["/adminpanel/vehicle_types"]} component={VehicleTypeList} />
+              <Route path="/add/vehicle_types" component={AddVehicleType} />
+              <Route path="/edit/vehicle_types" component={EditVehicleType} />
+              <Route path="/delete/vehicle_types" component={DeleteVehicleType} />
+
+              <Route exact path={["/adminpanel/users"]} component={UsersList} />
+              <Route path="/edit/users" component={EditUser} />
+              <Route path="/delete/users" component={DeleteUser} />
 
             </Switch>
           </div>
         </div>
-      </div>
-    );
-  }
+  )
+}
+const Login = () => {
+  return(
+    <div className="loginformwrapper">
+      <button className="btn btn-primary">Log in</button>
+    </div>
+  )
+}
+function App() {
+  return (
+    <div>
+      <Router>
+        <Routes/>
+      </Router>
+    </div>
+  );
+}
+
+const Routes = () => {
+  return(
+    <Switch>
+      <Route path="/login" component={Login}/>
+      <Route path="/adminpanel" component={AdminPanel}/>
+    </Switch>
+  )
 }
 
 export default App;
