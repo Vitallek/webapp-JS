@@ -1,8 +1,17 @@
 // load our app server using express somehow ...
 const express = require('express')
-const app = express()
+const mysql = require("mysql");
 const morgan = require('morgan')
+
 const bodyParser = require('body-parser')
+const cookieParser = require("cookie-parser");
+const session = require("express-session");
+
+
+const bcrypt = require("bcrypt");
+const saltRounds = 10;
+
+const app = express()
 
 const wheelRoutes = require('./routes/wheels')
 const manufacturerRoutes = require('./routes/manufacturers')
@@ -27,8 +36,21 @@ app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "http://localhost:8081"); // update to match the domain you will make the request from
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   res.header("Access-Control-Allow-Methods", "*");
+  res.header("Access-Control-Allow-Credentials", "*");
   next();
 });
+
+app.use(
+  session({
+    key: "userId",
+    secret: "subscribe",
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      expires: 60 * 60 * 24,
+    },
+  })
+);
 
 app.use('/wheels', wheelRoutes)
 app.use('/manufacturers', manufacturerRoutes)
@@ -44,6 +66,8 @@ app.use('/orders', orderRoutes)
 app.use('/userrrs', userRoutes)
 app.use('/vehicle_models', vehicleModelRoutes)
 
+app.use(cookieParser());
+
 app.use((req, res, next) => {
   // This reads the accept-language header
   // and returns the language if found or false if not
@@ -58,11 +82,75 @@ app.use((req, res, next) => {
   next()
 })
 
+const db = mysql.createConnection({
+  user: "root",
+  host: "localhost",
+  password: "7557475",
+  database: "autoshop",
+});
 
-app.get("/", (req, res) => {
-  console.log("Responding to root route")
-  res.send("Hello from ROOOOT")
-})
+app.post("/register", (req, res) => {
+  const FnameLname = req.body.FnameLname;
+  const email = req.body.email;
+  const password = req.body.password;
+
+  bcrypt.hash(password, saltRounds, (err, hash) => {
+    if (err) {
+      console.log(err);
+    }
+
+    db.query(
+      `INSERT INTO userrrs (fnameLname,email, password,role) VALUES ('${FnameLname}','${email}','${hash}','user')`, (err, res) => {
+        if (err) {
+          return res.status(400).send({
+            msg: err
+            });
+        }
+      }
+    );
+
+    return res.status(201).send({
+      msg: 'The user has been registerd with us!'
+      }); 
+  });
+});
+
+app.get("/login", (req, res) => {
+  if (req.session.user) {
+    res.send({ loggedIn: true, user: req.session.user });
+  } else {
+    res.send({ loggedIn: false });
+  }
+});
+
+app.post("/login", (req, res) => {
+  const username = req.body.username;
+  const password = req.body.password;
+
+  db.query(
+    "SELECT * FROM users WHERE username = ?;",
+    username,
+    (err, result) => {
+      if (err) {
+        res.send({ err: err });
+      }
+
+      if (result.length > 0) {
+        bcrypt.compare(password, result[0].password, (error, response) => {
+          if (response) {
+            req.session.user = result;
+            console.log(req.session.user);
+            res.send(result);
+          } else {
+            res.send({ message: "Wrong username/password combination!" });
+          }
+        });
+      } else {
+        res.send({ message: "User doesn't exist" });
+      }
+    }
+  );
+});
 
 const PORT = process.env.PORT || 5000
 // localhost:5000

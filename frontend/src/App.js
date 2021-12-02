@@ -238,7 +238,7 @@ const AdminPanel = () => {
 
             </Switch>
           </div>
-      </div>
+    </div>
   )
 }
 
