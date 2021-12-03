@@ -30,7 +30,7 @@ export default class EmployeeList extends React.Component {
   
   render() {
     return (
-      <div className="container">
+      <div className="adminContainer">
 
         <div className="mt-3 tableContainer">
           
@@ -57,6 +57,7 @@ export default class EmployeeList extends React.Component {
           <div className="col sidebar-wrapper">
             <div>
               <AddEmployee/>
+              
             </div>
             <div>
               <EditEmployee />

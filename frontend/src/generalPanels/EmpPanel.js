@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import axios from 'axios';
 import {
   BrowserRouter as Router,
-  Switch,
   Route,
   Link
 } from "react-router-dom";
@@ -42,14 +41,7 @@ class EmpPanel extends React.Component {
           </div>
 
           <div className="mainContainer">
-            <Switch>
-              
-              <Route exact path={["/orders"]} component={OrdersList} />
-              <Route path="/add/orders" component={AddOrder} />
-              <Route path="/edit/orders" component={EditOrder} />
-              <Route path="/delete/orders" component={DeleteOrder} />
-
-            </Switch>
+            
           </div>
     </div>
     )

@@ -30,7 +30,7 @@ export default class VehicleModelList extends React.Component {
   
   render() {
     return (
-      <div className="container">
+      <div className="adminContainer">
 
         <div className="mt-3 carTableContainer">
           

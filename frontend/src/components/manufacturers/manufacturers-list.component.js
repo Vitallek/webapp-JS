@@ -27,7 +27,7 @@ export default class ManufacturerList extends React.Component {
   
   render() {
     return (
-      <div className="container">
+      <div className="adminContainer">
 
         <div className="mt-3 tableContainer">
           

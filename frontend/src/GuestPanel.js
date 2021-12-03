@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useHistory } from "react-router";
+import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css"
-import "./guestStuff/guest.css"
+import "./generalPanels/guestStuff/guest.css"
 
 
 export default function GuestPanel() {
-    const history = useHistory();
-    const navigateToMain = () => history.push('/');//eg.history.push('/login');
-
+    const navigate = useNavigate();
     const [FnameLnameReg, setFnameLnameReg] = useState("");
     const [emailReg, setEmailReg] = useState("");
     const [passwordReg, setPasswordReg] = useState("");
@@ -39,7 +37,8 @@ export default function GuestPanel() {
       email: email,
       password: password,
     }).then((response) => {
-        navigateToMain()
+        console.log(response)
+        navigate('/');
     });
   };
 
@@ -75,7 +74,6 @@ export default function GuestPanel() {
                                     <button type="submit" className="form-control btn btn-primary submit px-3">Sign In</button>
                                 </div>
                             </form>
-                        <div>{loginStatus}</div>
                         </div>
                     </div>
 
