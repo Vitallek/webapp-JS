@@ -3,24 +3,22 @@ import Axios from "axios";
 import "./App.css";
 
 export default function Registration() {
-    const [FnameLnameReg, setFnameLnameReg] = useState("");
-    const [emailReg, setEmailReg] = useState("");
-    const [passwordReg, setPasswordReg] = useState("");
+  const [emailReg, setemailReg] = useState("");
+  const [passwordReg, setPasswordReg] = useState("");
 
-    const [email, setemail] = useState("");
-    const [password, setPassword] = useState("");
+  const [email, setemail] = useState("");
+  const [password, setPassword] = useState("");
 
-    const [loginStatus, setLoginStatus] = useState("");
+  const [loginStatus, setLoginStatus] = useState("");
 
-    Axios.defaults.withCredentials = true;
+  Axios.defaults.withCredentials = true;
 
-    const register = () => {
+  const register = () => {
     Axios.post("http://localhost:5000/register", {
-        FnameLname: FnameLnameReg,
-        email: emailReg,
-        password: passwordReg,
+      email: emailReg,
+      password: passwordReg,
     }).then((response) => {
-        console.log(response);
+      console.log(response);
     });
   };
 
@@ -49,23 +47,16 @@ export default function Registration() {
     <div className="App">
       <div className="registration">
         <h1>Registration</h1>
-        <label>First name Last name</label>
-        <input
-          type="text" required maxLength="30"
-          onChange={(e) => {
-            setFnameLnameReg(e.target.value);
-          }}
-        />
         <label>email</label>
         <input
-          type="text" required maxLength="50"
+          type="text"
           onChange={(e) => {
-            setEmailReg(e.target.value);
+            setemailReg(e.target.value);
           }}
         />
         <label>Password</label>
         <input
-          type="text" required minLength="6"
+          type="text"
           onChange={(e) => {
             setPasswordReg(e.target.value);
           }}
@@ -76,14 +67,14 @@ export default function Registration() {
       <div className="login">
         <h1>Login</h1>
         <input
-          type="text" requied maxLength="50"
+          type="text"
           placeholder="email..."
           onChange={(e) => {
             setemail(e.target.value);
           }}
         />
         <input
-          type="password" required minLength="6"
+          type="password"
           placeholder="Password..."
           onChange={(e) => {
             setPassword(e.target.value);

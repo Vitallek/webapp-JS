@@ -16,7 +16,7 @@ class UserPanel extends React.Component {
   render(){
     return(
       <div>
-         oh my hello there, user
+         oh hello there, user
       </div>
     )
   }

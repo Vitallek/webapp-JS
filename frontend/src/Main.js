@@ -22,7 +22,6 @@ export default function Main() {
 
   return (
     <div>
-      stock text for non registred dudes //car list only for show todo; onlick go login
       {role === "user" && <UserPanel/>}
       {role === "emp" && <EmpPanel/>}
       {role === "admin" && <AdminPanel/>}
