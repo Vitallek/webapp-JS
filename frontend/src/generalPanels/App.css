@@ -22,12 +22,6 @@
   box-sizing: border-box;
   /* border-width: 3px !important; */
 }
-.carPhotoAdmin{
-  width:fit-content;
-  max-width: fit-content;
-  height: fit-content;
-  max-height: fit-content;
-}
 .edit-form {
   max-width: 300px;
   margin: auto;
@@ -42,7 +36,13 @@
   width: auto;
 }
 .carTableContainer{
-  width: 2500px;
+  width: 3500px;
+}
+.carPhotoAdmin{
+  width: auto;
+  max-width: 500px;
+  height: auto;
+  max-height: 300px;
 }
 .orderTableContainer{
   width: 2200px;
@@ -99,7 +99,12 @@
   width: 100px;
   text-align: center;
 }
-.carCol:nth-child(13),.ordercol:nth-child(13){
+.carCol:nth-child(13){
+  width: 600px;
+  height: auto;
+  text-align: center;
+}
+.ordercol:nth-child(13){
   width: 400px;
   height: auto;
   text-align: center;

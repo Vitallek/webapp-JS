@@ -129,7 +129,7 @@ export default class AddVehicleModel extends React.Component {
           </label>
           <label className="form-outline mb-4">
             vehicle photo path:
-            <input onChange={this.handleChangePhoto} required placeholder="Enter photo path"className="form-control" type="text" maxLength="100" name="model_name"  />
+            <input onChange={this.handleChangePhoto} required value='../../../public/carphoto/${Vehicle_models.id}.jpg' disabled placeholder='../../../public/carphoto/${Vehicle_models.id}.jpg' className="form-control" type="text" maxLength="100" name="model_name"  />
           </label>
           <button type="submit" className="btn btn-success">Add</button>
         </form>
