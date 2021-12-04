@@ -102,16 +102,18 @@ app.post("/register", (req, res) => {
     db.query(
       `INSERT INTO userrrs (fnameLname,email, password,role) VALUES ('${FnameLname}','${email}','${hash}','user')`, (err, res) => {
         if (err) {
-          return res.status(400).send({
-            msg: err
-            });
+          console.log(err)
+          return(err)
+          // return res.status(400).send({
+          //   msg: err
+          // });
         }
       }
     );
     
     return res.status(201).send({
       msg: 'The user has been registerd with us!'
-      }); 
+    }); 
   });
 });
 

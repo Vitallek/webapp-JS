@@ -25,9 +25,14 @@ export default function GuestPanel() {
         FnameLname: FnameLnameReg,
         email: emailReg,
         password: passwordReg,
-    }).then((response) => {
-        console.log(response);
-    });
+    }).then(
+        axios.post("http://localhost:5000/login", {
+        email: emailReg,
+        password: passwordReg,
+        }).then((response) => {
+            alert('Success! Now you can login') 
+        })
+    )
   };
 
   const login = (event) => {
@@ -37,9 +42,9 @@ export default function GuestPanel() {
       email: email,
       password: password,
     }).then((response) => {
-        console.log(response)
-        navigate('/');
-    });
+        console.log('Login success')
+        navigate('/');  
+    })
   };
 
   useEffect(() => {

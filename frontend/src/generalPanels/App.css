@@ -35,6 +35,9 @@
 .tableContainer{
   width: auto;
 }
+.userTableContainer{
+  width: 2000px
+}
 .carTableContainer{
   width: 3500px;
 }
@@ -47,11 +50,11 @@
 .orderTableContainer{
   width: 2200px;
 }
-.carCol:nth-child(1),.ordercol:nth-child(1){
-  width: 50px;
+.carCol:nth-child(1),.ordercol:nth-child(1),.usercol:nth-child(1){
+  width: 100px;
   text-align: center;
 }
-.carCol:nth-child(2),.ordercol:nth-child(2){
+.carCol:nth-child(2),.ordercol:nth-child(2),.usercol:nth-child(2){
   width: 250px;
   text-align: center;
 }
@@ -107,6 +110,18 @@
 .ordercol:nth-child(13){
   width: 400px;
   height: auto;
+  text-align: center;
+}
+.usercol:nth-child(3){
+  width: 250px;
+  text-align: center;
+}
+.usercol:nth-child(4){
+  width: 600px;
+  text-align: center;
+}
+.usercol:nth-child(5){
+  width: 200px;
   text-align: center;
 }
 .adminContainer{

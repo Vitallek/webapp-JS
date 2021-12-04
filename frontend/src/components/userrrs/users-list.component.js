@@ -31,26 +31,26 @@ export default class UsersList extends React.Component {
     return (
       <div className="adminContainer">
 
-        <div className="mt-3 TableContainer">
+        <div className="mt-3 userTableContainer">
           
             <div className="ml-3">
               <div className="row" >  
-                <div className="col border tableHeader">Id</div>  
-                <div className="col border tableHeader">FIO</div> 
-                <div className="col border tableHeader">email</div>      
-                <div className="col border tableHeader">password</div>      
-                <div className="col border tableHeader">role</div>                 
+                <div className="usercol border tableHeader">Id</div>  
+                <div className="usercol border tableHeader">FIO</div> 
+                <div className="usercol border tableHeader">email</div>      
+                <div className="usercol border tableHeader">password</div>      
+                <div className="usercol border tableHeader">role</div>                 
               </div>
             </div>
 
             { this.state.userrrs.map(Userrrs => 
               <div className="ml-3">
                 <div className="row" >  
-                  <div className="col border" key={Userrrs.id}>{Userrrs.id}</div>  
-                  <div className="col border">{Userrrs.FnameLname}</div>
-                  <div className="col border">{Userrrs.email}</div>                  
-                  <div className="col border">{Userrrs.password}</div>         
-                  <div className="col border">{Userrrs.role}</div>         
+                  <div className="usercol border" key={Userrrs.id}>{Userrrs.id}</div>  
+                  <div className="usercol border">{Userrrs.FnameLname}</div>
+                  <div className="usercol border">{Userrrs.email}</div>                  
+                  <div className="usercol border">{Userrrs.password}</div>         
+                  <div className="usercol border">{Userrrs.role}</div>         
                 </div>
               </div>
               )}
