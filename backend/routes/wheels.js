@@ -30,6 +30,7 @@ function getConnection() {
           Id: row.id,
           wheels_name: row.wheels_name,
           wheels_price: row.wheels_price,
+          amount: row.amount,          
         }
       })
       res.json(wheels)
@@ -39,8 +40,8 @@ function getConnection() {
   router.post("/create", (req, res) => {
     const connection = getConnection()
   
-    const queryString = "INSERT INTO wheels (wheels_name, wheels_price) VALUES (?, ?)"
-    connection.query(queryString, [req.body.wheels_name, req.body.wheels_price], (err, results, fields) => {
+    const queryString = "INSERT INTO wheels (wheels_name, wheels_price, amount) VALUES (?, ?, ?)"
+    connection.query(queryString, [req.body.wheels_name, req.body.wheels_price, req.body.amount], (err, results, fields) => {
       if (err) {
         res.sendStatus(500)
         return
@@ -68,8 +69,8 @@ function getConnection() {
 
     console.log("updated")
 
-    const queryString = "UPDATE wheels SET wheels_name = ?, wheels_price = ? WHERE id = ?"
-    connection.query(queryString, [req.body.wheels_name, req.body.wheels_price, req.params.id], (err, results, fields) => {
+    const queryString = "UPDATE wheels SET wheels_name = ?, wheels_price = ?, amount = ? WHERE id = ?"
+    connection.query(queryString, [req.body.wheels_name, req.body.wheels_price, req.body.amount, req.params.id], (err, results, fields) => {
       if (err) {
         console.log(err)
         res.sendStatus(500)

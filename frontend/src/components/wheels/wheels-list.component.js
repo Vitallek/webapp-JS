@@ -38,7 +38,9 @@ export default class WheelList extends React.Component {
               <div className="row" >  
                 <div className="col-1 border tableHeader">Id</div>  
                 <div className="col border tableHeader">Wheels_name</div>      
-                <div className="col border tableHeader">Wheels_price</div>    
+                <div className="col border tableHeader">Wheels_price</div>   
+                <div className="col border tableHeader">Amount</div>    
+ 
               </div>
             </div>
 
@@ -48,6 +50,7 @@ export default class WheelList extends React.Component {
                   <div className="col-1 border" key={Wheels.Id}>{Wheels.Id}</div>  
                   <div className="col border">{Wheels.wheels_name}</div>      
                   <div className="col border">{Wheels.wheels_price}</div>    
+                  <div className="col border">{Wheels.amount}</div>    
                 </div>
               </div>
               )}

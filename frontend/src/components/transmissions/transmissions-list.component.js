@@ -37,7 +37,8 @@ export default class TransmissionsList extends React.Component {
               <div className="row" >  
                 <div className="col-1 border tableHeader">Id</div>  
                 <div className="col border tableHeader">Transmission Name</div>      
-                <div className="col border tableHeader">Transmission Price</div>    
+                <div className="col border tableHeader">Transmission Price</div>
+                <div className="col border tableHeader">Amount</div>    
               </div>
             </div>
 
@@ -46,7 +47,8 @@ export default class TransmissionsList extends React.Component {
                 <div className="row" >  
                   <div className="col-1 border" key={Transmissions.id}>{Transmissions.id}</div>  
                   <div className="col border">{Transmissions.transmission_name}</div>      
-                  <div className="col border">{Transmissions.transmission_price}</div>    
+                  <div className="col border">{Transmissions.transmission_price}</div>
+                  <div className="col border">{Transmissions.amount}</div>        
                 </div>
               </div>
               )}

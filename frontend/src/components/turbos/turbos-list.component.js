@@ -37,7 +37,8 @@ export default class TurboList extends React.Component {
               <div className="row" >  
                 <div className="col-1 border tableHeader">Id</div>  
                 <div className="col border tableHeader">turbo Name</div>      
-                <div className="col border tableHeader">turbo Price</div>    
+                <div className="col border tableHeader">turbo Price</div> 
+                <div className="col border tableHeader">Amount</div>    
               </div>
             </div>
 
@@ -46,7 +47,8 @@ export default class TurboList extends React.Component {
                 <div className="row" >  
                   <div className="col-1 border" key={Turbos.id}>{Turbos.id}</div>  
                   <div className="col border">{Turbos.turbo_name}</div>      
-                  <div className="col border">{Turbos.turbo_price}</div>    
+                  <div className="col border">{Turbos.turbo_price}</div> 
+                  <div className="col border">{Turbos.amount}</div>       
                 </div>
               </div>
               )}

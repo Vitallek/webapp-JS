@@ -30,6 +30,7 @@ function getConnection() {
           id: row.id,
           engine_name: row.engine_name,
           engine_price: row.engine_price,
+          amount: row.amount,
         }
       })
       res.json(car_engines)
@@ -39,8 +40,8 @@ function getConnection() {
   router.post("/create", (req, res) => {
     const connection = getConnection()
   
-    const queryString = "INSERT INTO car_engines (engine_name, engine_price) VALUES (?, ?)"
-    connection.query(queryString, [req.body.engine_name, req.body.engine_price], (err, results, fields) => {
+    const queryString = "INSERT INTO car_engines (engine_name, engine_price, amount) VALUES (?, ?, ?)"
+    connection.query(queryString, [req.body.engine_name, req.body.engine_price, req.body.amount], (err, results, fields) => {
       if (err) {
         res.sendStatus(500)
         return
@@ -68,8 +69,8 @@ function getConnection() {
 
     console.log("updated")
 
-    const queryString = "UPDATE car_engines SET engine_name = ?, engine_price = ? WHERE id = ?"
-    connection.query(queryString, [req.body.engine_name, req.body.engine_price, req.params.id], (err, results, fields) => {
+    const queryString = "UPDATE car_engines SET engine_name = ?, engine_price = ?, amount = ? WHERE id = ?"
+    connection.query(queryString, [req.body.engine_name, req.body.engine_price, req.body.amount, req.params.id], (err, results, fields) => {
       if (err) {
         console.log(err)
         res.sendStatus(500)

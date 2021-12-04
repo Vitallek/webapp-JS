@@ -6,7 +6,8 @@ export default class EditEngine extends React.Component {
   state = {
     id: '',
     engine_name: '',
-    engine_price: 0
+    engine_price: 0,
+    amount: 0,
   }
 
   handleChangeId = event => {
@@ -18,13 +19,17 @@ export default class EditEngine extends React.Component {
   handleChangePrice = event => {
     this.setState({ engine_price: event.target.value });
   }
+  handleChangeAmount = event => {
+    this.setState({ amount: event.target.value });
+  }
 
   handleSubmit = event => {
     event.preventDefault();
 
     const engine = {
       engine_name: this.state.engine_name,
-      engine_price: this.state.engine_price
+      engine_price: this.state.engine_price,
+      amount: this.state.amount,
     };
 
     axios.put('http://localhost:5000/engines/update/'+this.state.id, engine)
@@ -52,6 +57,10 @@ export default class EditEngine extends React.Component {
           <label className="form-outline mb-4">
             Engine price:
             <input onChange={this.handleChangePrice} className="form-control" type="number"maxLength="10" required name="engine_price" placeholder="Enter price"/>
+          </label>
+          <label className="form-outline mb-4">
+            Amount:
+            <input onChange={this.handleChangeAmount} className="form-control" type="number" name="amount" placeholder="Enter amount" maxLength="10" required/>
           </label>
           <button type="submit" className="btn btn-warning" >Update</button>
         </form>

@@ -6,7 +6,8 @@ export default class EditTransmission extends React.Component {
   state = {
     id: '',
     transmission_name: '',
-    transmission_price: 0
+    transmission_price: 0,
+    amount: 0,
   }
 
   handleChangeId = event => {
@@ -18,13 +19,17 @@ export default class EditTransmission extends React.Component {
   handleChangePrice = event => {
     this.setState({ transmission_price: event.target.value });
   }
+  handleChangeAmount = event => {
+    this.setState({ amount: event.target.value });
+  }
 
   handleSubmit = event => {
     event.preventDefault();
 
     const transmission = {
       transmission_name: this.state.transmission_name,
-      transmission_price: this.state.transmission_price
+      transmission_price: this.state.transmission_price,
+      amount: this.state.amount,
     };
 
     axios.put('http://localhost:5000/transmissions/update/'+this.state.id, transmission)
@@ -52,6 +57,10 @@ export default class EditTransmission extends React.Component {
           <label className="form-outline mb-4">
             transmission price:
             <input onChange={this.handleChangePrice} className="form-control" type="number"maxLength="10" required name="transmission_price" placeholder="Enter price"/>
+          </label>
+          <label className="form-outline mb-4">
+            Amount:
+            <input onChange={this.handleChangeAmount} className="form-control" type="number" name="amount" placeholder="Enter amount" maxLength="10" required/>
           </label>
           <button type="submit" className="btn btn-warning" >Update</button>
         </form>

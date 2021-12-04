@@ -4,7 +4,8 @@ import axios from 'axios';
 export default class AddTransmission extends React.Component {
   state = {
     transmission_name: '',
-    transmission_price: 0
+    transmission_price: 0,
+    amount: 0,
   }
 
   handleChangeName = event => {
@@ -13,6 +14,9 @@ export default class AddTransmission extends React.Component {
   handleChangePrice = event => {
     this.setState({ transmission_price: event.target.value });
   }
+  handleChangeAmount = event => {
+    this.setState({ amount: event.target.value });
+  }
   
 
   handleSubmit = event => {
@@ -20,7 +24,8 @@ export default class AddTransmission extends React.Component {
 
     const engine = {
       transmission_name: this.state.transmission_name,
-      transmission_price: this.state.transmission_price
+      transmission_price: this.state.transmission_price,
+      amount: this.state.amount,
     };
 
     axios.post('http://localhost:5000/transmissions/create', engine)
@@ -44,6 +49,10 @@ export default class AddTransmission extends React.Component {
           <label className="form-outline mb-4">
             transmission price:
             <input onChange={this.handleChangePrice} className="form-control" type="number" name="transmission_price" placeholder="Enter price" maxLength="10" required/>
+          </label>
+          <label className="form-outline mb-4">
+            Amount:
+            <input onChange={this.handleChangeAmount} className="form-control" type="number" name="amount" placeholder="Enter amount" maxLength="10" required/>
           </label>
           <button type="submit" className="btn btn-success">Add</button>
         </form>
