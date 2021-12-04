@@ -23,8 +23,10 @@
   /* border-width: 3px !important; */
 }
 .carPhotoAdmin{
-  width: 300px;
-  height: 300px;
+  width:fit-content;
+  max-width: fit-content;
+  height: fit-content;
+  max-height: fit-content;
 }
 .edit-form {
   max-width: 300px;

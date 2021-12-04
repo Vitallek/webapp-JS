@@ -67,7 +67,7 @@ export default class VehicleModelList extends React.Component {
                   <div className="carCol border">{Vehicle_models.vehicle_stock_price}</div>          
                   <div className="carCol border">{Vehicle_models.car_description}</div>          
                   <div className="carCol border">{Vehicle_models.is_sold}</div>          
-                  <div className="carCol carPhotoAdmin border"><img src={Vehicle_models.photo_path}></img></div>                   
+                  <div className="carCol border"><img className='carPhotoAdmin m-2' src={require(`../../../public/carphoto/${Vehicle_models.id}.jpg`)} alt={Vehicle_models.model_name}/>{Vehicle_models.photo_path}</div>                   
                 </div>
               </div>
               )}
