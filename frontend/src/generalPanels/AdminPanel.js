@@ -1,12 +1,14 @@
-import React, { element } from "react";
+import React, { useState, useEffect } from "react";
+import {useCookies, Cookies} from 'react-cookie';
 import axios from 'axios';
 import {
   Outlet,
   Routes,
   Route,
-  Link
+  Link,
+  useNavigate
 } from "react-router-dom";
-import { ProSidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
+import { ProSidebar, Menu, MenuItem, SubMenu, SidebarHeader, SidebarContent, SidebarFooter } from 'react-pro-sidebar';
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
@@ -27,18 +29,36 @@ import VehicleTypeList from "../components/vehicle_types/vehicle_types-list.comp
 import UsersList from "../components/userrrs/users-list.component";
 
 export default function AdminPanel(){
+  const [role, setRole] = useState("");
+  const navigate = useNavigate();
+  axios.defaults.withCredentials = true;
+  useEffect(() => {
+    axios.get("http://localhost:5000/login").then((response) => {
+      if (response.data.loggedIn == true) {
+        setRole(response.data.user[0].role);
+      } else {navigate('/guest')}
+    });
+  }, []);
 
+  const logout = (e) => {
+    e.preventDefault()
+    axios.get("http://localhost:5000/logout").then((response) => {
+      return response
+    });
+    navigate('/guest')
+  }
   return(
     <div>
       <div className="sidenav">
         <ProSidebar>
           <Menu iconShape="square">
-            <MenuItem>
-              <Link to={"/admin"} className="navbar-brand ">
+            <SidebarHeader className="d-flex justify-content-center align-items-center">
+              <Link to={"/admin"} className="navbar-brand">
                 Vitallek Autoshop
               </Link>
-            </MenuItem>
+            </SidebarHeader>
 
+            <SidebarContent>
             <MenuItem>
               <Link to={"/admin/manufacturers"} className="nav-link">
                 Manufacturers List
@@ -116,6 +136,13 @@ export default function AdminPanel(){
                 Payment type List
               </Link>
             </MenuItem>
+
+            </SidebarContent>
+
+            <SidebarFooter className="d-flex justify-content-center align-items-center mb-3" onClick={logout}>
+              <p className='user-select-none'>Log Out</p>
+            </SidebarFooter>
+            
 
           </Menu>
         </ProSidebar>

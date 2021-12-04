@@ -42,7 +42,7 @@ app.use(function(req, res, next) {
 
 app.use(
   session({
-    key: "someKey",
+    key: "Token",
     secret: "super_Secret",
     resave: false,
     saveUninitialized: false,
@@ -115,6 +115,12 @@ app.post("/register", (req, res) => {
       msg: 'The user has been registerd with us!'
     }); 
   });
+});
+
+app.get("/logout", (req, res, next) => {
+  res.clearCookie('Token', { path: '/' })
+  res.status(200).send({msg: 'Logout complete'})
+  next()
 });
 
 app.get("/login", (req, res) => {
