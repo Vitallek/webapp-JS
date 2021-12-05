@@ -32,13 +32,13 @@ export default function AdminPanel(){
   const [role, setRole] = useState("");
   const navigate = useNavigate();
   axios.defaults.withCredentials = true;
-  // useEffect(() => {
-  //   axios.get("http://localhost:5000/login").then((response) => {
-  //     if (response.data.loggedIn == true) {
-  //       setRole(response.data.user[0].role);
-  //     } else {navigate('/guest')}
-  //   });
-  // }, []);
+  useEffect(() => {
+    axios.get("http://localhost:5000/login").then((response) => {
+      if (response.data.loggedIn == true) {
+        setRole(response.data.user[0].role);
+      } else {navigate('/guest')}
+    });
+  }, []);
 
   const logout = (e) => {
     e.preventDefault()

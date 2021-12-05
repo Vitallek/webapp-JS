@@ -30,39 +30,41 @@ export default class OrderTypeList extends React.Component {
   
   render() {
     return (
-      <div className="adminContainer">
+      <div>
+        <div className="adminContainer">
 
-        <div className="mt-3 tableContainer">
-          
-            <div className="ml-3">
-              <div className="row" >  
-                <div className="col-1 border tableHeader">Id</div>  
-                <div className="col border tableHeader">Order_types's name</div>      
-                <div className="col border tableHeader">Order_type's price multiplier</div> 
-              </div>
-            </div>
-
-            { this.state.order_types.map(Order_types => 
+          <div className="tableContainer">
+            
               <div className="ml-3">
                 <div className="row" >  
-                  <div className="col-1 border" key={Order_types.id}>{Order_types.id}</div>  
-                  <div className="col border">{Order_types.type_name}</div>      
-                  <div className="col border">{Order_types.koef}</div>
+                  <div className="col-1 border tableHeader">Id</div>  
+                  <div className="col border tableHeader">Order_types's name</div>      
+                  <div className="col border tableHeader">Order_type's price multiplier</div> 
                 </div>
               </div>
-              )}
-        </div>
-          <div className="col sidebar-wrapper">
-            <div>
-              <AddOrderType/>
-            </div>
-            <div>
-              <EditOrderType />
-            </div>
-            <div>
-              <DeleteOrderType/>
-            </div>
+
+              { this.state.order_types.map(Order_types => 
+                <div className="ml-3">
+                  <div className="row" >  
+                    <div className="col-1 border" key={Order_types.id}>{Order_types.id}</div>  
+                    <div className="col border">{Order_types.type_name}</div>      
+                    <div className="col border">{Order_types.koef}</div>
+                  </div>
+                </div>
+                )}
           </div>
+        </div>
+        <div className="col sidebar-wrapper">
+        <div>
+          <AddOrderType/>
+        </div>
+        <div>
+          <EditOrderType />
+        </div>
+        <div>
+          <DeleteOrderType/>
+        </div>
+        </div>
       </div>
     )
   }

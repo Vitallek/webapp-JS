@@ -30,36 +30,38 @@ export default class PaymentTypeList extends React.Component {
   
   render() {
     return (
-      <div className="adminContainer">
+      <div>
+        <div className="adminContainer">
 
-        <div className="mt-3 tableContainer">
-          
-            <div className="ml-3">
-              <div className="row" >  
-                <div className="col-1 border tableHeader">Id</div>  
-                <div className="col border tableHeader">payment_types's name</div>      
-              </div>
-            </div>
-
-            { this.state.payment_types.map(Payment_types => 
+          <div className="tableContainer">
+            
               <div className="ml-3">
                 <div className="row" >  
-                  <div className="col-1 border" key={Payment_types.id}>{Payment_types.id}</div>  
-                  <div className="col border">{Payment_types.type_name}</div>      
+                  <div className="col-1 border tableHeader">Id</div>  
+                  <div className="col border tableHeader">payment_types's name</div>      
                 </div>
               </div>
-              )}
-        </div>
+
+              { this.state.payment_types.map(Payment_types => 
+                <div className="ml-3">
+                  <div className="row" >  
+                    <div className="col-1 border" key={Payment_types.id}>{Payment_types.id}</div>  
+                    <div className="col border">{Payment_types.type_name}</div>      
+                  </div>
+                </div>
+                )}
+          </div>
+          </div>
           <div className="col sidebar-wrapper">
-            <div>
-              <AddPaymentType/>
-            </div>
-            <div>
-              <EditPaymentType />
-            </div>
-            <div>
-              <DeletePaymentType/>
-            </div>
+          <div>
+            <AddPaymentType/>
+          </div>
+          <div>
+            <EditPaymentType />
+          </div>
+          <div>
+            <DeletePaymentType/>
+          </div>
           </div>
       </div>
     )

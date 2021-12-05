@@ -1,6 +1,5 @@
 import React from "react";
 import { BrowserRouter as Router, Route ,Link, Routes} from "react-router-dom";
-import "./App.css";
 import Main from "./Main";
 import GuestPanel from "./GuestPanel";
 import UserPanel from "./generalPanels/UserPanel";
@@ -22,7 +21,7 @@ import VehicleTypeList from "./components/vehicle_types/vehicle_types-list.compo
 import UsersList from "./components/userrrs/users-list.component";
 function App() {
   return(
-    <div>
+    <div class="app">
       <Router>
         <Routes>
           <Route path='/' element={<Main/>}/>

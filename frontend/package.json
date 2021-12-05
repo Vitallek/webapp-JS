@@ -13,6 +13,7 @@
     "react": "^16.13.0",
     "react-cookie": "^4.1.1",
     "react-dom": "^16.13.0",
+    "react-fit-to-viewport": "^0.1.1",
     "react-pro-sidebar": "^0.7.1",
     "react-router": "^6.0.2",
     "react-router-dom": "^6.0.2",

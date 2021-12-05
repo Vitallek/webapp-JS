@@ -30,36 +30,38 @@ export default class VehicleTypeList extends React.Component {
   
   render() {
     return (
-      <div className="adminContainer">
+      <div>
+        <div className="adminContainer">
 
-        <div className="mt-3 tableContainer">
-          
-            <div className="ml-3">
-              <div className="row" >  
-                <div className="col-1 border tableHeader">Id</div>  
-                <div className="col border tableHeader">vehicle_types's name</div>      
-              </div>
-            </div>
-
-            { this.state.vehicle_types.map(Vehicle_types => 
+          <div className="tableContainer">
+            
               <div className="ml-3">
                 <div className="row" >  
-                  <div className="col-1 border" key={Vehicle_types.id}>{Vehicle_types.id}</div>  
-                  <div className="col border">{Vehicle_types.type_name}</div>      
+                  <div className="col-1 border tableHeader">Id</div>  
+                  <div className="col border tableHeader">vehicle_types's name</div>      
                 </div>
               </div>
-              )}
-        </div>
+
+              { this.state.vehicle_types.map(Vehicle_types => 
+                <div className="ml-3">
+                  <div className="row" >  
+                    <div className="col-1 border" key={Vehicle_types.id}>{Vehicle_types.id}</div>  
+                    <div className="col border">{Vehicle_types.type_name}</div>      
+                  </div>
+                </div>
+                )}
+          </div>
+          </div>
           <div className="col sidebar-wrapper">
-            <div>
-              <AddVehicleType/>
-            </div>
-            <div>
-              <EditVehicleType />
-            </div>
-            <div>
-              <DeleteVehicleType/>
-            </div>
+          <div>
+            <AddVehicleType/>
+          </div>
+          <div>
+            <EditVehicleType />
+          </div>
+          <div>
+            <DeleteVehicleType/>
+          </div>
           </div>
       </div>
     )

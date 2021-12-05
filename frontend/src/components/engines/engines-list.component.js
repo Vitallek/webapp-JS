@@ -29,40 +29,42 @@ export default class EngineList extends React.Component {
   
   render() {
     return (
-      <div className="adminContainer">
+      <div>
+        <div className="adminContainer">
 
-        <div className="mt-3 tableContainer">
-          
-            <div className="ml-3">
-              <div className="row" >  
-                <div className="col-1 border tableHeader">Id</div>  
-                <div className="col border tableHeader">Engine Name</div>      
-                <div className="col border tableHeader">Engine Price</div> 
-                <div className="col border tableHeader">Amount</div>    
-              </div>
-            </div>
-
-            { this.state.car_engines.map(Car_engines => 
+          <div className="tableContainer">
+            
               <div className="ml-3">
                 <div className="row" >  
-                  <div className="col-1 border" key={Car_engines.id}>{Car_engines.id}</div>  
-                  <div className="col border">{Car_engines.engine_name}</div>      
-                  <div className="col border">{Car_engines.engine_price}</div>    
-                  <div className="col border">{Car_engines.amount}</div>                    
+                  <div className="col-1 border tableHeader">Id</div>  
+                  <div className="col border tableHeader">Engine Name</div>      
+                  <div className="col border tableHeader">Engine Price</div> 
+                  <div className="col border tableHeader">Amount</div>    
                 </div>
               </div>
-              )}
-        </div>
+
+              { this.state.car_engines.map(Car_engines => 
+                <div className="ml-3">
+                  <div className="row" >  
+                    <div className="col-1 border" key={Car_engines.id}>{Car_engines.id}</div>  
+                    <div className="col border">{Car_engines.engine_name}</div>      
+                    <div className="col border">{Car_engines.engine_price}</div>    
+                    <div className="col border">{Car_engines.amount}</div>                    
+                  </div>
+                </div>
+                )}
+          </div>
+          </div>
           <div className="col sidebar-wrapper">
-            <div>
-              <AddEngine/>
-            </div>
-            <div>
-              <EditEngine />
-            </div>
-            <div>
-              <DeleteEngine/>
-            </div>
+          <div>
+            <AddEngine/>
+          </div>
+          <div>
+            <EditEngine />
+          </div>
+          <div>
+            <DeleteEngine/>
+          </div>
           </div>
       </div>
     )

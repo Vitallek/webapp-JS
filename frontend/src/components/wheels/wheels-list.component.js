@@ -30,41 +30,43 @@ export default class WheelList extends React.Component {
   
   render() {
     return (
-      <div className="adminContainer">
+      <div>
+        <div className="adminContainer">
 
-        <div className="mt-3 tableContainer">
-          
-            <div className="ml-3">
-              <div className="row" >  
-                <div className="col-1 border tableHeader">Id</div>  
-                <div className="col border tableHeader">Wheels_name</div>      
-                <div className="col border tableHeader">Wheels_price</div>   
-                <div className="col border tableHeader">Amount</div>    
- 
-              </div>
-            </div>
-
-            { this.state.wheels.map(Wheels => 
+          <div className="tableContainer">
+            
               <div className="ml-3">
                 <div className="row" >  
-                  <div className="col-1 border" key={Wheels.Id}>{Wheels.Id}</div>  
-                  <div className="col border">{Wheels.wheels_name}</div>      
-                  <div className="col border">{Wheels.wheels_price}</div>    
-                  <div className="col border">{Wheels.amount}</div>    
+                  <div className="col-1 border tableHeader">Id</div>  
+                  <div className="col border tableHeader">Wheels_name</div>      
+                  <div className="col border tableHeader">Wheels_price</div>   
+                  <div className="col border tableHeader">Amount</div>    
+
                 </div>
               </div>
-              )}
-        </div>
+
+              { this.state.wheels.map(Wheels => 
+                <div className="ml-3">
+                  <div className="row" >  
+                    <div className="col-1 border" key={Wheels.Id}>{Wheels.Id}</div>  
+                    <div className="col border">{Wheels.wheels_name}</div>      
+                    <div className="col border">{Wheels.wheels_price}</div>    
+                    <div className="col border">{Wheels.amount}</div>    
+                  </div>
+                </div>
+                )}
+          </div>
+          </div>
           <div className="col sidebar-wrapper">
-            <div>
-              <AddWheel/>
-            </div>
-            <div>
-              <EditWheel />
-            </div>
-            <div>
-              <DeleteWheel/>
-            </div>
+          <div>
+            <AddWheel/>
+          </div>
+          <div>
+            <EditWheel />
+          </div>
+          <div>
+            <DeleteWheel/>
+          </div>
           </div>
       </div>
     )

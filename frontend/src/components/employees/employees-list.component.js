@@ -30,42 +30,42 @@ export default class EmployeeList extends React.Component {
   
   render() {
     return (
-      <div className="adminContainer">
-
-        <div className="mt-3 tableContainer">
-          
-            <div className="ml-3">
-              <div className="row" >  
-                <div className="col-1 border tableHeader">Id</div>  
-                <div className="col border tableHeader">Employee's ID</div>      
-                <div className="col border tableHeader">Employee's First Name</div> 
-                <div className="col border tableHeader">Employee's Last Name</div>     
-              </div>
-            </div>
-
-            { this.state.employees.map(Employees => 
+      <div >
+        <div className="adminContainer">
+          <div className="tableContainer">        
               <div className="ml-3">
-                <div className="row">  
-                  <div className="col-1 border" key={Employees.id}>{Employees.id}</div>  
-                  <div className="col border">{Employees.first_name}</div>      
-                  <div className="col border">{Employees.last_name}</div>
-                  <div className="col border">{Employees.qualification_id}</div>     
+                <div className="row" >  
+                  <div className="col-1 border tableHeader">Id</div>  
+                  <div className="col border tableHeader">Employee's First Name</div> 
+                  <div className="col border tableHeader">Employee's Last Name</div> 
+                  <div className="col border tableHeader">Employee's qualification</div>          
                 </div>
               </div>
-              )}
-        </div>
-          <div className="col sidebar-wrapper">
-            <div>
-              <AddEmployee/>
-              
-            </div>
-            <div>
-              <EditEmployee />
-            </div>
-            <div>
-              <DeleteEmployee/>
-            </div>
+
+              { this.state.employees.map(Employees => 
+                <div className="ml-3">
+                  <div className="row">  
+                    <div className="col-1 border" key={Employees.id}>{Employees.id}</div>  
+                    <div className="col border">{Employees.first_name}</div>      
+                    <div className="col border">{Employees.last_name}</div>
+                    <div className="col border">{Employees.qualification_id}</div>     
+                  </div>
+                </div>
+                )}
           </div>
+        </div>
+        <div className="col sidebar-wrapper">
+          <div>
+            <AddEmployee/>
+            
+          </div>
+          <div>
+            <EditEmployee />
+          </div>
+          <div>
+            <DeleteEmployee/>
+          </div>
+        </div>
       </div>
     )
   }
