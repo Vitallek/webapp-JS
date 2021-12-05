@@ -118,14 +118,14 @@ export default function AdminPanel(){
                   Order types
                 </Link>
               </li>
-              <li className="nav-item">
-                <Link to={"/admin/payment_types"} className="nav-link">
+              <li className="nav-item ">
+                <Link to={"/admin/payment_types"} className="nav-link ">
                   Payment type List
                 </Link>
               </li>
 
-              <li className="nav-item" onClick={logout}>
-                <p className="navbar-brand ml-2">Log Out</p>
+              <li className="nav-item logout">
+                <p className="navbar-brand ml-2" onClick={logout}>Log Out</p>
               </li>
             </ul>
           </div>

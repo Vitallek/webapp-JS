@@ -26,24 +26,89 @@ export default function UserPanel(){
   }
   
   return(
-    <div classNameName='bg1'>
-      <nav className="navbar navbar-expand-lg fixed-top navbar-dark bg-dark my-custom-scrollbar my-custom-scrollbar-primary">
-        <a className="navbar-brand" href="#">Vitallek Carshop</a>
+    <div className='bg1'>
+      <div className=''>
+        <nav className="navbar-expand-lg fixed-top navbar-dark user-nav-bg">
+          <div className='scrollbar scrollbar-primary'>
+            <ul className="navbar-nav scroll pl-3 pt-3">
+              <li className="nav-item ml-2">
+              <Link to={"/admin"} className="navbar-brand">
+                Vitallek Carshop
+              </Link>
+              </li>
+              <li className="nav-item">
+                <Link to={"/admin/manufacturers"} className="nav-link">
+                  Manufacturers
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to={"/admin/vehicle_models"} className="nav-link">
+                  Vehicles
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to={"/admin/engines"} className="nav-link">
+                  Engines
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to={"/admin/turbos"} className="nav-link">
+                  Turbos
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to={"/admin/transmissions"} className="nav-link">
+                  Transmissions
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to={"/admin/wheels"} className="nav-link">
+                  Wheels
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to={"/admin/vehicle_types"} className="nav-link">
+                  Vehicle types
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to={"/admin/users"} className="nav-link">
+                  Users
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to={"/admin/employees"} className="nav-link">
+                  Employees
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to={"/admin/qualifications"} className="nav-link">
+                  Qualifications
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to={"/admin/orders"} className="nav-link">
+                  Orders
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to={"/admin/order_types"} className="nav-link">
+                  Order types
+                </Link>
+              </li>
+              <li className="nav-item ">
+                <Link to={"/admin/payment_types"} className="nav-link ">
+                  Payment type List
+                </Link>
+              </li>
 
-        <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav mr-auto">
-            <li className="nav-item active">
-              <a className="nav-link" href="#">Home</a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#">Link</a>
-            </li>
-            <li className="nav-link d-flex justify-content-center align-items-center mb-3" onClick={logout}>
-              <p className='user-select-none'>Log Out</p>
-            </li>
-          </ul>
-        </div>
-      </nav>
+              <li className="nav-item logout">
+                <p className="navbar-brand ml-2" onClick={logout}>Log Out</p>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
     </div>
   )
 }

@@ -151,6 +151,9 @@
   width: 200px;
   text-align: center;
 }
+.logout{
+  cursor: pointer;
+}
 .loginformwrapper{
   display: flex;
   align-items: center;
