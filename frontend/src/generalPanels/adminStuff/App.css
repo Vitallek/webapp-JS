@@ -1,28 +1,55 @@
-.sidenav {
-  height: 100%; /* Full-height: remove this if you want "auto" height */
-  width: 280px; /* Set the width of the sidebar */
-  position: fixed; /* Fixed Sidebar (stay in place on scroll) */
-  z-index: 1; /* Stay on top */
-  top: 0; /* Stay at the top */
-  left: 0;
-  background-color: #1D1D1D; /* Black */
-  overflow-x: hidden; /* Disable horizontal scroll */
-}
 .sidebar-wrapper {
   height: 100%; /* Full-height: remove this if you want "auto" height */
-  width: 280px; /* Set the width of the sidebar */
+  width: 250px; /* Set the width of the sidebar */
   position: fixed; /* Fixed Sidebar (stay in place on scroll) */
   z-index: 1; /* Stay on top */
-  top: 0; /* Stay at the top */
-  left: 280px;
+  top: 72px; /* Stay at the top */
+  left: 0;
   overflow-x: hidden; /* Disable horizontal scroll */
-  background-color: #343A40; /* Black */
 }
-.tableHeader{
-  box-sizing: border-box;
-  /* border-width: 3px !important; */
+.btn-danger{
+  margin-bottom: 100px;
+}
+.adminContainer{
+  width: 80%;
+  background: white;
+  transform: translateY(80px);
+  margin-left: 250px;
+}
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #343a40; 
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  border-radius:5px;
+  background: #6c757d; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #808991; 
+}
+.scroll {
+  white-space: nowrap;
+  overflow-x: auto; 
+  -webkit-overflow-scrolling: touch;
+}
+.navbar-nav li{
+  display: inline-block;
+}
+.nav-bg{
+  background: linear-gradient( rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9) );
 }
 .edit-form {
+  background: linear-gradient( rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9) );
   max-width: 300px;
   margin: auto;
 }
@@ -30,7 +57,7 @@
   text-align: center;
 }
 .mainContainer{
-  width: auto;
+  background: white;
 }
 .tableContainer{
   width: auto;
@@ -112,10 +139,6 @@
   height: auto;
   text-align: center;
 }
-.logout{
-  width:30px;
-  height: 30px;
-}
 .usercol:nth-child(3){
   width: 250px;
   text-align: center;
@@ -127,9 +150,6 @@
 .usercol:nth-child(5){
   width: 200px;
   text-align: center;
-}
-.adminContainer{
-  margin-left: 560px;
 }
 .loginformwrapper{
   display: flex;

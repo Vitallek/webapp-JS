@@ -41,7 +41,11 @@ function App() {
             <Route path={`/admin/turbos`} element={<TurboList/>} />
             <Route path={`/admin/vehicle_types`} element={<VehicleTypeList/>} />
             <Route path={`/admin/users`} element={<UsersList/>} />
-          </Route>
+            </Route>
+          <Route path='/user' element={<UserPanel/>}>
+
+            </Route>
+
           
         </Routes>
       </Router>

@@ -37,7 +37,7 @@ export default class EditManufacturer extends React.Component {
 
   render() {
     return (
-      <div className="float-right p-4 mb-4 text-light">
+      <div className="float-left p-4 text-light">
         <form onSubmit={this.handleSubmit} className="d-flex flex-column justify-content-center">
           <label className="form-outline mb-4">
             manufacturer id:

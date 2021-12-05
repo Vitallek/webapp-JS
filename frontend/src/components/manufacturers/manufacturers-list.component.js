@@ -27,10 +27,10 @@ export default class ManufacturerList extends React.Component {
   
   render() {
     return (
-      <div className="adminContainer">
-
-        <div className="mt-3 tableContainer">
-          
+      <div >
+        <div className="adminContainer">
+          <div className="tableContainer">
+            
             <div className="ml-3">
               <div className="row" >  
                 <div className="col-1 border tableHeader">Id</div>  
@@ -47,17 +47,18 @@ export default class ManufacturerList extends React.Component {
               </div>
               )}
         </div>
-          <div className="col sidebar-wrapper">
-            <div>
-              <AddManufacturer/>
-            </div>
-            <div>
-              <EditManufacturer />
-            </div>
-            <div>
-              <DeleteManufacturer/>
-            </div>
+        </div>
+        <div className="col sidebar-wrapper">
+          <div>
+            <AddManufacturer/>
           </div>
+          <div>
+            <EditManufacturer />
+          </div>
+          <div>
+            <DeleteManufacturer/>
+          </div>
+        </div>
       </div>
     )
   }
