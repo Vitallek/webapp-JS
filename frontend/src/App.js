@@ -19,6 +19,10 @@ import TransmissionsList from "./components/transmissions/transmissions-list.com
 import TurboList from "./components/turbos/turbos-list.component";
 import VehicleTypeList from "./components/vehicle_types/vehicle_types-list.component";
 import UsersList from "./components/userrrs/users-list.component";
+
+import UserOrders from "./components/userOrders/userOrders.component";
+import UserVehicleModelList
+ from "./components/userVehicles/userVehicles.component";
 function App() {
   return(
     <div class="app">
@@ -42,7 +46,7 @@ function App() {
             <Route path={`/admin/users`} element={<UsersList/>} />
             </Route>
           <Route path='/user' element={<UserPanel/>}>
-
+            <Route path={`/user/orders`} element={<UserOrders/>} />
             </Route>
 
           
