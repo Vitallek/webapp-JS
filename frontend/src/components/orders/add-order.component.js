@@ -12,6 +12,7 @@ export default class AddOrder extends React.Component {
     order_type: 1,
     payment_type: 1,
     customer_id: '',
+    status: 'pending'
   }
 }
 

@@ -3,6 +3,7 @@ import axios from 'axios';
 import AddWheel from './add-wheel.component';
 import EditWheel from './editWheel.component';
 import DeleteWheel from './deleteWheel.component';
+import AddWheelAmount from './addWheelAmount';
 
 
 const apiUrl = "http://localhost:5000/wheels";
@@ -58,6 +59,9 @@ export default class WheelList extends React.Component {
           </div>
           </div>
           <div className="col sidebar-wrapper">
+          <div>
+            <AddWheelAmount/>
+          </div>
           <div>
             <AddWheel/>
           </div>

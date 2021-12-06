@@ -44,7 +44,8 @@ export default class OrdersList extends React.Component {
                   <div className="ordercol border tableHeader">order_date</div>      
                   <div className="ordercol border tableHeader">order_type</div>      
                   <div className="ordercol border tableHeader">payment_type</div>      
-                  <div className="ordercol border tableHeader">customer_id</div>             
+                  <div className="ordercol border tableHeader">customer_id</div> 
+                  <div className="ordercol border tableHeader">status</div>                         
                 </div>
               </div>
 
@@ -59,7 +60,7 @@ export default class OrdersList extends React.Component {
                     <div className="ordercol border">{Orders.order_type}</div>     
                     <div className="ordercol border">{Orders.payment_type}</div>         
                     <div className="ordercol border">{Orders.customer_id}</div>         
-          
+                    <div className="ordercol border">{Orders.status}</div>                   
                   </div>
                 </div>
                 )}

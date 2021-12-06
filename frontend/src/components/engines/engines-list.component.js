@@ -3,6 +3,7 @@ import axios from 'axios';
 import AddEngine from './add-engine.component';
 import EditEngine from './editEngine.component';
 import DeleteEngine from './deleteEngine.component';
+import AddEngineAmount from './addEngineAmount';
 
 
 const apiUrl = "http://localhost:5000/engines";
@@ -56,6 +57,9 @@ export default class EngineList extends React.Component {
           </div>
           </div>
           <div className="col sidebar-wrapper">
+          <div>
+            <AddEngineAmount/>
+          </div>
           <div>
             <AddEngine/>
           </div>

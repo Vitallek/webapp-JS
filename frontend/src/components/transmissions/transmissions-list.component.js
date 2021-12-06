@@ -3,6 +3,7 @@ import axios from 'axios';
 import AddTransmission from './add-transmission.component';
 import EditTransmission from './editTransmission.component';
 import DeleteTransmission from './deleteTransmission.component';
+import AddTransmissionAmount from './addTransmissionAmount';
 
 
 const apiUrl = "http://localhost:5000/transmissions";
@@ -56,6 +57,9 @@ export default class TransmissionsList extends React.Component {
           </div>
           </div>
           <div className="col sidebar-wrapper">
+          <div>
+            <AddTransmissionAmount/>
+          </div>
           <div>
             <AddTransmission/>
           </div>

@@ -80,5 +80,20 @@ function getConnection() {
     })
   })
 
+  router.put("/add", (req, res) => {
+    const connection = getConnection()
+
+    console.log("updated")
+
+    const queryString = "call addWheelsToWarehouse (?,?)"
+    connection.query(queryString, [req.body.howMany, req.body.id], (err, results, fields) => {
+      if (err) {
+        console.log(err)
+        res.sendStatus(500)
+        return
+      }
+      res.end()
+    })
+  })
 
 module.exports = router

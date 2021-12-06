@@ -12,6 +12,7 @@ export default class EditOrder extends React.Component {
     order_type: 1,
     payment_type: 1,
     customer_id: '',
+    status: '',
   }
 
   handleChangeId = event => {
@@ -35,6 +36,9 @@ export default class EditOrder extends React.Component {
   handleChangeCustomerID = event => {
     this.setState({ customer_id: event.target.value });
   }
+  handleChangeStatus = event => {
+    this.setState({ status: event.target.value });
+  }
 
   handleSubmit = event => {
     event.preventDefault();
@@ -48,6 +52,7 @@ export default class EditOrder extends React.Component {
       order_type: this.state.order_type,
       payment_type: this.state.payment_type,
       customer_id: this.state.customer_id,
+      status: this.state.status,
     };
 
     axios.put('http://localhost:5000/orders/update/'+this.state.id, order)
@@ -104,6 +109,15 @@ export default class EditOrder extends React.Component {
             customer_id:
             <input onChange={this.handleChangeCustomerID} className="form-control" type="number" required name="ordercustomerid" placeholder="Enter employee id" />
           </label>
+
+          <label className="form-outline mb-4">
+            order status:
+          <select onChange={this.handleChangeStatus} className="form-control" type="text" name="status">
+            <option value="pending">В обработке</option>
+            <option value="confirmed">Подтверждён</option>
+          </select>
+          </label>
+
           <button type="submit" className="btn btn-warning">Update</button>
         </form>
       </div>

@@ -3,6 +3,7 @@ import axios from 'axios';
 import AddTurbo from './add-turbo.component';
 import EditTurbo from './editTurbo.component';
 import DeleteTurbo from './deleteTurbo.component';
+import AddTurboAmount from './addTurboAmount';
 
 
 const apiUrl = "http://localhost:5000/turbos";
@@ -56,6 +57,9 @@ export default class TurboList extends React.Component {
           </div>
           </div>
           <div className="col sidebar-wrapper">
+          <div>
+            <AddTurboAmount/>
+          </div>
           <div>
             <AddTurbo/>
           </div>
