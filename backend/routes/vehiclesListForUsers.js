@@ -15,10 +15,10 @@ function getConnection() {
     return pool
 }
 
-  router.get("/", (req,res) => {
+  router.get("/cars", (req,res) => {
     const connection = getConnection()
   
-    const queryString = "Select * FROM vehicle_models"
+    const queryString = "call showCars()"
     connection.query(queryString, (error, rows, fields) => {
       if (error) {
         res.sendStatus(500)
@@ -28,17 +28,15 @@ function getConnection() {
       const vehicle_models = rows.map((row) => {
         return {
           id: row.id,
+          company_name: row.company_name,
           model_name: row.model_name,
-          manufacturer_id: row.manufacturer_id,
+          wheels_name: row.wheels_name,
+          engine_name: row.engine_name,
+          transmission_name: row.transmission_name,
+          turbo_name: row.turbo_name,
           vin: row.vin,
-          type_id: row.type_id,
-          engine_id: row.engine_id,
-          transmission_id: row.transmission_id,
-          turbo_id: row.turbo_id,
-          wheels_id: row.wheels_id,
           vehicle_stock_price: row.vehicle_stock_price,
           car_description: row.car_description,
-          is_sold: row.is_sold,
           photo_path: row.photo_path,
         }
       })

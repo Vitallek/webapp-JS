@@ -57,7 +57,7 @@ export default class AddWheel extends React.Component {
             Amount:
             <input onChange={this.handleChangeAmount} className="form-control" type="number" name="amount" placeholder="Enter amount" maxLength="10" required/>
           </label>
-          <button type="submit"  className="btn btn-success">Add</button>
+          <button type="submit"  className="btn btn-success">Add to Warehouse</button>
         </form>
       </div>
     );
