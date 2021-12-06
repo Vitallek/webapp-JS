@@ -7,6 +7,7 @@ export default class AddEmployee extends React.Component {
     first_name: '',
     last_name: '',
     qualification_id: 1,
+    isFree: 'busy',
   }
 
   handleChangeFirstName = event => {
@@ -27,6 +28,7 @@ export default class AddEmployee extends React.Component {
       first_name: this.state.first_name,
       last_name: this.state.last_name,
       qualification_id: this.state.qualification_id,
+      isFree: this.state.isFree,
     };
 
     axios.post('http://localhost:5000/employees/create', employee)
@@ -51,16 +53,22 @@ export default class AddEmployee extends React.Component {
           </label>
           <label className="form-outline mb-4">
             Employee's Last Name:
-            <input onChange={this.handleChangeLastName} className="form-control" type="price" name="last_name" placeholder="Enter price" maxlength = "20" required />
+            <input onChange={this.handleChangeLastName} className="form-control" type="text" name="last_name" placeholder="Enter price" maxlength = "20" required />
           </label>
           <label for="qualifictation" className="form-outline mb-4">
             Employee's Qualification:
-            <select onChange={this.handleChangeQualificationID} className="form-control" id="qualifictation" type="qualifictation" name="qualifictation">
+            <select onChange={this.handleChangeQualificationID} className="form-control" id="qualifictation" type="text" name="qualifictation">
             <option value="1">Junior</option>
             <option value="2">Middle</option>
             <option value="3">Senior</option>
           </select>
           </label>
+
+          <label for="isFree" className="form-outline mb-4">
+            Employee's condition:
+            <input disabled className="form-control" type="text" name="isFree" placeholder="busy" maxlength = "20" required />
+          </label>
+
           <button type="submit" className="btn btn-success">Add</button>
         </form>
       </div>

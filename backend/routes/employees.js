@@ -31,6 +31,7 @@ function getConnection() {
           first_name: row.first_name,
           last_name: row.last_name,
           qualification_id: row.qualification_id,
+          isFree: row.isFree,
           // emp_photo: row.emp_photo
         }
       })
@@ -41,8 +42,8 @@ function getConnection() {
   router.post("/create", (req, res) => {
     const connection = getConnection()
   
-    const queryString = "INSERT INTO employees (first_name, last_name, qualification_id) VALUES (?, ?, ?)"
-    connection.query(queryString, [req.body.first_name, req.body.last_name, req.body.qualification_id], (err, results, fields) => {
+    const queryString = "INSERT INTO employees (first_name, last_name, qualification_id, isFree) VALUES (?, ?, ?, ?)"
+    connection.query(queryString, [req.body.first_name, req.body.last_name, req.body.isFree, req.body.qualification_id], (err, results, fields) => {
       if (err) {
         res.sendStatus(500)
         return
@@ -70,8 +71,8 @@ function getConnection() {
 
     console.log("updated")
 
-    const queryString = "UPDATE employees SET first_name = ?, last_name = ?, qualification_id = ? WHERE id = ?"
-    connection.query(queryString, [req.body.first_name, req.body.last_name, req.body.qualification_id, req.params.id], (err, results, fields) => {
+    const queryString = "UPDATE employees SET first_name = ?, last_name = ?, qualification_id = ?, isFree =? WHERE id = ?"
+    connection.query(queryString, [req.body.first_name, req.body.last_name, req.body.qualification_id,req.body.isFree, req.params.id], (err, results, fields) => {
       if (err) {
         console.log(err)
         res.sendStatus(500)

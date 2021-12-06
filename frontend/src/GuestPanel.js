@@ -58,7 +58,7 @@ export default function GuestPanel() {
     return(
         <div className="body">
             <div className="row justify-content-center">
-                <div className="col-md-6 text-center mb-5">
+                <div className="col-md-6 text-center mb-5 mt-3">
                     <div className="display-3 text-light">Vitallek Carshop</div>
                 </div>
             </div>

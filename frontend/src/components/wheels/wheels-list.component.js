@@ -46,9 +46,9 @@ export default class WheelList extends React.Component {
               </div>
 
               { this.state.wheels.map(Wheels => 
-                <div className="ml-3">
+                <div className="ml-3" key={Wheels.Id}>
                   <div className="row" >  
-                    <div className="col-1 border" key={Wheels.Id}>{Wheels.Id}</div>  
+                    <div className="col-1 border">{Wheels.Id}</div>  
                     <div className="col border">{Wheels.wheels_name}</div>      
                     <div className="col border">{Wheels.wheels_price}</div>    
                     <div className="col border">{Wheels.amount}</div>    

@@ -8,6 +8,7 @@ export default class EditEmployee extends React.Component {
     first_name: '',
     last_name: '',
     qualification_id: 1,
+    isFree: '',
   }
 
 
@@ -23,6 +24,9 @@ export default class EditEmployee extends React.Component {
   handleChangeQualificationID = event => {
     this.setState({ qualification_id: parseInt(event.target.value, 10)});
   }
+  handleChangeFreedom = event => {
+    this.setState({ isFree: event.target.value});
+  }
 
 
   handleSubmit = event => {
@@ -32,6 +36,7 @@ export default class EditEmployee extends React.Component {
       first_name: this.state.first_name,
       last_name: this.state.last_name,
       qualification_id: this.state.qualification_id,
+      isFree: this.state.isFree,
     };
 
     axios.put('http://localhost:5000/employees/update/'+this.state.id, employee)
@@ -58,15 +63,23 @@ export default class EditEmployee extends React.Component {
           </label>
           <label className="form-outline mb-4">
             Employee's Last Name:
-            <input onChange={this.handleChangeLastName} className="form-control" type="price" name="last_name" placeholder="Enter price" maxlength = "20" required />
+            <input onChange={this.handleChangeLastName} className="form-control" type="text" name="last_name" placeholder="Enter price" maxlength = "20" required />
           </label>
 
           <label for="qualifictation" className="form-outline mb-4">
             Employee's Qualification:
-            <select onChange={this.handleChangeQualificationID} className="form-control" id="qualifictation" type="qualifictation" name="qualifictation">
+            <select onChange={this.handleChangeQualificationID} className="form-control" id="qualifictation" type="text" name="qualifictation">
             <option value="1">Junior</option>
             <option value="2">Middle</option>
             <option value="3">Senior</option>
+          </select>
+          </label>
+
+          <label for="qualifictation" className="form-outline mb-4">
+            Employee's condition:
+            <select onChange={this.handleChangeFreedom} className="form-control" id="qualifictation" type="text" name="qualifictation">
+            <option value="free">Free</option>
+            <option value="busy">Busy</option>
           </select>
           </label>
           

@@ -44,9 +44,9 @@ export default class TransmissionsList extends React.Component {
               </div>
 
               { this.state.transmissions.map(Transmissions => 
-                <div className="ml-3">
+                <div className="ml-3" key={Transmissions.id}>
                   <div className="row" >  
-                    <div className="col-1 border" key={Transmissions.id}>{Transmissions.id}</div>  
+                    <div className="col-1 border">{Transmissions.id}</div>  
                     <div className="col border">{Transmissions.transmission_name}</div>      
                     <div className="col border">{Transmissions.transmission_price}</div>
                     <div className="col border">{Transmissions.amount}</div>        

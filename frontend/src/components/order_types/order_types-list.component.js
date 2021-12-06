@@ -44,9 +44,9 @@ export default class OrderTypeList extends React.Component {
               </div>
 
               { this.state.order_types.map(Order_types => 
-                <div className="ml-3">
+                <div className="ml-3 " key={Order_types.id}>
                   <div className="row" >  
-                    <div className="col-1 border" key={Order_types.id}>{Order_types.id}</div>  
+                    <div className="col-1 border">{Order_types.id}</div>  
                     <div className="col border">{Order_types.type_name}</div>      
                     <div className="col border">{Order_types.koef}</div>
                   </div>

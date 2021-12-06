@@ -48,9 +48,9 @@ export default class UserOrders extends React.Component {
               </div>
 
               { this.state.orders.map(Orders => 
-                <div className="ml-3">
+                <div className="ml-3" key={Orders.id}>
                   <div className="row" >  
-                    <div className="ordercol border" key={Orders.id}>{Orders.id}</div>  
+                    <div className="ordercol border">{Orders.id}</div>  
                     <div className="ordercol border">{Orders.shop_name}</div>
                     <div className="ordercol border">{Orders.emp_id}</div>                  
                     <div className="ordercol border">{Orders.vehicle_id}</div>         

@@ -42,7 +42,6 @@ export default class OrdersList extends React.Component {
                   <div className="ordercol border tableHeader">Emp id</div>      
                   <div className="ordercol border tableHeader">vehicle id</div>      
                   <div className="ordercol border tableHeader">order_date</div>      
-                  <div className="ordercol border tableHeader">order_price</div>      
                   <div className="ordercol border tableHeader">order_type</div>      
                   <div className="ordercol border tableHeader">payment_type</div>      
                   <div className="ordercol border tableHeader">customer_id</div>             
@@ -50,14 +49,13 @@ export default class OrdersList extends React.Component {
               </div>
 
               { this.state.orders.map(Orders => 
-                <div className="ml-3">
+                <div className="ml-3" key={Orders.id}>
                   <div className="row" >  
-                    <div className="ordercol border" key={Orders.id}>{Orders.id}</div>  
+                    <div className="ordercol border">{Orders.id}</div>  
                     <div className="ordercol border">{Orders.shop_name}</div>
                     <div className="ordercol border">{Orders.emp_id}</div>                  
                     <div className="ordercol border">{Orders.vehicle_id}</div>         
                     <div className="ordercol border">{Orders.order_date}</div>         
-                    <div className="ordercol border">{Orders.order_price}</div>    
                     <div className="ordercol border">{Orders.order_type}</div>     
                     <div className="ordercol border">{Orders.payment_type}</div>         
                     <div className="ordercol border">{Orders.customer_id}</div>         

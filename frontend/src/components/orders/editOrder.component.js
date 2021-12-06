@@ -9,7 +9,6 @@ export default class EditOrder extends React.Component {
     emp_id: '',
     vehicle_id: '',
     order_date: require('moment')().format('YYYY-MM-DD HH:mm:ss'),
-    order_price: '',
     order_type: 1,
     payment_type: 1,
     customer_id: '',
@@ -30,9 +29,6 @@ export default class EditOrder extends React.Component {
   handleChangeOrderType = event => {
     this.setState({ order_type: parseInt(event.target.value, 10) });
   }
-  handleChangeOrderPrice = event => {
-    this.setState({ order_price: event.target.value });
-  }
   handleChangePayment = event => {
     this.setState({ payment_type: parseInt(event.target.value, 10) });
   }
@@ -49,7 +45,6 @@ export default class EditOrder extends React.Component {
       emp_id: this.state.emp_id,
       vehicle_id: this.state.vehicle_id,
       order_date: this.state.order_date,
-      order_price: this.state.order_price,
       order_type: this.state.order_type,
       payment_type: this.state.payment_type,
       customer_id: this.state.customer_id,
@@ -85,11 +80,7 @@ export default class EditOrder extends React.Component {
             order's date:
             <input className="form-control" disabled name="orderdate" placeholder={this.state.order_date} />
           </label>
-          <label className="form-outline mb-4">
-            order's price:
-            <input onChange={this.handleChangeOrderPrice} className="form-control" type="number" required maxLength="10" name="orderprice" placeholder="Enter price" />
-          </label>
-
+  
           <label className="form-outline mb-4">
             order's type:
           <select onChange={this.handleChangeOrderType} className="form-control" type="name" name="ordertype">

@@ -39,9 +39,9 @@ export default class ManufacturerList extends React.Component {
             </div>
 
             { this.state.manufacturers.map(Manufacturers => 
-              <div className="ml-3">
+              <div className="ml-3" key={Manufacturers.id}>
                 <div className="row" >  
-                  <div className="col-1 border" key={Manufacturers.id}>{Manufacturers.id}</div>  
+                  <div className="col-1 border">{Manufacturers.id}</div>  
                   <div className="col border">{Manufacturers.companyName}</div>          
                 </div>
               </div>

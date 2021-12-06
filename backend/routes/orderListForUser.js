@@ -15,7 +15,7 @@ function getConnection() {
     return pool
 }
 
-  router.get("/", (req,res) => {
+  router.get("/:id", (req,res) => {
     const connection = getConnection()
   
     const queryString = "Select * FROM orders"
@@ -45,8 +45,8 @@ function getConnection() {
   router.post("/create", (req, res) => {
     const connection = getConnection()
   
-    const queryString = "INSERT INTO orders (shop_name, emp_id, vehicle_id, order_date, order_type, payment_type, customer_id ) VALUES (?, ?, ?, ? ,? ,? ,? ,?)"
-    connection.query(queryString, [req.body.shop_name, req.body.emp_id, req.body.vehicle_id, req.body.order_date, req.body.order_type, req.body.payment_type, req.body.customer_id], (err, results, fields) => {
+    const queryString = "INSERT INTO orders (shop_name, emp_id, vehicle_id, order_date, order_price, order_type, payment_type, customer_id ) VALUES (?, ?, ?, ? ,? ,? ,? ,?)"
+    connection.query(queryString, [req.body.shop_name, req.body.emp_id, req.body.vehicle_id, req.body.order_date, req.body.order_price, req.body.order_type, req.body.payment_type, req.body.customer_id], (err, results, fields) => {
       console.log(req)
       if (err) {
         res.sendStatus(500)
@@ -76,8 +76,8 @@ function getConnection() {
 
     console.log("updated")
 
-    const queryString = "UPDATE orders SET shop_name = ?, order_date = ?, emp_id = ?, order_type = ?, payment_type=?, customer_id=?, vehicle_id=? WHERE id = ?"
-    connection.query(queryString, [req.body.shop_name, req.body.order_date, req.body.emp_id, req.body.order_type, req.body.payment_type, req.body.customer_id, req.body.vehicle_id, req.params.id], (err, results, fields) => {
+    const queryString = "UPDATE orders SET shop_name = ?, order_date = ?, order_price = ?, emp_id = ?, order_type = ?, payment_type=?, customer_id=?, vehicle_id=? WHERE id = ?"
+    connection.query(queryString, [req.body.shop_name, req.body.order_date, req.body.order_price, req.body.emp_id, req.body.order_type, req.body.payment_type, req.body.customer_id, req.body.vehicle_id, req.params.id], (err, results, fields) => {
       if (err) {
         console.log(err)
         res.sendStatus(500)

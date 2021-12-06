@@ -44,9 +44,9 @@ export default class TurboList extends React.Component {
               </div>
 
               { this.state.turbos.map(Turbos => 
-                <div className="ml-3">
+                <div className="ml-3" key={Turbos.id}>
                   <div className="row" >  
-                    <div className="col-1 border" key={Turbos.id}>{Turbos.id}</div>  
+                    <div className="col-1 border">{Turbos.id}</div>  
                     <div className="col border">{Turbos.turbo_name}</div>      
                     <div className="col border">{Turbos.turbo_price}</div> 
                     <div className="col border">{Turbos.amount}</div>       

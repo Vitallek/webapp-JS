@@ -32,7 +32,7 @@ export default class UserVehicleModelList extends React.Component {
           <div className="userVehicleContainer">
 
               { this.state.vehicle_models.map(Vehicle_models => 
-                <div className="vehicleBlockWrapper m-5">
+                <div className="vehicleBlockWrapper m-5" key={Vehicle_models.id}>
                     <div className=""><img className='carPhoto m-2' src={process.env.PUBLIC_URL + `/carphoto/${Vehicle_models.id}.jpg`} alt={Vehicle_models.model_name}/></div>                   
                     <div className="">{Vehicle_models.model_name}</div> 
                     <div className="">{Vehicle_models.manufacturer_id}</div>          

@@ -44,9 +44,9 @@ export default class EngineList extends React.Component {
               </div>
 
               { this.state.car_engines.map(Car_engines => 
-                <div className="ml-3">
+                <div className="ml-3"  key={Car_engines.id}>
                   <div className="row" >  
-                    <div className="col-1 border" key={Car_engines.id}>{Car_engines.id}</div>  
+                    <div className="col-1 border">{Car_engines.id}</div>  
                     <div className="col border">{Car_engines.engine_name}</div>      
                     <div className="col border">{Car_engines.engine_price}</div>    
                     <div className="col border">{Car_engines.amount}</div>                    

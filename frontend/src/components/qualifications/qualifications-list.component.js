@@ -44,9 +44,9 @@ export default class QualificationsList extends React.Component {
               </div>
 
               { this.state.qualifications.map(Qualifications => 
-                <div className="ml-3">
+                <div className="ml-3" key={Qualifications.id}>
                   <div className="row" >  
-                    <div className="col-1 border" key={Qualifications.id}>{Qualifications.id}</div>  
+                    <div className="col-1 border">{Qualifications.id}</div>  
                     <div className="col border">{Qualifications.qual_name}</div>      
                     <div className="col border">{Qualifications.koef}</div>
                   </div>
