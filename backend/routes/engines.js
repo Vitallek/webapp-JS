@@ -15,6 +15,27 @@ function getConnection() {
     return pool
 }
 
+  router.get("/view", (req,res) => {
+    const connection = getConnection()
+
+    const queryString = "Select * FROM enginesforuser"
+    connection.query(queryString, (error, rows, fields) => {
+      if (error) {
+        res.sendStatus(500)
+        res.end()
+      }
+
+      const enginesforuser = rows.map((row) => {
+        return {
+          id: row.id,
+          engine_name: row.engine_name,
+          engine_price: row.engine_price,
+        }
+      })
+      res.json(enginesforuser)
+    })
+  })
+
   router.get("/", (req,res) => {
     const connection = getConnection()
   

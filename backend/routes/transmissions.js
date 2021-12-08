@@ -15,6 +15,26 @@ function getConnection() {
     return pool
 }
 
+  router.get("/view", (req,res) => {
+    const connection = getConnection()
+
+    const queryString = "Select * FROM transmissionsforuser"
+    connection.query(queryString, (error, rows, fields) => {
+      if (error) {
+        res.sendStatus(500)
+        res.end()
+      }
+
+      const transmissionsforuser = rows.map((row) => {
+        return {
+          id: row.id,
+          transmission_name: row.transmission_name,
+          transmission_price: row.transmission_price,
+        }
+      })
+      res.json(transmissionsforuser)
+    })
+  })
   router.get("/", (req,res) => {
     const connection = getConnection()
   

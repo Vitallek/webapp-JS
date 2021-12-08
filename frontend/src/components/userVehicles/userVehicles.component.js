@@ -3,8 +3,6 @@ import axios from 'axios';
 import {isActive,setActive} from 'react'
 import { useNavigate } from 'react-router';
 
-const apiUrl = "http://localhost:5000/cars";
-
 export default class UserVehicleModelList extends React.Component {
   constructor(props) {
     super(props);
@@ -21,12 +19,17 @@ export default class UserVehicleModelList extends React.Component {
       switchTurbo: 0,
       switchTransmissions: 0,
 
+      engines: [],
+      wheels: [],
+      turbos: [],
+      transmissions: [],
+
     }
     
   }
 
   componentDidMount() {
-    axios.get(apiUrl)
+    axios.get("http://localhost:5000/cars")
       .then(res => {
         const cars = res.data;
         this.setState({ cars });
@@ -34,6 +37,42 @@ export default class UserVehicleModelList extends React.Component {
       }).catch(err => {
         console.log(err);
       })
+
+    axios.get("http://localhost:5000/engines/view")
+    .then(res => {
+      const engines = res.data;
+      this.setState({ engines });
+      
+    }).catch(err => {
+      console.log(err);
+    })
+
+    axios.get("http://localhost:5000/turbos/view")
+    .then(res => {
+      const turbos = res.data;
+      this.setState({ turbos });
+      
+    }).catch(err => {
+      console.log(err);
+    })
+
+    axios.get("http://localhost:5000/transmissions/view")
+    .then(res => {
+      const transmissions = res.data;
+      this.setState({ transmissions });
+      
+    }).catch(err => {
+      console.log(err);
+    })
+
+    axios.get("http://localhost:5000/wheels/view")
+    .then(res => {
+      const wheels = res.data;
+      this.setState({ wheels });
+      
+    }).catch(err => {
+      console.log(err);
+    })
   }
 
   handleChangeOpenCarDescription = event => {
@@ -53,6 +92,19 @@ export default class UserVehicleModelList extends React.Component {
     this.setState({ toggleCarDescription: 'oneCarDescription' });
     this.setState({ backArrow: 'arrowBack' });
 
+  }
+
+  handleChangeSwitchEngine = event => {
+    this.setState({ switchEngine: parseInt(event.target.value, 10) });
+  }
+  handleChangeSwitchWheels = event => {
+    this.setState({ switchWheels: parseInt(event.target.value, 10) });
+  }
+  handleChangeSwitchTurbo = event => {
+    this.setState({ switchTurbo: parseInt(event.target.value, 10) });
+  }
+  handleChangeSwitchTransmissions = event => {
+    this.setState({ switchTransmissions: parseInt(event.target.value, 10) });
   }
 
   handleChangeGoBackToList = event => {
@@ -132,26 +184,42 @@ export default class UserVehicleModelList extends React.Component {
                   <p><span className="mr-1"><strong>${Car.vehicle_stock_price}</strong></span></p>
                   <p className="pt-1">{Car.car_description}</p>
                   <div className="table-responsive">
-                    <table className="table table-sm table-borderless mb-0">
-                      <tbody>
-                        <tr>
-                          <th className="pl-0 w-25" scope="row"><strong>Engine</strong></th>
-                          <td>Shirt 5407X</td>
-                        </tr>
-                        <tr>
-                          <th className="pl-0 w-25" scope="row"><strong>Turbo</strong></th>
-                          <td>Black</td>
-                        </tr>
-                        <tr>
-                          <th className="pl-0 w-25" scope="row"><strong>Transmission</strong></th>
-                          <td>USA, Europe</td>
-                        </tr>
-                        <tr>
-                          <th className="pl-0 w-25" scope="row"><strong>Wheels</strong></th>
-                          <td>USA, Europe</td>
-                        </tr>
-                      </tbody>
-                    </table>
+                    <form className="table table-sm table-borderless mb-0">
+                      <tr>
+                        <th className="w-25"><strong>Engine</strong></th>
+                          <td>
+                            <select onChange={this.handleChangeSwitchEngine} className="form-control w-75">  
+                              { this.state.engines.map(Engines => 
+                                <option key={Engines.id} value={Engines.id}>{Engines.engine_name}</option>
+                              )}
+                            </select>
+                          </td>
+                      </tr>
+                      <tr>
+                        <th className="w-25"><strong>Turbo</strong></th>
+                        <td>
+                          <select onChange={this.handleChangeSwitchTurbo} className="form-control w-75">
+                            <option value="1">Стандарт</option>
+                          </select>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th className="w-25"><strong>Transmission</strong></th>
+                        <td>
+                          <select onChange={this.handleChangeSwitchTransmissions} className="form-control w-75">
+                            <option value="1">Стандарт</option>
+                          </select>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th className="w-25"><strong>Wheels</strong></th>
+                        <td>
+                          <select onChange={this.handleChangeSwitchWheels} className="form-control w-75">
+                            <option value="1">Стандарт</option>
+                          </select>
+                        </td>
+                      </tr>
+                    </form>
                   </div>
                   <hr/>
                   <button type="button" className="btn btn-primary btn-md mr-1 mb-2">Buy now</button>

@@ -14,7 +14,26 @@ const pool = mysql.createPool({
 function getConnection() {
     return pool
 }
+  router.get("/view", (req,res) => {
+    const connection = getConnection()
 
+    const queryString = "Select * FROM wheelsforuser"
+    connection.query(queryString, (error, rows, fields) => {
+      if (error) {
+        res.sendStatus(500)
+        res.end()
+      }
+
+      const wheelsforuser = rows.map((row) => {
+        return {
+          id: row.id,
+          wheels_name: row.wheels_name,
+          wheels_price: row.wheels_price,
+        }
+      })
+      res.json(wheelsforuser)
+    })
+  })
   router.get("/", (req,res) => {
     const connection = getConnection()
   

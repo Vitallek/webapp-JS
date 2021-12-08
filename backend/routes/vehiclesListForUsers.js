@@ -4,7 +4,7 @@ const mysql = require('mysql')
 const router = express.Router()
 
 const pool = mysql.createPool({
-    connectionLimit: 10,
+    connectionLimit: 100000,
     host: 'localhost',
     user: 'root',
     password: '7557475',
@@ -54,7 +54,7 @@ function getConnection() {
         res.end()
       }
   
-      const showCars = rows.map((row) => {
+      const showCar = rows.map((row) => {
         return {
           id: row.id,
           company_name: row.company_name,
@@ -69,8 +69,8 @@ function getConnection() {
           photo_path: row.photo_path,
         }
       })
-      res.json(showCars)
+      res.json(showCar)
     })
   })
-
+  
 module.exports = router
