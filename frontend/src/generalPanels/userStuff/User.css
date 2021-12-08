@@ -30,15 +30,19 @@
 .active .opening {
     display: block
 }
-.userVehicleContainerHide{
+.userVehicleContainerHide ,.oneCarDescriptionHide ,.arrowBackHide{
     display: none;
 }
-.oneCarDescriptionHidden{
-    display: none;
+.arrowBack{
+    margin: 10px;
+    margin-right: 840px;
+    display: block;
+    width: 30px;
+    height: auto;
 }
 .oneCarDescription{
     width: 900px;
-    height: 900px;
+    height: auto;
     background: whitesmoke;
     border-radius: 30px;
     display: flex;
@@ -47,7 +51,6 @@
     justify-content: center;
     overflow: hidden;
 }
-
 .vehicleBlockWrapper{
     width: 280px;
     height: 280px;
