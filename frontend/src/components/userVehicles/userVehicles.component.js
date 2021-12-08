@@ -19,11 +19,25 @@ export default class UserVehicleModelList extends React.Component {
       switchTurbo: 0,
       switchTransmissions: 0,
 
+      switchEnginePrice: 0,
+      switchWheelsPrice: 0,
+      switchTurboPrice: 0,
+      switchTransmissionsPrice: 0,
+
       engines: [],
       wheels: [],
       turbos: [],
       transmissions: [],
 
+      shop_name: 'Vitallek`s Shop',
+      emp_id: 0,
+      vehicle_id: 0,
+      order_date: require('moment')().format('YYYY-MM-DD HH:mm:ss'),
+      order_type: 1,
+      payment_type: 1,
+      customer_id: 0,
+      status: 'pending',
+      totalPrice: 0,
     }
     
   }
@@ -84,7 +98,7 @@ export default class UserVehicleModelList extends React.Component {
       .then(res => {
         const car = res.data;
         this.setState({ car });
-        
+
       }).catch(err => {
         console.log(err);
       })
@@ -96,15 +110,19 @@ export default class UserVehicleModelList extends React.Component {
 
   handleChangeSwitchEngine = event => {
     this.setState({ switchEngine: parseInt(event.target.value, 10) });
+    this.setState({ switchEngine: event.target.price });
   }
   handleChangeSwitchWheels = event => {
     this.setState({ switchWheels: parseInt(event.target.value, 10) });
+    this.setState({ switchEngine: event.target.price });
   }
   handleChangeSwitchTurbo = event => {
     this.setState({ switchTurbo: parseInt(event.target.value, 10) });
+    this.setState({ switchEngine: event.target.price });
   }
   handleChangeSwitchTransmissions = event => {
     this.setState({ switchTransmissions: parseInt(event.target.value, 10) });
+    this.setState({ switchEngine: event.target.price });
   }
 
   handleChangeGoBackToList = event => {
@@ -185,43 +203,52 @@ export default class UserVehicleModelList extends React.Component {
                   <p className="pt-1">{Car.car_description}</p>
                   <div className="table-responsive">
                     <form className="table table-sm table-borderless mb-0">
-                      <tr>
-                        <th className="w-25"><strong>Engine</strong></th>
+                      <tbody>
+                        <tr>
+                          <th className="w-25"><strong>Engine</strong></th>
+                            <td>
+                              <select onChange={this.handleChangeSwitchEngine} className="form-control w-75">  
+                                { this.state.engines.map(Engines => 
+                                  <option key={Engines.id} value={Engines.id} price={Engines.engine_price}>{Engines.engine_name}</option>
+                                )}
+                              </select>
+                            </td>
+                        </tr>
+                        <tr>
+                          <th className="w-25"><strong>Turbo</strong></th>
                           <td>
-                            <select onChange={this.handleChangeSwitchEngine} className="form-control w-75">  
-                              { this.state.engines.map(Engines => 
-                                <option key={Engines.id} value={Engines.id}>{Engines.engine_name}</option>
+                            <select onChange={this.handleChangeSwitchTurbo} className="form-control w-75">  
+                              { this.state.turbos.map(Turbo => 
+                                <option key={Turbo.id} value={Turbo.id} price={Turbo.turbo_price}>{Turbo.turbo_name}</option>
                               )}
                             </select>
                           </td>
-                      </tr>
-                      <tr>
-                        <th className="w-25"><strong>Turbo</strong></th>
-                        <td>
-                          <select onChange={this.handleChangeSwitchTurbo} className="form-control w-75">
-                            <option value="1">Стандарт</option>
-                          </select>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th className="w-25"><strong>Transmission</strong></th>
-                        <td>
-                          <select onChange={this.handleChangeSwitchTransmissions} className="form-control w-75">
-                            <option value="1">Стандарт</option>
-                          </select>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th className="w-25"><strong>Wheels</strong></th>
-                        <td>
-                          <select onChange={this.handleChangeSwitchWheels} className="form-control w-75">
-                            <option value="1">Стандарт</option>
-                          </select>
-                        </td>
-                      </tr>
+                        </tr>
+                        <tr>
+                          <th className="w-25"><strong>Transmission</strong></th>
+                          <td>
+                            <select onChange={this.handleChangeSwitchTransmissions} className="form-control w-75">  
+                              { this.state.transmissions.map(Transmissions => 
+                                <option key={Transmissions.id} value={Transmissions.id} price={Transmissions.transmission_price}>{Transmissions.transmission_name}</option>
+                              )}
+                            </select>
+                          </td>
+                        </tr>
+                        <tr>
+                          <th className="w-25"><strong>Wheels</strong></th>
+                          <td>
+                            <select onChange={this.handleChangeSwitchWheels} className="form-control w-75">  
+                              { this.state.wheels.map(Wheels => 
+                                <option key={Wheels.id} value={Wheels.id} price={Wheels.wheels_price}>{Wheels.wheels_name}</option>
+                              )}
+                            </select>
+                          </td>
+                        </tr>
+                      </tbody>
                     </form>
                   </div>
                   <hr/>
+                  <div className="w-50"><strong>Total price: {Car.vehicle_stock_price}</strong></div>
                   <button type="button" className="btn btn-primary btn-md mr-1 mb-2">Buy now</button>
                 </div>
               </div>

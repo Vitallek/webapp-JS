@@ -11,8 +11,9 @@ export default class AddOrder extends React.Component {
     order_date: require('moment')().format('YYYY-MM-DD HH:mm:ss'),
     order_type: 1,
     payment_type: 1,
-    customer_id: '',
-    status: 'pending'
+    customer_id: 0,
+    status: 'pending',
+    totalPrice: 0,
   }
 }
 
