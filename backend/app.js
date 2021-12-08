@@ -27,6 +27,8 @@ const orderRoutes = require('./routes/orders')
 const userRoutes = require('./routes/userrrs')
 const vehicleModelRoutes = require('./routes/vehicle_models')
 
+const vehiclesForUser = require('./routes/vehiclesListForUsers')
+
 // nodemon app.js
 app.use(morgan('short'))
 app.use(bodyParser.urlencoded({extended: false}))
@@ -65,6 +67,8 @@ app.use('/employees', employeeRoutes)
 app.use('/orders', orderRoutes)
 app.use('/userrrs', userRoutes)
 app.use('/vehicle_models', vehicleModelRoutes)
+
+app.use('/cars',vehiclesForUser)
 
 app.use(cookieParser());
 

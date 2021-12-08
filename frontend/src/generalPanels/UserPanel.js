@@ -58,7 +58,7 @@ export default function UserPanel(){
 
     <Routes>
       <Route path={`/user`} element={<UserVehicleModelList/>} />
-      <Route path={`/user/orders`} element={<UserOrders/>} />   
+      {/* <Route path={`/user/orders`} element={<UserOrders/>} />    */}
     </Routes>
     </div>
   )
