@@ -35,6 +35,26 @@ function getConnection() {
     })
   })
 
+  router.get("/view", (req,res) => {
+    const connection = getConnection()
+  
+    const queryString = "Select * FROM paymentTypesForUser"
+    connection.query(queryString, (error, rows, fields) => {
+      if (error) {
+        res.sendStatus(500)
+        res.end()
+      }
+  
+      const paymentTypesForUser = rows.map((row) => {
+        return {
+          id: row.id,
+          type_name: row.type_name,
+        }
+      })
+      res.json(paymentTypesForUser)
+    })
+  })
+
   router.post("/create", (req, res) => {
     const connection = getConnection()
   

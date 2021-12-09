@@ -36,6 +36,27 @@ function getConnection() {
     })
   })
 
+  router.get("/view", (req,res) => {
+    const connection = getConnection()
+  
+    const queryString = "Select * FROM qualforusers"
+    connection.query(queryString, (error, rows, fields) => {
+      if (error) {
+        res.sendStatus(500)
+        res.end()
+      }
+  
+      const qualview = rows.map((row) => {
+        return {
+          id: row.id,
+          qual_name: row.qual_name,
+          koef: row.koef,
+        }
+      })
+      res.json(qualview)
+    })
+  })
+
   router.post("/create", (req, res) => {
     const connection = getConnection()
   

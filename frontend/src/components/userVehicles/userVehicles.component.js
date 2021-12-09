@@ -23,18 +23,26 @@ export default class UserVehicleModelList extends React.Component {
       switchWheelsPrice: 0,
       switchTurboPrice: 0,
       switchTransmissionsPrice: 0,
+      orderTypeKoef: 0,
+      qualKoef: 0,
 
       engines: [],
       wheels: [],
       turbos: [],
       transmissions: [],
 
+      qualifications: [],
+      paymentTypes: [],
+      orderTypes: [],
+      employees: [],
+
+      // на отправку
       shop_name: 'Vitallek`s Shop',
       emp_id: 0,
       vehicle_id: 0,
       order_date: require('moment')().format('YYYY-MM-DD HH:mm:ss'),
-      order_type: 1,
-      payment_type: 1,
+      order_type: 0,
+      payment_type: 0,
       customer_id: 0,
       status: 'pending',
       totalPrice: 0,
@@ -87,6 +95,33 @@ export default class UserVehicleModelList extends React.Component {
     }).catch(err => {
       console.log(err);
     })
+
+    axios.get("http://localhost:5000/qualifications/view")
+    .then(res => {
+      const qualifications = res.data;
+      this.setState({ qualifications });
+      
+    }).catch(err => {
+      console.log(err);
+    })
+
+    axios.get("http://localhost:5000/payment_types/view")
+    .then(res => {
+      const paymentTypes = res.data;
+      this.setState({ paymentTypes });
+      
+    }).catch(err => {
+      console.log(err);
+    })
+
+    axios.get("http://localhost:5000/order_types/view")
+    .then(res => {
+      const orderTypes = res.data;
+      this.setState({ orderTypes });
+      
+    }).catch(err => {
+      console.log(err);
+    })
   }
 
   handleChangeOpenCarDescription = event => {
@@ -110,19 +145,34 @@ export default class UserVehicleModelList extends React.Component {
 
   handleChangeSwitchEngine = event => {
     this.setState({ switchEngine: parseInt(event.target.value, 10) });
-    this.setState({ switchEngine: event.target.price });
+    this.setState({ switchEnginePrice: event.target.price });
   }
   handleChangeSwitchWheels = event => {
     this.setState({ switchWheels: parseInt(event.target.value, 10) });
-    this.setState({ switchEngine: event.target.price });
+    this.setState({ switchWheelsPrice: event.target.price });
   }
   handleChangeSwitchTurbo = event => {
     this.setState({ switchTurbo: parseInt(event.target.value, 10) });
-    this.setState({ switchEngine: event.target.price });
+    this.setState({ switchTurboPrice: event.target.price });
   }
   handleChangeSwitchTransmissions = event => {
     this.setState({ switchTransmissions: parseInt(event.target.value, 10) });
-    this.setState({ switchEngine: event.target.price });
+    this.setState({ switchTransmissionsPrice: event.target.price });
+  }
+
+  handleChangeSwitchPaymentType = event => {
+    this.setState({ payment_type: event.target.value });
+  }
+  handleChangeSwitchOrderType = event => {
+    this.setState({ order_type: event.target.value });
+    this.setState({ orderTypeKoef: event.target.koef });
+  }
+  handleChangeSwitchQual = event => {
+    this.setState({ payment_type: event.target.value });
+    this.setState({ orderTypeKoef: event.target.koef });
+  }
+  handleChangeSwitchEmployee = event => {
+    this.setState({ order_type: event.target.value });
   }
 
   handleChangeGoBackToList = event => {
@@ -244,11 +294,47 @@ export default class UserVehicleModelList extends React.Component {
                             </select>
                           </td>
                         </tr>
+                        <hr/>
+                        <tr>
+                          <th className="w-25"><strong>Choose employeer:</strong></th>
+                          <td>
+                            <select onChange={this.handleChangeSwitchQual} className="form-control w-75">  
+                              { this.state.qualifications.map(Qualifications => 
+                                <option key={Qualifications.id} value={Qualifications.id} koef={Qualifications.koef}>{Qualifications.qual_name}</option>
+                              )}
+                            </select>
+                            <select onChange={this.handleChangeSwitchWheels} className="form-control w-75">  
+                              { this.state.wheels.map(Wheels => 
+                                <option key={Wheels.id} value={Wheels.id} price={Wheels.wheels_price}>{Wheels.wheels_name}</option>
+                              )}
+                            </select>
+                          </td>
+                        </tr>
+                        <tr>
+                          <th className="w-25"><strong>Order type:</strong></th>
+                          <td>
+                            <select onChange={this.handleChangeSwitchOrderType} className="form-control w-75">  
+                              { this.state.orderTypes.map(OrderTypes => 
+                                <option key={OrderTypes.id} value={OrderTypes.id} koef={OrderTypes.koef}>{OrderTypes.type_name}</option>
+                              )}
+                            </select>
+                          </td>
+                        </tr>
+                        <tr>
+                          <th className="w-25"><strong>Payment type:</strong></th>
+                          <td>
+                            <select onChange={this.handleChangeSwitchPaymentType} className="form-control w-75">  
+                              { this.state.paymentTypes.map(PaymentTypes => 
+                                <option key={PaymentTypes.id} value={PaymentTypes.id} koef={PaymentTypes.koef}>{PaymentTypes.type_name}</option>
+                              )}
+                            </select>
+                          </td>
+                        </tr>
                       </tbody>
                     </form>
                   </div>
                   <hr/>
-                  <div className="w-50"><strong>Total price: {Car.vehicle_stock_price}</strong></div>
+                  <div className="w-50"><strong>Total price: ${Car.vehicle_stock_price}</strong></div>
                   <button type="button" className="btn btn-primary btn-md mr-1 mb-2">Buy now</button>
                 </div>
               </div>

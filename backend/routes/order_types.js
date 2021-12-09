@@ -36,6 +36,27 @@ function getConnection() {
     })
   })
 
+  router.get("/view", (req,res) => {
+    const connection = getConnection()
+  
+    const queryString = "Select * FROM orderTypesForUser"
+    connection.query(queryString, (error, rows, fields) => {
+      if (error) {
+        res.sendStatus(500)
+        res.end()
+      }
+  
+      const orderTypesForUser = rows.map((row) => {
+        return {
+          id: row.id,
+          type_name: row.type_name,
+          koef: row.koef,
+        }
+      })
+      res.json(orderTypesForUser)
+    })
+  })
+
   router.post("/create", (req, res) => {
     const connection = getConnection()
   
