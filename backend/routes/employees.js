@@ -42,8 +42,8 @@ function getConnection() {
   router.get("/view", (req,res) => {
     const connection = getConnection()
   
-    const queryString = "Select * FROM empForUser where qualification_id = ?"
-    connection.query(queryString, req.body.qualification_id ,(error, rows, fields) => {
+    const queryString = "Select * FROM empForUser"
+    connection.query(queryString,(error, rows, fields) => {
       if (error) {
         res.sendStatus(500)
         res.end()

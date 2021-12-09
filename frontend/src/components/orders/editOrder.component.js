@@ -11,7 +11,7 @@ export default class EditOrder extends React.Component {
     order_date: require('moment')().format('YYYY-MM-DD HH:mm:ss'),
     order_type: 1,
     payment_type: 1,
-    customer_id: '',
+    customer_email: '',
     status: '',
     totalPrice: 0,
   }
@@ -35,7 +35,7 @@ export default class EditOrder extends React.Component {
     this.setState({ payment_type: parseInt(event.target.value, 10) });
   }
   handleChangeCustomerID = event => {
-    this.setState({ customer_id: event.target.value });
+    this.setState({ customer_email: event.target.value });
   }
   handleChangeStatus = event => {
     this.setState({ status: event.target.value });
@@ -55,7 +55,7 @@ export default class EditOrder extends React.Component {
       order_date: this.state.order_date,
       order_type: this.state.order_type,
       payment_type: this.state.payment_type,
-      customer_id: this.state.customer_id,
+      customer_email: this.state.customer_email,
       status: this.state.status,
       totalPrice: this.state.totalPrice,
     };
@@ -111,7 +111,7 @@ export default class EditOrder extends React.Component {
           </label>
 
           <label className="form-outline mb-4">
-            customer_id:
+            customer_email:
             <input onChange={this.handleChangeCustomerID} className="form-control" type="number" required name="ordercustomerid" placeholder="Enter employee id" />
           </label>
 

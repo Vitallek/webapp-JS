@@ -34,7 +34,7 @@ export default function AdminPanel(){
   axios.defaults.withCredentials = true;
   useEffect(() => {
     axios.get("http://localhost:5000/login").then((response) => {
-      if (response.data.loggedIn == true) {
+      if (response.data.user[0].role == 'admin') {
         setRole(response.data.user[0].role);
       } else {navigate('/guest')}
     });

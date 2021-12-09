@@ -71,7 +71,7 @@ export default class OrdersList extends React.Component {
           </div>
           <div className="col sidebar-wrapper">
           <div>
-            <AddOrder/>
+            {/* <AddOrder/> */}
           </div>
           <div>
             <Editorder />

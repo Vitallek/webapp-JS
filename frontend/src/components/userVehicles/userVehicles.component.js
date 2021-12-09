@@ -9,7 +9,6 @@ export default class UserVehicleModelList extends React.Component {
     this.state = {  
       cars: [],
       car: [],
-      currentCariD: 0,
       toggleCarsList: 'userVehicleContainer',
       toggleCarDescription: 'oneCarDescriptionHidden',
       backArrow: 'arrowBackHidden',
@@ -24,33 +23,30 @@ export default class UserVehicleModelList extends React.Component {
       switchTurboPrice: 0,
       switchTransmissionsPrice: 0,
       orderTypeKoef: 0,
-      qualKoef: 0,
 
       engines: [],
       wheels: [],
       turbos: [],
       transmissions: [],
 
-      qualifications: [],
       paymentTypes: [],
       orderTypes: [],
-      employees: [],
 
       // на отправку
       shop_name: 'Vitallek`s Shop',
-      emp_id: 0,
-      vehicle_id: 0,
+      currentCariD: 0,
       order_date: require('moment')().format('YYYY-MM-DD HH:mm:ss'),
-      order_type: 0,
-      payment_type: 0,
-      customer_id: 0,
+      order_type: 1,
+      payment_type: 1,
+      customer_email: '',
       status: 'pending',
-      totalPrice: 0,
     }
     
   }
 
   componentDidMount() {
+    
+
     axios.get("http://localhost:5000/cars")
       .then(res => {
         const cars = res.data;
@@ -122,6 +118,7 @@ export default class UserVehicleModelList extends React.Component {
     }).catch(err => {
       console.log(err);
     })
+    
   }
 
   handleChangeOpenCarDescription = event => {
@@ -141,23 +138,26 @@ export default class UserVehicleModelList extends React.Component {
     this.setState({ toggleCarDescription: 'oneCarDescription' });
     this.setState({ backArrow: 'arrowBack' });
 
+    axios.get("http://localhost:5000/login").then((response) => {
+      this.setState({ customer_email: response.data.user[0].email });
+    });
   }
 
   handleChangeSwitchEngine = event => {
     this.setState({ switchEngine: parseInt(event.target.value, 10) });
-    this.setState({ switchEnginePrice: event.target.price });
+    // this.setState({ switchEnginePrice: parseInt(event.target.price, 10) });
   }
   handleChangeSwitchWheels = event => {
     this.setState({ switchWheels: parseInt(event.target.value, 10) });
-    this.setState({ switchWheelsPrice: event.target.price });
+    // this.setState({ switchWheelsPrice: event.target.price });
   }
   handleChangeSwitchTurbo = event => {
     this.setState({ switchTurbo: parseInt(event.target.value, 10) });
-    this.setState({ switchTurboPrice: event.target.price });
+    // this.setState({ switchTurboPrice: event.target.price });
   }
   handleChangeSwitchTransmissions = event => {
     this.setState({ switchTransmissions: parseInt(event.target.value, 10) });
-    this.setState({ switchTransmissionsPrice: event.target.price });
+    // this.setState({ switchTransmissionsPrice: event.target.price });
   }
 
   handleChangeSwitchPaymentType = event => {
@@ -167,19 +167,53 @@ export default class UserVehicleModelList extends React.Component {
     this.setState({ order_type: event.target.value });
     this.setState({ orderTypeKoef: event.target.koef });
   }
-  handleChangeSwitchQual = event => {
-    this.setState({ payment_type: event.target.value });
-    this.setState({ orderTypeKoef: event.target.koef });
-  }
-  handleChangeSwitchEmployee = event => {
-    this.setState({ order_type: event.target.value });
-  }
-
   handleChangeGoBackToList = event => {
     this.setState({ toggleCarsList: 'userVehicleContainer' });
     this.setState({ toggleCarDescription: 'oneCarDescriptionHide' });
     this.setState({ backArrow: 'arrowBackHide' });
+  }
 
+  handleSubmit = event => {
+    event.preventDefault();
+    console.log(
+      this.state.shop_name,
+      'employee id',this.state.emp_id,
+      'car id', this.state.currentCariD,
+      'engine id', this.state.switchEngine,
+      'turbo id', this.state.switchTurbo,
+      'transmission id', this.state.switchTransmissions,
+      'wheels id', this.state.switchWheels,
+      'date', this.state.order_date,
+      'order_type', this.state.order_type,
+        'koef', this.state.orderTypeKoef,
+      'payment_type', this.state.payment_type,
+      'customer', this.state.customer_email,
+      'status', this.state.status,
+    )
+
+    const order = {
+      shop_name: this.state.shop_name,
+      vehicle_id: this.state.currentCariD,
+      order_date: this.state.order_date,
+      order_type: this.state.order_type,
+      payment_type: this.state.payment_type,
+      customer_email: this.state.customer_email,
+      
+      engineID: this.state.switchEngine,
+      wheelsID: this.state.switchWheels,
+      transmissionID: this.state.switchTransmissions,
+      turboID: this.state.switchTurbo
+    };
+
+    axios.post('http://localhost:5000/orders/create', order)
+      .then(res => {
+        console.log(res);
+        console.log(res.data);
+        alert('Вы заказали автомобиль.')
+      }).catch(err => {
+        console.log(err);
+      })
+      
   }
 
   render() {
@@ -252,12 +286,13 @@ export default class UserVehicleModelList extends React.Component {
                   <p><span className="mr-1"><strong>${Car.vehicle_stock_price}</strong></span></p>
                   <p className="pt-1">{Car.car_description}</p>
                   <div className="table-responsive">
-                    <form className="table table-sm table-borderless mb-0">
+                    <form className="table table-sm table-borderless mb-0" onSubmit={this.handleSubmit}>
                       <tbody>
                         <tr>
                           <th className="w-25"><strong>Engine</strong></th>
                             <td>
                               <select onChange={this.handleChangeSwitchEngine} className="form-control w-75">  
+                                <option value={1}>Stock</option>
                                 { this.state.engines.map(Engines => 
                                   <option key={Engines.id} value={Engines.id} price={Engines.engine_price}>{Engines.engine_name}</option>
                                 )}
@@ -268,6 +303,7 @@ export default class UserVehicleModelList extends React.Component {
                           <th className="w-25"><strong>Turbo</strong></th>
                           <td>
                             <select onChange={this.handleChangeSwitchTurbo} className="form-control w-75">  
+                            <option value={1}>Stock</option>
                               { this.state.turbos.map(Turbo => 
                                 <option key={Turbo.id} value={Turbo.id} price={Turbo.turbo_price}>{Turbo.turbo_name}</option>
                               )}
@@ -278,6 +314,7 @@ export default class UserVehicleModelList extends React.Component {
                           <th className="w-25"><strong>Transmission</strong></th>
                           <td>
                             <select onChange={this.handleChangeSwitchTransmissions} className="form-control w-75">  
+                            <option value={1}>Stock</option>
                               { this.state.transmissions.map(Transmissions => 
                                 <option key={Transmissions.id} value={Transmissions.id} price={Transmissions.transmission_price}>{Transmissions.transmission_name}</option>
                               )}
@@ -288,6 +325,7 @@ export default class UserVehicleModelList extends React.Component {
                           <th className="w-25"><strong>Wheels</strong></th>
                           <td>
                             <select onChange={this.handleChangeSwitchWheels} className="form-control w-75">  
+                            <option value={1}>Stock</option>
                               { this.state.wheels.map(Wheels => 
                                 <option key={Wheels.id} value={Wheels.id} price={Wheels.wheels_price}>{Wheels.wheels_name}</option>
                               )}
@@ -295,21 +333,6 @@ export default class UserVehicleModelList extends React.Component {
                           </td>
                         </tr>
                         <hr/>
-                        <tr>
-                          <th className="w-25"><strong>Choose employeer:</strong></th>
-                          <td>
-                            <select onChange={this.handleChangeSwitchQual} className="form-control w-75">  
-                              { this.state.qualifications.map(Qualifications => 
-                                <option key={Qualifications.id} value={Qualifications.id} koef={Qualifications.koef}>{Qualifications.qual_name}</option>
-                              )}
-                            </select>
-                            <select onChange={this.handleChangeSwitchWheels} className="form-control w-75">  
-                              { this.state.wheels.map(Wheels => 
-                                <option key={Wheels.id} value={Wheels.id} price={Wheels.wheels_price}>{Wheels.wheels_name}</option>
-                              )}
-                            </select>
-                          </td>
-                        </tr>
                         <tr>
                           <th className="w-25"><strong>Order type:</strong></th>
                           <td>
@@ -331,11 +354,11 @@ export default class UserVehicleModelList extends React.Component {
                           </td>
                         </tr>
                       </tbody>
+                      <hr/>
+                      {/* <div className="w-50"><strong>Total price: ${Car.vehicle_stock_price}</strong></div> */}
+                      <button type="submit" className="btn btn-primary btn-md mr-1 mb-2">Buy now</button>
                     </form>
                   </div>
-                  <hr/>
-                  <div className="w-50"><strong>Total price: ${Car.vehicle_stock_price}</strong></div>
-                  <button type="button" className="btn btn-primary btn-md mr-1 mb-2">Buy now</button>
                 </div>
               </div>
             </div>

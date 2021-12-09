@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component,useState, useEffect } from "react";
 import axios from 'axios';
 import {
   Outlet,
@@ -16,6 +16,16 @@ import 'react-pro-sidebar/dist/css/styles.css';
 export default function UserPanel(){
 
   const navigate = useNavigate();
+  const [role, setRole] = useState("");
+
+  axios.defaults.withCredentials = true;
+  useEffect(() => {
+    axios.get("http://localhost:5000/login").then((response) => {
+      if (response.data.loggedIn == true) {
+        setRole(response.data.user[0].role);
+      } else {navigate('/guest')}
+    });
+  }, []);
 
   const logout = (e) => {
     e.preventDefault()
