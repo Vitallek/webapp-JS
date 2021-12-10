@@ -43,6 +43,39 @@ function getConnection() {
     })
   })
 
+  router.get("/get/:email", (req,res) => {
+    const connection = getConnection()
+  
+    const queryString = "Select * FROM ordersforusers where customer_email = ?"
+    connection.query(queryString, [req.params.email],(error, rows, fields) => {
+      if (error) {
+        res.sendStatus(500)
+        res.end()
+      }
+  
+      const orders = rows.map((row) => {
+        return {
+          order_status: row.order_status,
+          id: row.id,
+          shop_name: row.shop_name,
+          price: row.price,
+          order_date: row.order_date,
+          order_price: row.order_price,
+          order_type: row.order_type,
+          payment_type: row.payment_type,
+          customer_email: row.customer_email,
+          emp_id: row.id,
+          model_name: row.model_name,
+          wheels_name: row.wheels_name,
+          engine_name: row.engine_name,
+          turbo_name: row.turbo_name,
+          transmission_name: row.transmission_name,
+        }
+      })
+      res.json(orders)
+    })
+  })
+
   router.post("/create", (req, res) => {
     const connection = getConnection()
   
