@@ -54,6 +54,17 @@ export default class UserOrders extends React.Component {
                   <div className="row mt-1 mb-2">
                     <img className='col img-fluid z-depth-1' src={process.env.PUBLIC_URL + `/carphoto/${Orders.vehicle_id}.jpg`} alt={Orders.model_name}/>
                   </div>
+                  <div className="row mt-1 mb-2">
+                    <div className="btn btn-danger" onClick={() => 
+                      { if (window.confirm('Are you sure you wish to delete this order?')){
+                        axios.delete(`http://localhost:5000/orders/delete/${Orders.order_id}`)
+                          .then(res => {
+                            console.log(res);
+                            console.log(res.data);
+                            window.location.reload();
+                          })
+                      } } } >Delete order</div>
+                  </div>
                 </div>
               )}
             </div>
