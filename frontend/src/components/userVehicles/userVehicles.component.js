@@ -1,7 +1,5 @@
 import React from 'react';
 import axios from 'axios';
-import {isActive,setActive} from 'react'
-import { useNavigate } from 'react-router';
 
 export default class UserVehicleModelList extends React.Component {
   constructor(props) {
@@ -225,7 +223,7 @@ export default class UserVehicleModelList extends React.Component {
           { this.state.car.map(Car => 
             <div>
                   {/* arrow */}
-              <img src={require('../../arrowBack.svg')} className={`${this.state.backArrow}`} onClick={this.handleChangeGoBackToList}/>
+              <img src={require('../../arrowBack.svg')} className={`${this.state.backArrow}`} alt='goback' onClick={this.handleChangeGoBackToList}/>
 
               <div className="row mt-1">
                 {/* car photo */}
@@ -295,6 +293,7 @@ export default class UserVehicleModelList extends React.Component {
                                 <option value={1}>Stock</option>
                                 { this.state.engines.map(Engines => 
                                   <option key={Engines.id} value={Engines.id} price={Engines.engine_price}>{Engines.engine_name}</option>
+                                
                                 )}
                               </select>
                             </td>

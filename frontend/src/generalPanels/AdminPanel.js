@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import {useCookies, Cookies} from 'react-cookie';
 import axios from 'axios';
 import {
   Outlet,
@@ -8,7 +7,6 @@ import {
   Link,
   useNavigate
 } from "react-router-dom";
-import { ProSidebar, Menu, MenuItem, SubMenu, SidebarHeader, SidebarContent, SidebarFooter } from 'react-pro-sidebar';
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./adminStuff/App.css";

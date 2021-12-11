@@ -1,7 +1,6 @@
-import React, { Component,useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import {
-  Outlet,
   Routes,
   Route,
   Link,
@@ -62,14 +61,11 @@ export default function UserPanel(){
 
 
       <div className='carsMainBlock'>
-        <UserVehicleModelList/>
+        <Routes>
+          <Route path={`/`} element={<UserVehicleModelList/>} />
+          <Route path={`/orders`} element={<UserOrders/>} />   
+        </Routes>
       </div>
-
-
-    <Routes>
-      <Route path={`/user`} element={<UserVehicleModelList/>} />
-      {/* <Route path={`/user/orders`} element={<UserOrders/>} />    */}
-    </Routes>
     </div>
   )
 }

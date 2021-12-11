@@ -1,9 +1,8 @@
 import React from "react";
-import { BrowserRouter as Router, Route ,Link, Routes} from "react-router-dom";
+import { BrowserRouter as Router, Route ,Routes} from "react-router-dom";
 import Main from "./Main";
 import GuestPanel from "./GuestPanel";
 import UserPanel from "./generalPanels/UserPanel";
-import EmpPanel from "./generalPanels/EmpPanel";
 import AdminPanel from "./generalPanels/AdminPanel";
 
 import WheelList from "./components/wheels/wheels-list.component";
@@ -21,11 +20,10 @@ import VehicleTypeList from "./components/vehicle_types/vehicle_types-list.compo
 import UsersList from "./components/userrrs/users-list.component";
 
 import UserOrders from "./components/userOrders/userOrders.component";
-import UserVehicleModelList
- from "./components/userVehicles/userVehicles.component";
+
 function App() {
   return(
-    <div class="app">
+    <div className="app">
       <Router>
         <Routes>
           <Route path='/' element={<Main/>}/>

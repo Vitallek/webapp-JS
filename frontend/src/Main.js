@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, Route, Routes, Navigate, Outlet } from 'react-router';
+import { useNavigate, Navigate } from 'react-router';
 import Axios from "axios";
 
 export default function Main() {
@@ -18,7 +18,7 @@ export default function Main() {
   return (
     <div>
       {role === "user" &&  <Navigate from="/" to="/user" />}
-      {role === "emp" &&  <Navigate from="/" to="/emp" />}
+      {/* {role === "emp" &&  <Navigate from="/" to="/emp" />} */}
       {role === "admin" && <Navigate from="/" to="/admin" />}
     </div>
     
