@@ -14,16 +14,20 @@ export default class UserOrders extends React.Component {
   componentDidMount() {
 
     axios.get("http://localhost:5000/login").then((response) => {
-      this.setState({ customer_email: response.data.user[0].email });
-      axios.get(`http://localhost:5000/orders/get/${this.state.customer_email}`)
-      .then(res => {
-        console.log(this.state.customer_email)
-        const orders = res.data;
-        this.setState({ orders });
+      if(response){
+        this.setState({ customer_email: response.data.user[0].email });
+      }
+      if(response.data.user[0].email){
+        axios.get(`http://localhost:5000/orders/get/${this.state.customer_email}`)
+        .then(res => {
+          console.log(this.state.customer_email)
+          const orders = res.data;
+          this.setState({ orders });
 
-      }).catch(err => {
-        console.log(err);
-      })
+        }).catch(err => {
+          console.log(err);
+        })
+      } else { alert('You must be logged in!')}
     });   
   }
 

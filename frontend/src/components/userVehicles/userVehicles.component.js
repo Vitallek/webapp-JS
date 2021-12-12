@@ -11,10 +11,10 @@ export default class UserVehicleModelList extends React.Component {
       toggleCarDescription: 'oneCarDescriptionHidden',
       backArrow: 'arrowBackHidden',
 
-      switchEngine: 0,
-      switchWheels: 0,
-      switchTurbo: 0,
-      switchTransmissions: 0,
+      switchEngine: 1,
+      switchWheels: 1,
+      switchTurbo: 1,
+      switchTransmissions: 1,
 
       switchEnginePrice: 0,
       switchWheelsPrice: 0,
@@ -281,7 +281,7 @@ export default class UserVehicleModelList extends React.Component {
                   <h5>{Car.model_name}</h5>
                   <p className="mb-2 text-muted text-uppercase small">{Car.company_name}</p>
                   
-                  <p><span className="mr-1"><strong>${Car.vehicle_stock_price}</strong></span></p>
+                  <p><span className="mr-1"><strong>Stock price: ${Car.vehicle_stock_price}</strong></span></p>
                   <p className="pt-1">{Car.car_description}</p>
                   <div className="table-responsive">
                     <form className="table table-sm table-borderless mb-0" onSubmit={this.handleSubmit}>
@@ -290,7 +290,6 @@ export default class UserVehicleModelList extends React.Component {
                           <th className="w-25"><strong>Engine</strong></th>
                             <td>
                               <select onChange={this.handleChangeSwitchEngine} className="form-control w-75">  
-                                <option value={1}>Stock</option>
                                 { this.state.engines.map(Engines => 
                                   <option key={Engines.id} value={Engines.id} price={Engines.engine_price}>{Engines.engine_name}</option>
                                 
@@ -302,7 +301,6 @@ export default class UserVehicleModelList extends React.Component {
                           <th className="w-25"><strong>Turbo</strong></th>
                           <td>
                             <select onChange={this.handleChangeSwitchTurbo} className="form-control w-75">  
-                            <option value={1}>Stock</option>
                               { this.state.turbos.map(Turbo => 
                                 <option key={Turbo.id} value={Turbo.id} price={Turbo.turbo_price}>{Turbo.turbo_name}</option>
                               )}
@@ -313,7 +311,6 @@ export default class UserVehicleModelList extends React.Component {
                           <th className="w-25"><strong>Transmission</strong></th>
                           <td>
                             <select onChange={this.handleChangeSwitchTransmissions} className="form-control w-75">  
-                            <option value={1}>Stock</option>
                               { this.state.transmissions.map(Transmissions => 
                                 <option key={Transmissions.id} value={Transmissions.id} price={Transmissions.transmission_price}>{Transmissions.transmission_name}</option>
                               )}
@@ -324,7 +321,6 @@ export default class UserVehicleModelList extends React.Component {
                           <th className="w-25"><strong>Wheels</strong></th>
                           <td>
                             <select onChange={this.handleChangeSwitchWheels} className="form-control w-75">  
-                            <option value={1}>Stock</option>
                               { this.state.wheels.map(Wheels => 
                                 <option key={Wheels.id} value={Wheels.id} price={Wheels.wheels_price}>{Wheels.wheels_name}</option>
                               )}
