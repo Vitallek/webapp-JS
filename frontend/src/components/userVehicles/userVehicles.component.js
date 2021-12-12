@@ -175,7 +175,12 @@ export default class UserVehicleModelList extends React.Component {
   handleSubmit = event => {
     event.preventDefault();
     this.setState({is_bought: 1});
-    if(this.state.is_bought == 1) {alert('Данный автомобиль уже куплен :('); return}
+    if(this.state.is_bought == 1) {
+      alert('Данный автомобиль уже куплен :(');
+      window.location.reload();
+      return 
+    }
+
     console.log(
       this.state.shop_name,
       'employee id',this.state.emp_id,
@@ -211,6 +216,7 @@ export default class UserVehicleModelList extends React.Component {
         console.log(res);
         console.log(res.data);
         alert('Вы заказали автомобиль.')
+        window.location.reload();
       }).catch(err => {
         console.log(err);
       })
