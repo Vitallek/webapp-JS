@@ -5,6 +5,7 @@ export default class UserVehicleModelList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {  
+      is_bought: 0,
       cars: [],
       car: [],
       toggleCarsList: 'userVehicleContainer',
@@ -173,6 +174,8 @@ export default class UserVehicleModelList extends React.Component {
 
   handleSubmit = event => {
     event.preventDefault();
+    this.setState({is_bought: 1});
+    if(this.state.is_bought == 1) {alert('Данный автомобиль уже куплен :('); return}
     console.log(
       this.state.shop_name,
       'employee id',this.state.emp_id,
